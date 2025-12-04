@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONHB 2025 - Olympic School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{--onc-blue:#0f2b7a;--onc-dark-blue:#0a1e55;--onc-yellow:#f2c217;--onc-bg:#f3f4f6;--white:#ffffff}
+        body{background-color:var(--onc-bg);font-family:'Segoe UI', Roboto, sans-serif;padding-top:80px}
+        .onc-hero{background:linear-gradient(135deg,var(--onc-blue) 0%,var(--onc-dark-blue) 100%);color:var(--white);padding:3rem 0;margin-bottom:2rem;border-radius:0 0 30px 30px;position:relative;overflow:hidden}
+        .badge-yellow{background:var(--onc-yellow);color:var(--onc-blue);padding:6px 14px;border-radius:50px;font-weight:800;font-size:.85rem;text-transform:uppercase;display:inline-block;margin-bottom:1rem;box-shadow:0 2px 10px rgba(242,194,23,.3)}
+        .onc-stats{display:flex;gap:20px;margin-top:2rem}
+        .stat{background:rgba(255,255,255,.1);backdrop-filter:blur(5px);padding:12px 20px;border-radius:12px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;gap:12px}
+        .stat i{font-size:1.5rem;color:var(--onc-yellow)}
+        .card-white{background:var(--white);border-radius:16px;padding:2rem;box-shadow:0 2px 4px rgba(0,0,0,.05);border:1px solid #e5e7eb;margin-bottom:1.5rem}
+        .card-title{color:var(--onc-blue);font-size:1.5rem;margin-bottom:1.2rem;font-weight:700;display:flex;align-items:center;gap:10px}
+        .card-title::before{content:'';display:block;width:6px;height:24px;background:var(--onc-yellow);border-radius:3px}
+        .page-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+        .sidebar-sticky{position:sticky;top:100px}
+        .info-list li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee;font-size:.95rem}
+        @media (max-width:768px){.page-grid{grid-template-columns:1fr}.onc-stats{flex-wrap:wrap}}
+    </style>
+</head>
+<body>
+    <header class="fixed top-0 w-full z-50 bg-[#0b245f] shadow-lg h-[72px]">
+        <div class="container mx-auto px-4 h-full flex items-center justify-between">
+            <a href="inicio.html" class="flex items-center gap-3">
+                <img src="logo.png" alt="Olympic School" class="h-10 rounded bg-white p-1" onerror="this.src='https://placehold.co/100x40?text=Logo'">
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="inicio.html" class="text-gray-300 hover:text-white font-medium">Início</a>
+                <div class="relative group">
+                    <a href="onc.html" class="text-gray-300 hover:text-white font-medium">Olimpíadas</a>
+                    <div class="absolute right-0 mt-2 bg-white rounded-xl shadow-lg border w-56 py-2 hidden group-hover:block">
+                        <a href="onc.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-flask"></i> ONC</a>
+                        <a href="obf.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-atom"></i> OBF</a>
+                        <a href="obfep.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-school"></i> OBFEP</a>
+                        <a href="onhb.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-landmark"></i> ONHB</a>
+                        <a href="obg.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-globe"></i> OBG</a>
+                        <a href="obmep.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-square-root-variable"></i> OBMEP</a>
+                        <a href="oba.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-meteor"></i> OBA</a>
+                    </div>
+                </div>
+                <a href="#" class="text-gray-300 hover:text-white font-medium">Materiais</a>
+                <a href="#" class="text-gray-300 hover:text-white font-medium">Ranking</a>
+            </nav>
+            <div class="relative flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <p class="font-bold text-sm text-white">Olá, <span id="user-name-onhb">Aluno</span>!</p>
+                    <p class="text-xs text-yellow-400">ONHB</p>
+                </div>
+                <button id="user-menu-btn-onhb" class="rounded-full border-2 border-yellow-400 bg-white w-10 h-10 grid place-items-center text-blue-900" title="Menu do usuário">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+                <div id="user-menu-onhb" class="absolute right-0 top-12 bg-white rounded-xl shadow-lg border w-44 py-2 hidden">
+                    <a href="perfil.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-id-badge"></i> Perfil</a>
+                    <a href="professor.html" class="px-4 py-2 flex items-center gap-2 text-gray-700"><i class="fa-solid fa-chalkboard-user"></i> Painel Prof.</a>
+                    <a href="index.html" class="px-4 py-2 flex items-center gap-2 text-red-600"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="onc-hero">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <span class="badge-yellow">ONHB 2025</span>
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Olimpíada Nacional em História do Brasil</h1>
+                    <p class="text-lg text-blue-100 mb-6 leading-relaxed">Competição estudantil em equipe organizada pela Unicamp, com seis fases online e final presencial, incentivando análise crítica de fontes históricas e trabalho colaborativo.</p>
+                    <div class="onc-stats">
+                        <div class="stat"><i class="fa-solid fa-list-check"></i><div><strong class="text-xl block">6 Online + 1 Final</strong><span class="text-xs uppercase opacity-80">Etapas</span></div></div>
+                        <div class="stat"><i class="fa-solid fa-users"></i><div><strong class="text-xl block">3 Alunos + 1 Prof.</strong><span class="text-xs uppercase opacity-80">Equipe</span></div></div>
+                        <div class="stat"><i class="fa-solid fa-building-columns"></i><div><strong class="text-xl block">Unicamp</strong><span class="text-xs uppercase opacity-80">Final Presencial</span></div></div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://www.olimpiadadehistoria.com.br/img/webclip.png" alt="ONHB" class="w-full max-w-md mx-auto rounded-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 pb-12 page-grid">
+        <div>
+            <div class="card-white">
+                <h3 class="card-title"><i class="fa-solid fa-diagram-project text-yellow-500"></i>Formato e Fases</h3>
+                <p class="text-gray-700">Seis fases online semanais com questões analíticas e tarefas, seguidas de uma fase final presencial na Unicamp. As alternativas podem ter pontuações graduadas e as tarefas avaliadas por critérios de precisão, coerência e argumentação.</p>
+            </div>
+            <div class="card-white">
+                <h3 class="card-title"><i class="fa-solid fa-user-tie text-yellow-500"></i>Inscrição e Credenciamento</h3>
+                <p class="text-gray-700">Inscrição obrigatoriamente via professor orientador, com credenciamento da escola e das equipes. Em várias edições há isenção de taxa para escolas públicas. A equipe recebe credenciais para competir.</p>
+            </div>
+            <div class="card-white">
+                <h3 class="card-title"><i class="fa-solid fa-users-gear text-yellow-500"></i>Público-Alvo e Níveis</h3>
+                <p class="text-gray-700">Estudantes do 8º e 9º ano do Ensino Fundamental II, 1ª a 3ª séries do Ensino Médio (ou 4ª do Técnico) e EJA. Participação em equipe de três alunos com um professor orientador.</p>
+            </div>
+            <div class="card-white">
+                <h3 class="card-title"><i class="fa-solid fa-ranking-star text-yellow-500"></i>Pontuação e Seleção</h3>
+                <p class="text-gray-700">Pontuação graduada nas questões de múltipla escolha; tarefas avaliadas por banca. Seleção para fases e final baseada na pontuação acumulada e nota de corte por nível.</p>
+            </div>
+            <div class="card-white">
+                <h3 class="card-title"><i class="fa-solid fa-award text-yellow-500"></i>Premiação e Reconhecimento</h3>
+                <p class="text-gray-700">Medalhas de Ouro, Prata e Bronze na cerimônia de encerramento na Unicamp, com certificados para participantes. Reconhecimento para professores e escolas em destaque.</p>
+            </div>
+        </div>
+        <aside class="sidebar-sticky">
+            <div class="card-white">
+                <h3 class="text-xl font-bold text-blue-900 mb-4 border-b pb-2">Info Rápida <span class="bg-yellow-400 text-blue-900 text-xs px-2 py-1 rounded ml-2">ONHB</span></h3>
+                <ul class="info-list">
+                    <li><span class="text-gray-500">Modalidade</span><span class="font-bold text-gray-800">Online + Final Presencial</span></li>
+                    <li><span class="text-gray-500">Equipe</span><span class="font-bold text-gray-800">3 Alunos + 1 Professor</span></li>
+                    <li><span class="text-gray-500">Final</span><span class="font-bold text-gray-800">Unicamp, Campinas</span></li>
+                    <li><span class="text-gray-500">Níveis</span><span class="font-bold text-gray-800">EF II, EM, EJA</span></li>
+                    <li><span class="text-gray-500">Regulamento</span><a href="https://www.olimpiadadehistoria.com.br/" class="font-bold text-blue-700">Site Oficial</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        (function(){
+            const nameEl=document.getElementById('user-name-onhb');
+            const menuBtn=document.getElementById('user-menu-btn-onhb');
+            const menu=document.getElementById('user-menu-onhb');
+            const fullName=localStorage.getItem('userName')||'Aluno';
+            const firstName=fullName.split(' ')[0];
+            if(nameEl) nameEl.textContent=firstName;
+            if(menuBtn&&menu){menuBtn.addEventListener('click',()=>menu.classList.toggle('hidden'))}
+        })();
+    </script>
+</body>
+</html>

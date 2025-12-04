@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Aluno - Olympic School</title>
+      <link rel="icon" href="logo.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    
+</style>
+</head>
+<body class="bg-gray-50">
+    <header class="fixed top-0 w-full z-50 bg-[#0b245f] shadow-lg h-[72px]">
+      <div class="container mx-auto px-4 h-full flex items-center justify-between">
+            <a href="inicio.html" class="flex items-center gap-3">
+                <img src="logo.png" alt="Olympic School" class="h-10 rounded bg-white p-1" onerror="this.src='https://placehold.co/100x40?text=Logo'">
+            </a>
+
+            <nav class="hidden md:flex space-x-8">
+                <a href="inicio.html" class="text-gray-300 hover:text-white font-medium">Início</a>
+                <a href="#onc.html" class="text-white font-bold border-b-2 border-yellow-400">Perfil</a>
+            </nav>
+
+            <div class="relative flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <p class="font-bold text-sm text-white">Olá, <span id="user-name-onc">Aluno</span>!</p>
+                    <p class="text-xs text-yellow-400">Nível: Ouro</p>
+                </div>
+                <button id="user-menu-btn-onc" class="rounded-full border-2 border-yellow-400 bg-white w-10 h-10 grid place-items-center text-blue-900" title="Menu do usuário">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+                <div id="user-menu-onc" class="absolute right-0 top-12 bg-white rounded-xl shadow-lg border w-44 py-2 hidden">
+                    <a href="perfil.html" class="px-4 py-2 flex items-center gap-2 text-gray-700">
+                        <i class="fa-solid fa-id-badge"></i> Perfil
+                    </a>
+                    <a href="professor.html" class="px-4 py-2 flex items-center gap-2 text-gray-700">
+                        <i class="fa-solid fa-chalkboard-user"></i> Painel Prof.
+                    </a>
+                    <a href="index.html" class="px-4 py-2 flex items-center gap-2 text-red-600">
+                        <i class="fa-solid fa-right-from-bracket"></i> Sair
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <section class="mb-6">
+                    <h1 class="text-2xl font-bold text-blue-900 mb-4">Resumo</h1>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white rounded-xl border p-4 flex items-center gap-3 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700"><i class="fa-solid fa-video"></i></div>
+                            <div>
+                                <div class="text-sm text-gray-500">Aulas Assistidas</div>
+                                <div class="text-xl font-bold">28</div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl border p-4 flex items-center gap-3 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-700"><i class="fa-solid fa-list-check"></i></div>
+                            <div>
+                                <div class="text-sm text-gray-500">Questões Resolvidas</div>
+                                <div class="text-xl font-bold">412</div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl border p-4 flex items-center gap-3 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-700"><i class="fa-solid fa-clipboard-check"></i></div>
+                            <div>
+                                <div class="text-sm text-gray-500">Simulados Feitos</div>
+                                <div class="text-xl font-bold">9</div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl border p-4 flex items-center gap-3 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-600"><i class="fa-solid fa-medal"></i></div>
+                            <div>
+                                <div class="text-sm text-gray-500">Medalhas</div>
+                                <div class="text-xl font-bold">3</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-6">
+                    <div class="bg-white rounded-xl border p-6 shadow-sm">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h2 class="text-lg font-bold text-blue-900">Continuar Estudando</h2>
+                                <p class="text-sm text-gray-600">Biologia - ONC: Citologia</p>
+                            </div>
+                            <span class="text-sm text-gray-500">45% concluído</span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden border">
+                            <div id="study-progress" class="h-full bg-gradient-to-r from-blue-600 to-indigo-600" style="width:45%"></div>
+                        </div>
+                        <div class="mt-4 flex gap-2">
+                            <a href="onc.html" class="px-4 py-2 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold rounded-lg">Continuar</a>
+                            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-800 font-medium rounded-lg">Ver detalhes</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-lg font-bold text-blue-900 mb-3">Minhas Olimpíadas</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-xl border p-4 shadow-sm">
+                            <div class="flex items-center gap-3 mb-2">
+                                <img src="https://yt3.googleusercontent.com/ytc/AIdro_m8ekAPIfdq8urEAaLeC4u-XmztHfIiIhXqS5phEdYReb8=s900-c-k-c0x00ffffff-no-rj" alt="ONC" class="w-10 h-10 rounded">
+                                <div class="font-bold">ONC</div>
+                            </div>
+                            <div id="status-onc" class="text-sm text-gray-600">Próxima fase em 5 dias</div>
+                            <a href="onc.html" class="mt-3 inline-flex items-center gap-1 text-blue-700 text-sm font-medium">Abrir <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                        <div class="bg-white rounded-xl border p-4 shadow-sm">
+                            <div class="flex items-center gap-3 mb-2">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEx_2weOMGTAg-1JX9Ymx-e6lpJ2N0oV5eqA&s" alt="OBA" class="w-10 h-10 rounded">
+                                <div class="font-bold">OBA</div>
+                            </div>
+                            <div id="status-oba" class="text-sm text-gray-600">Inscrições abertas</div>
+                            <a href="oba.html" class="mt-3 inline-flex items-center gap-1 text-blue-700 text-sm font-medium">Abrir <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                        <div class="bg-white rounded-xl border p-4 shadow-sm">
+                            <div class="flex items-center gap-3 mb-2">
+                                <img src="https://www.sbv.ifsp.edu.br/images/2024/dezembro/23/obmep_vencedores/20353_d715b192-bd57-4a71-b8ec-49ce53f2cac9.jpg" alt="OBMEP" class="w-10 h-10 rounded">
+                                <div class="font-bold">OBMEP</div>
+                            </div>
+                            <div id="status-obmep" class="text-sm text-gray-600">1ª fase em 12/06</div>
+                            <a href="obmep.html" class="mt-3 inline-flex items-center gap-1 text-blue-700 text-sm font-medium">Abrir <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside>
+                <div class="bg-white rounded-xl border p-6 shadow-sm mb-6">
+                    <h3 class="text-lg font-bold text-blue-900 mb-3">Próximas Datas</h3>
+                    <ul id="upcoming-list" class="space-y-3"></ul>
+                </div>
+                <div class="bg-white rounded-xl border p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-blue-900 mb-3">Top 3 da Semana</h3>
+                    <ol class="space-y-3">
+                        <li class="flex items-center justify-between"><div class="flex items-center gap-3"><img class="w-8 h-8 rounded-full border" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos" alt="Carlos"><div class="font-medium">Carlos Silva</div></div><div class="text-sm font-bold">985</div></li>
+                        <li class="flex items-center justify-between"><div class="flex items-center gap-3"><img class="w-8 h-8 rounded-full border" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ana" alt="Ana"><div class="font-medium">Ana Oliveira</div></div><div class="text-sm font-bold">972</div></li>
+                        <li class="flex items-center justify-between"><div class="flex items-center gap-3"><img class="w-8 h-8 rounded-full border" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Voce" alt="Você"><div class="font-medium">Você</div></div><div class="text-sm font-bold">945</div></li>
+                    </ol>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <script>
+        const data = {
+            2025: {
+                4: { 19: [{ name: 'OBA', type: 'Prova' }] },
+                5: { 12: [{ name: 'OBMEP', type: '1ª Fase' }] },
+                7: { 1: [{ name: 'ONC', type: 'Inscrições fim' }], 12: [{ name: 'OBFEP', type: '1ª Fase' }], 14: [{ name: 'ONC', type: '1ª Fase início' }] },
+                10: { 25: [{ name: 'OBFEP', type: '2ª Fase' }] },
+                11: { 22: [{ name: 'OBMEP', type: 'Resultados' }] }
+            }
+        };
+        const upcomingEl = document.getElementById('upcoming-list');
+        function getUpcoming(count = 5) {
+            const now = new Date();
+            const events = [];
+            const yearData = data[now.getFullYear()] || {};
+            for (let m = now.getMonth(); m <= 11; m++) {
+                const month = yearData[m] || {};
+                Object.keys(month).forEach(d => {
+                    const date = new Date(now.getFullYear(), m, parseInt(d));
+                    if (date >= now) {
+                        month[d].forEach(ev => events.push({ date, ...ev }));
+                    }
+                });
+            }
+            events.sort((a,b) => a.date - b.date);
+            return events.slice(0, count);
+        }
+        function fmtDate(date) {
+            return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
+        }
+        const tagColor = (name) => {
+            if (name === 'ONC') return 'bg-yellow-50 text-yellow-700';
+            if (name === 'OBFEP') return 'bg-blue-50 text-blue-700';
+            if (name === 'OBMEP') return 'bg-purple-50 text-purple-700';
+            return 'bg-gray-50 text-gray-700';
+        }
+        const upcoming = getUpcoming(5);
+        upcomingEl.innerHTML = upcoming.map(ev => `
+            <li class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 text-gray-800 grid place-items-center font-bold">${String(ev.date.getDate()).padStart(2,'0')}</span>
+                    <div>
+                        <div class="text-sm font-semibold">${ev.name} – ${ev.type}</div>
+                        <div class="text-xs text-gray-500">${fmtDate(ev.date)}</div>
+                    </div>
+                </div>
+                <span class="text-xs px-2 py-1 rounded ${tagColor(ev.name)}">${ev.type}</span>
+            </li>
+        `).join('');
+
+        function nextFor(name) {
+            const now = new Date();
+            const yearData = data[now.getFullYear()] || {};
+            const events = [];
+            Object.keys(yearData).forEach(m => {
+                const month = yearData[m];
+                Object.keys(month).forEach(d => {
+                    month[d].forEach(ev => {
+                        const date = new Date(now.getFullYear(), parseInt(m), parseInt(d));
+                        if (ev.name === name && date >= now) events.push({ date, type: ev.type });
+                    })
+                })
+            })
+            events.sort((a,b)=>a.date - b.date);
+            return events[0];
+        }
+        function daysDiff(date){
+            const ms = date - new Date();
+            return Math.ceil(ms / (1000*60*60*24));
+        }
+        const sOnc = document.getElementById('status-onc');
+        const sOba = document.getElementById('status-oba');
+        const sObmep = document.getElementById('status-obmep');
+        const nOnc = nextFor('ONC');
+        const nOba = nextFor('OBA');
+        const nObmep = nextFor('OBMEP');
+        if (nOnc) sOnc.textContent = `${nOnc.type} em ${daysDiff(nOnc.date)} dias`;
+        if (nOba) sOba.textContent = `${nOba.type} em ${daysDiff(nOba.date)} dias`;
+        if (nObmep) sObmep.textContent = `${nObmep.type} em ${fmtDate(nObmep.date)}`;
+
+        const progressEl = document.getElementById('study-progress');
+        const stored = parseInt(localStorage.getItem('studyProgressOnc') || '45', 10);
+        progressEl.style.width = `${Math.max(0, Math.min(100, stored))}%`;
+
+           // 4. Usuário (avatar + nome + menu)
+        (function(){
+          const nameEl = document.getElementById('user-name-onc');
+          const avatarEl = document.getElementById('user-menu-btn-onc');
+          const menuBtn = document.getElementById('user-menu-btn-onc');
+          const menu = document.getElementById('user-menu-onc');
+          const fullName = localStorage.getItem('userName') || 'Aluno';
+          const firstName = fullName.split(' ')[0];
+          if(nameEl) nameEl.textContent = firstName;
+          if(menuBtn && menu){ menuBtn.addEventListener('click',()=>menu.classList.toggle('hidden')) }
+        })();
+    </script>
+</body>
+</html>

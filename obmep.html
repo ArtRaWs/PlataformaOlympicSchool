@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>OBMEP 2025 — Olympic School</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
+    <!-- Fonts & Icons -->
+    <script src="script.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =========================
+     OBMEP — Verde Escuro Premium
+     Single-file HTML: styles + script
+     ========================= */
+
+        :root {
+            --green-900: #062b15;
+            --green-800: #0b3f22;
+            --green-700: #0f5a2f;
+            --green-600: #127a36;
+            --green-500: #2aa74e;
+            --accent-gold: #f2c217;
+            --muted: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass: rgba(255, 255, 255, 0.03);
+            --soft-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+            --radius-lg: 18px;
+            --ease: cubic-bezier(.2, .9, .2, 1);
+            --max-width: 1200px;
+            --txt: #e6f8ec;
+            --muted-txt: #9fb8a9;
+            --glass-border: rgba(255, 255, 255, 0.04);
+        }
+
+        /* Reset & base */
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(18, 54, 31, .28), transparent),
+                linear-gradient(180deg, #03140a 0%, #071b0f 60%);
+            color: var(--txt);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            padding-top: 78px;
+            /* header height */
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        /* Container */
+        .wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 28px;
+        }
+
+        /* Header (similar to ONC structure) */
+        header.appbar {
+            height: 78px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--green-900), rgba(5, 38, 22, .9));
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1200;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+
+        .appbar-inner {
+            max-width: var(--max-width);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand img {
+            height: 44px;
+            width: auto;
+            border-radius: 8px;
+            background: #fff;
+            padding: 4px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .35)
+        }
+
+        .brand h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--txt);
+            letter-spacing: .6px;
+            margin: 0;
+        }
+
+        nav.topnav {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            color: var(--muted)
+        }
+
+        nav.topnav a {
+            font-weight: 600;
+            color: rgba(255, 255, 255, .88);
+            padding: 6px 10px;
+            border-radius: 8px
+        }
+
+        nav.topnav a.active {
+            background: linear-gradient(90deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+            border: 1px solid rgba(255, 255, 255, .03)
+        }
+
+        /* header right */
+        .hdr-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .user-brief {
+            text-align: right;
+            font-size: 13px;
+            margin-right: 8px;
+            display: none
+        }
+
+        .avatar-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, var(--green-500), var(--green-700));
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 800;
+            box-shadow: 0 6px 20px rgba(10, 40, 20, .5);
+            border: 2px solid rgba(255, 255, 255, .06);
+            cursor: pointer;
+        }
+
+        .hdr-actions button.icon {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .04);
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--txt)
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 8px;
+            background:
+                linear-gradient(180deg, rgba(10, 30, 18, .25), rgba(8, 18, 12, .15)),
+                linear-gradient(120deg, rgba(18, 80, 40, .12), rgba(6, 30, 18, .08));
+            border-radius: 22px;
+            padding: 34px;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 28px;
+            align-items: center;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid rgba(255, 255, 255, .03);
+            overflow: hidden;
+        }
+
+        .hero h2 {
+            margin: 0;
+            font-size: 36px;
+            line-height: 1.03;
+            font-weight: 900;
+            letter-spacing: -0.6px
+        }
+
+        .hero p.lead {
+            color: var(--muted-txt);
+            font-size: 15px;
+            margin-top: 10px;
+            max-width: 680px
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+            color: var(--accent-gold);
+            font-weight: 800;
+            letter-spacing: .6px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, .03);
+            box-shadow: 0 6px 26px rgba(16, 60, 30, .12) inset;
+        }
+
+        /* hero image card */
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            max-width: 360px;
+            border-radius: 16px;
+            border: 6px solid rgba(255, 255, 255, .03);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, .6);
+            transform: translateY(-6px);
+            transition: transform .6s var(--ease);
+        }
+
+        .hero-visual img:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* stats row under hero */
+        .stats-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        .stat {
+            flex: 1;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, .015));
+            border-radius: 14px;
+            padding: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, .025);
+        }
+
+        .stat .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, .03);
+            font-size: 18px
+        }
+
+        .stat .value {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--txt)
+        }
+
+        .stat .sub {
+            font-size: 12px;
+            color: var(--muted-txt)
+        }
+
+        /* LAYOUT */
+        .page {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 26px;
+            margin-top: 22px;
+            align-items: start
+        }
+
+        /* left content */
+        .panel {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .45)
+        }
+
+        .panel+.panel {
+            margin-top: 14px
+        }
+
+        /* section title with animated gradient */
+        .section-title {
+            font-size: 20px;
+            font-weight: 900;
+            margin: 0 0 12px 0;
+            background: linear-gradient(90deg, #8fe78c, #67cf6b, #0ec04f, #b7f7a9);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleFlow 6s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes titleFlow {
+            0% {
+                background-position: 0%
+            }
+
+            100% {
+                background-position: 200%
+            }
+        }
+
+        /* tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap
+        }
+
+        .tabs button {
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .03);
+            color: var(--muted-txt);
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        .tabs button.active {
+            background: linear-gradient(90deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .02));
+            color: var(--txt);
+            box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .15)
+        }
+
+        /* accordion */
+        .accordion .item {
+            border-bottom: 1px solid rgba(255, 255, 255, .02);
+            padding: 12px 0
+        }
+
+        .accordion .hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            gap: 12px
+        }
+
+        .accordion .hdr h4 {
+            margin: 0;
+            font-weight: 800;
+            font-size: 15px
+        }
+
+        .accordion .body {
+            margin-top: 10px;
+            color: var(--muted-txt);
+            font-size: 14px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .36s var(--ease)
+        }
+
+        .accordion .body.open {
+            max-height: 420px
+        }
+
+        /* topics grid */
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px
+        }
+
+        .topic-card {
+            padding: 12px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .01), rgba(255, 255, 255, .02));
+            border: 1px solid rgba(255, 255, 255, .02)
+        }
+
+        .topic-card h5 {
+            margin: 0 0 6px 0;
+            font-weight: 800;
+            font-size: 14px
+        }
+
+        .topic-card p {
+            margin: 0;
+            color: var(--muted-txt);
+            font-size: 13px
+        }
+
+        /* resources */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .resource {
+            padding: 12px;
+            border-radius: 10px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, .02)
+        }
+
+        .resource i {
+            font-size: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, .03)
+        }
+
+        /* sidebar */
+        .sidebar .card {
+            padding: 16px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .012), rgba(255, 255, 255, .01));
+            border: 1px solid rgba(255, 255, 255, .03)
+        }
+
+        .sidebar .cta {
+            display: block;
+            text-align: center;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: linear-gradient(90deg, var(--green-600), var(--green-700));
+            color: white;
+            font-weight: 800;
+            margin-top: 12px
+        }
+
+        /* footer small */
+        footer {
+            margin-top: 36px;
+            text-align: center;
+            color: var(--muted-txt);
+            font-size: 13px;
+            padding-bottom: 40px
+        }
+
+        /* responsive */
+        @media (max-width: 980px) {
+            .hero {
+                grid-template-columns: 1fr 300px
+            }
+
+            .page {
+                grid-template-columns: 1fr
+            }
+
+            .hero-visual {
+                order: -1;
+                justify-self: center
+            }
+
+            .user-brief {
+                display: none
+            }
+        }
+
+        @media (max-width:640px) {
+            .brand h1 {
+                display: none
+            }
+
+            .hero {
+                padding: 20px;
+                border-radius: 12px;
+                grid-template-columns: 1fr
+            }
+
+            .hero-visual img {
+                max-width: 260px
+            }
+
+            .stats-row {
+                flex-direction: column
+            }
+
+            .tabs {
+                justify-content: flex-start;
+                overflow: auto
+            }
+
+            .topics {
+                grid-template-columns: 1fr
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* small helpers & animations */
+        .muted {
+            color: var(--muted-txt)
+        }
+
+        .fade-in {
+            animation: fadeIn .6s ease both
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        /* focus outlines */
+        button:focus,
+        a:focus {
+            outline: 3px solid rgba(127, 255, 160, .12);
+            outline-offset: 2px;
+            border-radius: 8px
+        }
+
+        /* ======================= HEADER OBMEP PREMIUM ======================= */
+
+        .header-obmep {
+            width: 100%;
+            height: 92px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1200;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+
+            /* Fundo matemático vivo */
+            background:
+                radial-gradient(circle at 15% 120%, #0e3d22, transparent 60%),
+                radial-gradient(circle at 85% -10%, #15a360 5%, transparent 50%),
+                linear-gradient(90deg, #0a2618, #12743f, #0a2618);
+            background-size: 350% 350%;
+            animation: mathGlow 12s ease-in-out infinite alternate;
+        }
+
+        /* Animação de luz fluida */
+        @keyframes mathGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .container-header {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* LOGO + TITLE */
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-box img {
+            height: 55px;
+            border-radius: 10px;
+            padding: 4px;
+            background: white;
+            filter: drop-shadow(0px 0px 6px rgba(0, 255, 130, .4));
+        }
+
+        .title-wrap h1 {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            color: #dfffe8;
+            text-shadow: 0px 0px 10px rgba(0, 255, 160, .4);
+        }
+
+        .title-wrap p {
+            font-size: 12px;
+            opacity: .75;
+            color: #e4fff0;
+        }
+
+        /* NAV */
+        .nav-obmep ul {
+            display: flex;
+            gap: 38px;
+        }
+
+        .nav-obmep a {
+            color: #dfffed;
+            font-weight: 600;
+            font-size: 15px;
+            position: relative;
+            transition: .35s;
+        }
+
+        .nav-obmep a::after {
+            content: "";
+            height: 2px;
+            width: 0%;
+            bottom: -3px;
+            left: 0;
+            background: #3cff91;
+            border-radius: 4px;
+            position: absolute;
+            transition: .35s;
+        }
+
+        .nav-obmep a:hover {
+            color: #97ffb8;
+        }
+
+        .nav-obmep a:hover::after {
+            width: 100%;
+        }
+
+        /* USER BADGE */
+        .user-badge {
+            width: 45px;
+            height: 45px;
+            background: #14b96c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 0 12px rgba(0, 255, 90, .35);
+        }
+
+        .user-badge:hover {
+            transform: scale(1.09) rotate(3deg);
+            box-shadow: 0 0 18px rgba(0, 255, 120, .6);
+        }
+
+        /* 🌙 DARK MODE AUTOMÁTICO (modo escuro fica ainda + bonito) */
+        @media (prefers-color-scheme:dark) {
+            .header-obmep {
+                background:
+                    radial-gradient(circle at 20% 130%, #00190e, transparent 60%),
+                    radial-gradient(circle at 85% -10%, #0e6137 5%, transparent 50%),
+                    linear-gradient(90deg, #00150c, #0d4027, #00150c);
+            }
+
+            .title-wrap h1 {
+                color: #b8ffe0;
+            }
+
+            .nav-obmep a {
+                color: #d6ffe9;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header-obmep">
+        <div class="container-header">
+
+            <div class="logo-box"><a href="inicio.html">
+                    <img src="logo.png" alt="OBMEP"></a>
+                <div class="title-wrap">
+                    <h1>OBMEP</h1>
+                    <p>Olimpíada Brasileira de Matemática</p>
+                </div>
+            </div>
+
+            <nav class="nav-obmep">
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#conteudo">Conteúdos</a></li>
+                    <li><a href="#preparacao">Preparação</a></li>
+                    <li><a href="#materiais">Materiais</a></li>
+                </ul>
+            </nav>
+            <a href="perfil.html">
+                <button id="user-menu-btn-onc"
+                    class="rounded-full border-2 border-yellow-400 bg-white w-10 h-10 grid place-items-center text-blue-900"
+                    title="Menu do usuário">
+                    <i class="fa-regular fa-user"></i>
+                </button></a>
+            <div id="user-menu-onc"
+                class="absolute right-0 top-12 bg-white rounded-xl shadow-lg border w-44 py-2 hidden">
+                <a href="perfil.html" class="px-4 py-2 flex items-center gap-2 text-gray-700">
+                    <i class="fa-solid fa-id-badge"></i> Perfil
+                </a>
+                <a href="professor.html" class="px-4 py-2 flex items-center gap-2 text-gray-700">
+                    <i class="fa-solid fa-chalkboard-user"></i> Painel Prof.
+                </a>
+                <a href="index.html" class="px-4 py-2 flex items-center gap-2 text-red-600">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </a>
+
+
+            </div>
+    </header>
+
+
+    <!-- WRAPPER -->
+    <main class="wrap" role="main">
+
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div>
+                <div class="badge">OBMEP — Edição 2025</div>
+                <h2 id="hero-title">Olimpíada Brasileira de Matemática — <span
+                        style="color:var(--accent-gold)">OBMEP</span></h2>
+                <p class="lead">Desafios que transformam raciocínio e criatividade. A OBMEP fomenta o estudo da
+                    matemática nas escolas públicas, incentivando talentos e promovendo inclusão.</p>
+
+                <div class="stats-row" style="margin-top:18px">
+                    <div class="stat">
+                        <div class="icon"><i class="fa-solid fa-users"></i></div>
+                        <div>
+                            <div class="value">+800k</div>
+                            <div class="sub">Participantes</div>
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="icon"><i class="fa-solid fa-keyboard"></i></div>
+                        <div>
+                            <div class="value">2 fases</div>
+                            <div class="sub">Objetiva + Olimpíada</div>
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="icon"><i class="fa-solid fa-award"></i></div>
+                        <div>
+                            <div class="value">Bolsas & Convites</div>
+                            <div class="sub">Apoios e oportunidades</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+                <img src="https://www.sbv.ifsp.edu.br/images/2024/dezembro/23/obmep_vencedores/20353_d715b192-bd57-4a71-b8ec-49ce53f2cac9.jpg"
+                    alt="OBMEP vencedores">
+            </div>
+        </section>
+
+        <!-- PAGE GRID: left content + sidebar -->
+        <div class="page">
+
+            <!-- LEFT: main content -->
+            <div>
+                <!-- Tabs -->
+                <div class="panel fade-in" id="sobre">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+                        <div>
+                            <div class="section-title">Sobre a OBMEP</div>
+                            <p style="margin:8px 0 0;color:var(--muted-txt)">A OBMEP promove cultura matemática com
+                                avaliações que estimulam lógica, criatividade e técnica. Abaixo: fases, cronograma e
+                                quem pode participar.</p>
+                        </div>
+                        <div style="text-align:right;min-width:160px">
+                            <div style="font-weight:800;color:var(--accent-gold)">Inscrições abertas</div>
+                            <div style="font-size:13px;color:var(--muted-txt);margin-top:6px">Verifique com a
+                                coordenação da sua escola</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:14px" class="accordion">
+                        <div class="item">
+                            <div class="hdr" onclick="toggleAcc(this)">
+                                <h4>Quem pode participar?</h4>
+                                <div class="muted">Alunos da rede pública e parceiras</div>
+                            </div>
+                            <div class="body">
+                                <p>A OBMEP é destinada a estudantes da educação básica. Inscrições costumam ser feitas
+                                    via direção da escola — verifique prazos oficiais.</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="hdr" onclick="toggleAcc(this)">
+                                <h4>Fases e Formato</h4>
+                                <div class="muted">Objetiva — classificatória; seguida por fases avançadas</div>
+                            </div>
+                            <div class="body">
+                                <ul style="margin:8px 0 0 18px;color:var(--muted-txt)">
+                                    <li><strong>1ª fase:</strong> Prova objetiva aplicada por turma/escola.</li>
+                                    <li><strong>2ª fase:</strong> Provas discursivas para classificados.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="hdr" onclick="toggleAcc(this)">
+                                <h4>Importância</h4>
+                                <div class="muted">Formação e oportunidades</div>
+                            </div>
+                            <div class="body">
+                                <p>Alunos premiados podem ser contemplados com bolsas, convites para cursos e
+                                    participação em eventos acadêmicos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdos -->
+                <div class="panel fade-in" id="conteudo" style="margin-top:16px">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div class="section-title">Conteúdos Relevantes</div>
+                        <div class="muted">Use como checklist de preparação</div>
+                    </div>
+
+                    <div style="margin-top:12px" class="topics">
+                        <div class="topic-card">
+                            <h5>Álgebra Básica</h5>
+                            <p>Equações, inequações, manipulação algébrica, progressões e expressões polinomiais.</p>
+                        </div>
+                        <div class="topic-card">
+                            <h5>Combinatória & Probabilidade</h5>
+                            <p>Princípio fundamental da contagem, permutações, combinações e probabilidade elementar.
+                            </p>
+                        </div>
+                        <div class="topic-card">
+                            <h5>Geometria</h5>
+                            <p>Planimetria, semelhança, área, perímetro e noções básicas de trigonometria.</p>
+                        </div>
+                        <div class="topic-card">
+                            <h5>Números Inteiros & Racionais</h5>
+                            <p>Propriedades, divisibilidade, MMC, MDC, frações e porcentagens.</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:14px; display:flex;gap:12px;flex-wrap:wrap">
+                        <button class="tabs-button" onclick="highlight('alg')">Álgebra</button>
+                        <button class="tabs-button" onclick="highlight('geo')">Geometria</button>
+                        <button class="tabs-button" onclick="highlight('comb')">Combinatória</button>
+                        <button class="tabs-button" onclick="highlight('prob')">Probabilidade</button>
+                    </div>
+
+                    <div style="margin-top:14px">
+                        <div class="resource-grid">
+                            <div class="resource">
+                                <i class="fa-solid fa-file-pdf"></i>
+                                <div>
+                                    <div style="font-weight:800">Provas Anteriores — PDF</div>
+                                    <div class="muted">Níveis A → E disponíveis</div>
+                                </div>
+                            </div>
+                            <div class="resource">
+                                <i class="fa-solid fa-chalkboard"></i>
+                                <div>
+                                    <div style="font-weight:800">Apostilas Selecionadas</div>
+                                    <div class="muted">Materiais didáticos para professores e alunos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preparação -->
+                <div class="panel fade-in" id="preparacao" style="margin-top:16px">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div class="section-title">Preparação & Dicas</div>
+                        <div class="muted">Estratégias testadas</div>
+                    </div>
+
+                    <div style="margin-top:12px" class="topics">
+                        <div class="topic-card">
+                            <h5>Resolução de Provas</h5>
+                            <p>Faça provas antigas em tempo cronometrado. Analise erros e padronize verificações.</p>
+                        </div>
+                        <div class="topic-card">
+                            <h5>Grupo de Estudos</h5>
+                            <p>Forme grupos para discutir soluções alternativas — isso amplia visão matemática.</p>
+                        </div>
+                        <div class="topic-card">
+                            <h5>Professor Mentor</h5>
+                            <p>Apoio de um orientador acelera a evolução do raciocínio e evita bloqueios.</p>
+                        </div>
+                        <div class="topic-card">
+                            <h5>Saúde Mental</h5>
+                            <p>Boa noite de sono e pausas curtas durante estudos aumentam rendimento.</p>
+                        </div>
+                    </div>
+
+                  
+                </div>
+            </div>
+
+            <!-- RIGHT: sidebar -->
+            <aside class="sidebar">
+                <div class="card panel">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div>
+                            <div style="font-weight:900;font-size:16px">Info Rápida</div>
+                            <div class="muted" style="margin-top:6px">OBMEP • Tema Verde</div>
+                        </div>
+                        <div style="text-align:right">
+                            <div style="font-weight:800;color:var(--accent-gold)">2025</div>
+                        </div>
+                    </div>
+
+                    <ul style="margin-top:12px;padding:0;list-style:none" class="muted">
+                        <li
+                            style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid rgba(255,255,255,.02)">
+                            <span>Público</span><strong>Estudantes</strong>
+                        </li>
+                        <li
+                            style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid rgba(255,255,255,.02)">
+                            <span>Formato</span><strong>Objetiva & Fases</strong>
+                        </li>
+                        <li
+                            style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid rgba(255,255,255,.02)">
+                            <span>Custo</span><strong>Gratuito</strong>
+                        </li>
+                    </ul>
+
+                    <a class="cta" href="https://www.obmep.org.br"" style="display:block;margin-top:12px">Site Oficial</a>
+
+                    <div style="margin-top:14px">
+                        <div style="font-weight:800;margin-bottom:8px">Materiais Rápidos</div>
+                        <div style="display:flex;flex-direction:column;gap:8px">
+                            <a class="resource" href="#" role="button"><i class="fa-solid fa-file-arrow-down"></i> Guia
+                                do Professor</a>
+                            <a class="resource" href="#" role="button"><i class="fa-solid fa-file-lines"></i> Banco de
+                                Questões</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel card" style="margin-top:12px">
+                    <div style="display:flex;align-items:center;gap:12px">
+                        <img src="logo.png" alt="logo" style="height:54px;border-radius:10px;object-fit:cover"
+                            onerror="this.src='https://placehold.co/120x54?text=logo.png'">
+                        <div>
+                            <div style="font-weight:800">Olympic School</div>
+                            <div class="muted" style="font-size:13px">Preparação </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:12px">
+                        <a class="cta" href="#" style="font-size:14px">Material didático</a>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+
+        <footer>
+            © <span id="year"></span> Olympic School — Página oficial de apoio OBMEP • Design: Tema Verde Escuro Premium
+        </footer>
+    </main>
+
+    <script>
+        // Simple utilities for tabs / accordion / UI behavior
+
+        // Fill year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Avatar menu (simple toggle) - future expansion
+        document.getElementById('avatarBtn').addEventListener('click', () => {
+            alert('Menu do usuário — funcionalidade de exemplo. Você pode integrar perfil aqui.');
+        });
+
+        // Accordion toggles
+        function toggleAcc(headerEl) {
+            const item = headerEl.closest('.item');
+            const body = item.querySelector('.body');
+            if (body.classList.contains('open')) {
+                body.classList.remove('open');
+                body.style.maxHeight = null;
+            } else {
+                // close others (optional nice behavior)
+                document.querySelectorAll('.accordion .body.open').forEach(b => {
+                    b.classList.remove('open'); b.style.maxHeight = null;
+                });
+                body.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + 'px';
+            }
+        }
+
+        // small helper: scroll to section
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (!el) return window.scrollTo({ top: 0, behavior: 'smooth' });
+            const rect = el.getBoundingClientRect();
+            const offset = rect.top + window.scrollY - 86;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+
+        // highlight helper for content buttons (demo)
+        function highlight(k) {
+            const all = document.querySelectorAll('.topic-card');
+            all.forEach(c => c.style.boxShadow = 'none');
+            // just a simple demonstration mapping
+            if (k === 'alg') all[0].style.boxShadow = '0 10px 30px rgba(18,120,60,.35)';
+            if (k === 'geo') all[2].style.boxShadow = '0 10px 30px rgba(18,120,60,.35)';
+            if (k === 'comb') all[1].style.boxShadow = '0 10px 30px rgba(18,120,60,.35)';
+            if (k === 'prob') all[3].style.boxShadow = '0 10px 30px rgba(18,120,60,.35)';
+            setTimeout(() => all.forEach(c => c.style.boxShadow = 'none'), 2200);
+        }
+
+        // small reveal on scroll
+        const revealElems = document.querySelectorAll('.fade-in');
+        function onScrollReveal() {
+            revealElems.forEach(el => {
+                const r = el.getBoundingClientRect();
+                if (r.top < window.innerHeight - 80) el.classList.add('fadeInActive');
+            });
+        }
+        window.addEventListener('scroll', onScrollReveal);
+        onScrollReveal();
+
+        (function () {
+            const nameEl = document.getElementById('user-name-onc');
+            const avatarEl = document.getElementById('user-menu-btn-onc');
+            const menuBtn = document.getElementById('user-menu-btn-onc');
+            const menu = document.getElementById('user-menu-onc');
+            const fullName = localStorage.getItem('userName') || 'Aluno';
+            const firstName = fullName.split(' ')[0];
+            if (nameEl) nameEl.textContent = firstName;
+            if (menuBtn && menu) { menuBtn.addEventListener('click', () => menu.classList.toggle('hidden')) }
+        })();
+
+    </script>
+
+</body>
+
+</html>

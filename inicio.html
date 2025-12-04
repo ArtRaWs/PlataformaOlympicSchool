@@ -1,0 +1,1533 @@
+<!-- Inicio do site depois de entrar-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympic School 2025 - Preparação para Olimpíadas Científicas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+      <link rel="icon" href="logo.png" type="image/x-icon">
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+
+    <header class="site-header dashboard-header">
+        <div class="container header-bar">
+            <a href="#" class="flex items-center gap-3">
+                <img src="logo.png" alt="Olympic School" class="h-10 w-auto rounded-full bg-white p-0">
+
+            </a>
+
+            <div class="flex items-center gap-6">
+
+
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <p class="font-bold text-sm">Olá, <span id="user-name-inicio">Campeão</span>!</p>
+                    <p class="text-xs text-blue-200">Nível: Ouro</p>
+                </div>
+                <button id="user-avatar-inicio" class="w-10 h-10 rounded-full border-2 border-yellow-400 bg-white grid place-items-center text-blue-900" title="Perfil">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+                <button onclick="logout()" class="text-blue-200 hover:text-white" title="Sair">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="hidden md:flex space-x-1 md:space-x-8">
+                    <a href="#home"
+                        class="px-3 py-2 text-blue-600 font-medium border-b-2 border-blue-600 whitespace-nowrap">Início</a>
+                    <a href="word.html"
+                        class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium whitespace-nowrap">OlympicWord</a>
+                    <a href="#aulas"
+                        class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium whitespace-nowrap">Materiais</a>
+                    <a href="#simulados"
+                        class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium whitespace-nowrap">Simulados</a>
+                    <a href="#calendario"
+                        class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium whitespace-nowrap">Calendário</a>
+                    <a href="#ranking"
+                        class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium whitespace-nowrap">Ranking</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden py-4 border-t border-gray-200" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="px-3 py-2 text-blue-600 font-medium border-l-4 border-blue-600">Início</a>
+                    <a href="word.html" class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium">OlympicWord</a>
+                    <a href="#aulas" class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium">Materiais</a>
+                    <a href="#simulados" class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium">Simulados</a>
+                    <a href="#calendario" class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium">Calendário</a>
+                    <a href="#ranking" class="px-3 py-2 text-gray-600 hover:text-blue-600 font-medium">Ranking</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section id="home" class="mb-16">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                        <div class="mb-4">
+                        </div>
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-950 mb-6 leading-tight">
+                            Prepare-se para as <span class="text-yellow-600"> Olimpíadas 2025 </span></h2>
+                        <p class="text-gray-600 mb-6">A Olympic School oferece uma preparação direcionada para
+                            olimpíadas científicas, com materiais de apoio, simulados e um calendário unificado.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#editals"
+                                class="px-6 py-3 bg-yellow-600 text-white font-medium rounded-lg hover:bg-yellow-700 transition flex items-center">
+                                <i class="fas fa-file-alt mr-2"></i> Editais 2025
+                            </a>
+                            <a href="https://chatgpt.com/g/g-67fd21a275b881918a71f9a494c242e7-olympicschool-ai"
+                                class="px-6 py-3 border-2 border-yellow-600 text-yellow-600 font-medium rounded-lg hover:bg-yellow-50 transition flex items-center">
+                                <i class="fas fa-robot mr-2"></i> SophIa
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 relative">
+                        <img src="sophiva.png" alt="Plataforma de estudos" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Olympiads Cards -->
+        <section class="mb-16">
+            <!-- Carrossel de Olimpíadas (versão 3(: ) )) -->
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Principais Olimpíadas </h2>
+          
+            <div class="relative">
+                <div class="flex gap-6 overflow-x-auto pb-4 scroll-snap-x snap-mandatory">
+
+                    <!-- ONC -->
+                    <div class="min-w-[460px] snap-start bg-white rounded-xl shadow-lg p-6 flex flex-col relative">
+
+                        <div class="flex items-center mb-4">
+                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_m8ekAPIfdq8urEAaLeC4u-XmztHfIiIhXqS5phEdYReb8=s900-c-k-c0x00ffffff-no-rj"
+                                class="w-14 h-14 mr-4 rounded-md object-cover" alt="Logo ONC">
+                            <h3 class="text-lg font-semibold text-gray-800">Olimpíada Nacional de Ciências</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2"><strong>Área:</strong> Ciências da Natureza</p>
+                        <p class="text-sm text-gray-600 mb-4"><strong>Inscrição:</strong> 01/05 – 12/08</p>
+                       <a href="onc.html"     class="olimp-btn" class="">Ver mais</a>
+                    </div>
+
+                    <!-- OBA -->
+                    <div class="min-w-[460px] snap-start bg-white rounded-xl shadow-lg p-6 flex flex-col relative">
+
+                        <div class="flex items-center mb-4">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEx_2weOMGTAg-1JX9Ymx-e6lpJ2N0oV5eqA&s"
+                                class="w-14 h-14 mr-4 rounded-md object-cover" alt="Logo OBA">
+                            <h3 class="text-lg font-semibold text-gray-800">OBA – Olimpíada Brasileira de Astronomia
+                            </h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2"><strong>Prova:</strong> 19/05/2025</p>
+                        <p class="text-sm text-gray-600 mb-4">Astronomia, astronáutica e exploração espacial.</p>
+                        <a  href="oba.html"  class="olimp-btn" >Ver mais</a>
+                        
+                    </div>
+
+                    <!-- OBFEP -->
+                    <div class="min-w-[460px] snap-start bg-white rounded-xl shadow-lg p-6 flex flex-col relative">
+
+                        <div class="flex items-center mb-4">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/6/65/OBFEP_-_Logo_Oficial.jpg"
+                                class="w-14 h-14 mr-4 rounded-md object-cover" alt="Logo OBFEP">
+                            <h3 class="text-lg font-semibold text-gray-800">OBFEP – Olimpíada Brasileira de Física</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2"><strong>1ª Fase:</strong> 22/08/2025</p>
+                        <p class="text-sm text-gray-600 mb-4">Física quântica e sustentabilidade energética.</p>
+                         <a href="obfep.html"     class="olimp-btn" class="">Ver mais</a>
+                    </div>
+
+                    <!-- OBMEP -->
+                    <div class="min-w-[460px] snap-start bg-white rounded-xl shadow-lg p-6 flex flex-col relative">
+
+                        <div class="flex items-center mb-4">
+                            <img src="https://www.sbv.ifsp.edu.br/images/2024/dezembro/23/obmep_vencedores/20353_d715b192-bd57-4a71-b8ec-49ce53f2cac9.jpg"
+                                class="w-14 h-14 mr-4 rounded-md object-cover" alt="Logo OBMEP">
+                            <h3 class="text-lg font-semibold text-gray-800">OBMEP – Olimpíada Brasileira de Matemática
+                            </h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2"><strong>1ª Fase:</strong> 04/06/2025</p>
+                        <p class="text-sm text-gray-600 mb-4">Competição de matemática com alto nível.</p>
+                         <a href="obmep.html"     class="olimp-btn" class="">Ver mais</a>
+                    </div>
+
+                    <!-- OBF -->
+                    <div class="min-w-[460px] snap-start bg-white rounded-xl shadow-lg p-6 flex flex-col relative">
+
+                        <div class="flex items-center mb-4">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/1/1c/OBF_Logo_Oficial.jpg"
+                                class="w-14 h-14 mr-4 rounded-md object-cover" alt="Logo OBF">
+                            <h3 class="text-lg font-semibold text-gray-800">OBF – Olimpíada Brasileira de Física</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2"><strong>Inscrições:</strong> 11/03 – 10/06</p>
+                        <p class="text-sm text-gray-600 mb-4">Questões sobre genética, ecologia e citologia.</p>
+                         <a href="obf.html"     class="olimp-btn" class="">Ver mais</a>
+                    </div>
+
+                    <!-- OBQ (exemplo) -->
+                    <div class="min-w-[460px] snap-start bg-white rounded-xl shadow-lg p-6 flex flex-col relative">
+
+                        <div class="flex items-center mb-4">
+                            <img src="https://i0.wp.com/noic.com.br/wp-content/uploads/2013/06/OBM_Quimica.jpg"
+                                class="w-14 h-14 mr-4 rounded-md object-cover" alt="Logo OBQ">
+                            <h3 class="text-lg font-semibold text-gray-800">OBQ – Olimpíada de Química</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2"><strong>Prova:</strong> TBA</p>
+                        <p class="text-sm text-gray-600 mb-4">Química orgânica, reações e estequiometria.</p>
+                      <a href="obq.html"     class="olimp-btn" class="">Ver mais</a>
+                    </div>
+                        <div class="min-w-[460px] snap-start bg-white rounded-xl shadow-lg p-6 flex flex-col relative">
+
+                        <div class="flex items-center mb-4">
+                            <img src="https://www.olimpiadadehistoria.com.br/img/webclip.png"
+                                class="w-14 h-14 mr-4 rounded-md object-cover" alt="Logo ONHB">
+                            <h3 class="text-lg font-semibold text-gray-800">ONHB – Olimpíada de História do Brasil</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2"><strong>Prova:</strong> TBA</p>
+                        <p class="text-sm text-gray-600 mb-4">História do Brasil.</p>
+                      <a href="onhb.html"     class="olimp-btn" class="">Ver mais</a>
+                    </div>
+                        <div class="min-w-[460px] snap-start bg-white rounded-xl shadow-lg p-6 flex flex-col relative">
+
+                        <div class="flex items-center mb-4">
+                            <img src="data:image/png;base64,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"
+                                class="w-14 h-14 mr-4 rounded-md object-cover" alt="Logo OBG">
+                            <h3 class="text-lg font-semibold text-gray-800">OBG – Olimpíada Brasileira de Geografia</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2"><strong>Prova:</strong> Em breve</p>
+                        <p class="text-sm text-gray-600 mb-4">Geografia agrária.</p>
+                      <a href="obg.html"     class="olimp-btn" class="">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        </section>
+
+        <!-- Editais Section -->
+        <section id="editals" class="mb-16">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Editais 2025</h2>
+                        <p class="text-gray-600">Documentos oficiais das principais olimpíadas científicas</p>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-bell text-yellow-500 mr-2"></i>
+                        <span class="text-sm font-medium">Atualizado em: 18/08/2025</span>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="border-b border-gray-200">
+                    <div class="flex overflow-x-auto">
+                        <button onclick="openTab(event, 'oba-edital')"
+                            class="tab-button px-6 py-3 font-medium text-blue-600 border-b-2 border-blue-600 whitespace-nowrap">OBA</button>
+                        <button onclick="openTab(event, 'obfep-edital')"
+                            class="tab-button px-6 py-3 font-medium text-gray-600 hover:text-blue-600 whitespace-nowrap">OBFEP</button>
+                        <button onclick="openTab(event, 'obmep-edital')"
+                            class="tab-button px-6 py-3 font-medium text-gray-600 hover:text-blue-600 whitespace-nowrap">OBMEP</button>
+                        <button onclick="openTab(event, 'outras-edital')"
+                            class="tab-button px-6 py-3 font-medium text-gray-600 hover:text-blue-600 whitespace-nowrap">Outras</button>
+                    </div>
+                </div>
+
+                <!-- Tab Contents -->
+                <div id="oba-edital" class="tab-content active p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Edital OBA 2025</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Edital Completo OBA 2025</h4>
+                                    <p class="text-sm text-gray-500">Versão 2.1 - Publicado em 10/01/2025</p>
+                                    <p class="text-sm text-green-600 mt-1"><i class="fas fa-check-circle mr-1"></i>
+                                        Atualizado com novas regras</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <a href="#"
+                                        class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                        <i class="fas fa-download mr-2"></i> PDF
+                                    </a>
+                                    <a href="#"
+                                        class="px-4 py-2 bg-gray-100 text-gray-800 text-sm font-medium rounded hover:bg-gray-200 transition flex items-center">
+                                        <i class="fas fa-book-open mr-2"></i> Ler Online
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Mudanças para 2025</h4>
+                                    <p class="text-sm text-gray-500">Resumo das principais alterações no regulamento</p>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-file-alt mr-2"></i> Ver Resumo
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 bg-blue-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Guia de Preparação Olympic School</h4>
+                                    <p class="text-sm text-gray-500">Material exclusivo com cronograma de estudos</p>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-star mr-2"></i> Acessar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="obfep-edital" class="tab-content p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Edital OBFEP 2025</h3>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-info-circle text-yellow-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-yellow-700">
+                                    O edital oficial da OBFEP 2025 será publicado em março. Enquanto isso, você pode se
+                                    preparar com o material do ano anterior e nossas previsões para 2025.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Edital OBFEP 2024 (Referência)</h4>
+                                    <p class="text-sm text-gray-500">Para estudo preliminar</p>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-download mr-2"></i> PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Previsões para OBFEP 2025</h4>
+                                    <p class="text-sm text-gray-500">Análise dos especialistas Olympic School</p>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-chart-line mr-2"></i> Ver Análise
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="obmep-edital" class="tab-content p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Edital OBMEP 2025</h3>
+                    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-info-circle text-blue-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-blue-700">
+                                    OBMEP 2025 terá edição especial de 20 anos com novidades. Edital completo será
+                                    publicado em fevereiro.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Comunicado Preliminar OBMEP 2025</h4>
+                                    <p class="text-sm text-gray-500">Informações iniciais sobre a competição</p>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-download mr-2"></i> PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 bg-blue-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Banco de Questões OBMEP</h4>
+                                    <p class="text-sm text-gray-500">Todas as provas de 2005 a 2024 com gabaritos</p>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-database mr-2"></i> Acessar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outras-edital" class="tab-content p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Outras Olimpíadas 2025</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">ONC - Olimpíada Nacional de Ciências</h4>
+                                    <p class="text-sm text-gray-500">Previsão de publicação: abril/2025</p>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-flask mr-2"></i> Detalhes
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">OQSP - Olimpíada de Química de São Paulo</h4>
+                                    <p class="text-sm text-gray-500">Edital publicado em 05/01/2025</p>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-download mr-2"></i> PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Materials Section -->
+        <section id="aulas" class="mb-16">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Materiais Gratuitos</h2>
+                        <p class="text-gray-600 mt-2">Editais, videoaulas e exercícios para todas as olimpíadas</p>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-book-open text-blue-500 mr-2"></i>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+                    <!-- Material 1 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80"
+                                alt="Astronomia" class="w-full h-48 object-cover">
+                            <div
+                                class="absolute top-2 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                NOVO</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-gray-800">Astronomia Básica - OBA Nível 4</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Material introdutório com conceitos fundamentais de
+                                astronomia para iniciantes.</p>
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <i class="fas fa-user-graduate mr-2"></i>
+                                <span>Nível: Médio</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-file-pdf text-red-600 mr-1"></i>
+                                    <span class="text-sm">10 páginas</span>
+                                </div>
+                                <a href="#" class="text-blue-600 text-sm font-medium hover:underline">Baixar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Material 2 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                alt="Física" class="w-full h-48 object-cover">
+                            <div
+                                class="absolute top-2 right-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                POPULAR</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-gray-800">Física para OBFEP</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Coleção de exercícios resolvidos da OBFEP dos últimos
+                                5 anos.</p>
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <i class="fas fa-user-graduate mr-2"></i>
+                                <span>Nível: Médio</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-file-pdf text-red-600 mr-1"></i>
+                                    <span class="text-sm">10 páginas</span>
+                                </div>
+                                <a href="#" class="text-blue-600 text-sm font-medium hover:underline">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Material 3 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                alt="Matemática" class="w-full h-48 object-cover">
+                            <div
+                                class="absolute top-2 right-2 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                COMPLETO</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-gray-800">Geometria para OBMEP</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Material completo com teoria e exercícios de geometria
+                                para a OBMEP.</p>
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <i class="fas fa-user-graduate mr-2"></i>
+                                <span>Nível: Médio</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-file-pdf text-red-600 mr-1"></i>
+                                    <span class="text-sm">85 páginas</span>
+                                </div>
+                                <a href="#" class="text-blue-600 text-sm font-medium hover:underline">Baixar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 border-t border-gray-200 text-center">
+                    <a href="#"
+                        class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition inline-flex items-center">
+                        <i class="fas fa-book mr-2"></i> Ver Todos os Materiais
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção dos testes(simulados) -->
+        <section id="simulados" class="mb-16">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-800">Simulados Gratuitos</h2>
+                            <p class="text-gray-600 mt-2">Provas no formato das olimpíadas com correção automática</p>
+                        </div>
+                        <div class="hidden md:block bg-blue-100 px-4 py-2 rounded-full">
+                            <span class="text-blue-800 font-medium">100% gratuitos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Teste 1 -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
+                            <div class="flex items-start mb-4">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-star text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Simulado OBA - Nível 4</h3>
+                                    <p class="text-gray-600 text-sm">Ensino Médio</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Prova com 10 questões no formato da OBA para estudantes do
+                                ensino fundamental.</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-clock text-blue-600 mr-1"></i>
+                                    <span>60 minutos</span>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-play mr-2"></i> Iniciar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Teste 2 -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
+                            <div class="flex items-start mb-4">
+                                <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-atom text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Simulado OBFEP - Fase 1</h3>
+                                    <p class="text-gray-600 text-sm">Ensino Médio</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Prova com 15 questões de múltipla escolha no formato da
+                                primeira fase.</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-clock text-green-600 mr-1"></i>
+                                    <span>90 minutos</span>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-play mr-2"></i> Iniciar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Teste 3 -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
+                            <div class="flex items-start mb-4">
+                                <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-square-root-alt text-purple-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Simulado OBMEP - Nível 2</h3>
+                                    <p class="text-gray-600 text-sm">Ensino Fundamental</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Prova com 20 questões desafiadoras no formato da OBMEP para o
+                                nível 2.</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-clock text-purple-600 mr-1"></i>
+                                    <span>120 minutos</span>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-play mr-2"></i> Iniciar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Teste 4 -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition bg-blue-50">
+                            <div class="flex items-start mb-4">
+                                <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-flask text-yellow-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Pacote Completo de Simulados</h3>
+                                    <p class="text-gray-600 text-sm">Todas as Olimpíadas</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Acesso a todos os simulados da plataforma de forma gratuita.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-sm text-blue-600 font-medium">
+                                    <i class="fas fa-infinity mr-1"></i>
+                                    <span>Ilimitado</span>
+                                </div>
+                                <a href="#"
+                                    class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition flex items-center">
+                                    <i class="fas fa-play mr-2"></i> Acessar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 border-t border-gray-200 text-center">
+                    <a href="#"
+                        class="px-6 py-3 bg-white border-2 border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition inline-flex items-center">
+                        <i class="fas fa-list-ol mr-2"></i> Ver Todos os Simulados
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <script src="script.js"></script>
+        <script>
+          (function(){
+            const nameEl = document.getElementById('user-name-inicio');
+            const avatarEl = document.getElementById('user-avatar-inicio');
+            const fullName = localStorage.getItem('userName') || 'Aluno';
+            const firstName = fullName.split(' ')[0];
+            if(nameEl) nameEl.textContent = firstName;
+            if(avatarEl){
+              avatarEl.style.cursor='pointer';
+              avatarEl.addEventListener('click',()=>{
+                const role = localStorage.getItem('userRole')||'aluno';
+                window.location.href = role==='professor' ? 'professor.html' : 'perfil.html';
+              });
+            }
+          })();
+        </script>
+        <style>
+            /* 
+   Calendário css
+   */
+
+            .calendar-day {
+                transition: all 0.2s ease;
+                height: 80px;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .calendar-day:hover {
+                transform: scale(1.02);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .event-pill {
+                font-size: 0.7rem;
+                padding: 2px 6px;
+                border-radius: 4px;
+                margin-top: 2px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .navigation-btn {
+                transition: all 0.3s ease;
+            }
+
+            .navigation-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            .date-tooltip {
+                /* responsavel pela estilização do conteudo do calendário*/
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #1F2937;
+                color: white;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+                z-index: 100;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.3s;
+                margin-bottom: 5px;
+            }
+
+            .date-tooltip::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border-width: 5px;
+                border-style: solid;
+                border-color: #1F2937 transparent transparent transparent;
+            }
+
+            .calendar-day:hover .date-tooltip {
+                opacity: 1;
+            }
+
+            .calendar-container {
+                display: none;
+            }
+
+            .calendar-container.active {
+                display: block;
+            }
+
+            .active-date {
+                /* aquela cor em volta do dia marcado*/
+                background-color: #EFF6FF;
+                border: 2px solid #3B82F6;
+            }
+
+            /* 
+   CORES DAS OLIMPÍADAS (CALENDÁRIO)
+   */
+
+            .event-tag {
+                display: block;
+                margin-top: 6px;
+                padding: 4px 0;
+                border-radius: 8px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-align: center;
+                color: #ffffff;
+            }
+
+            /* ---------- Cores das Olimpíadas (a da legenda e do calendario) ---------- */
+
+            .event-oba,
+            /* event é para a cor dentro do calendario, e bg para a cor da legenda. */
+            .bg-oba {
+                background: #3D7BFD !important;
+                color: #fff !important;
+            }
+
+            .event-onhb,
+            .bg-onhb {
+                background: #B067FF !important;
+                color: #fff !important;
+            }
+
+            .event-onc,
+            .bg-onc {
+                background: #FF5E5E !important;
+                color: #fff !important;
+            }
+
+            .event-obfep,
+            .bg-obfep {
+                background: #00A86B !important;
+                color: #fff !important;
+            }
+
+            .event-opeq,
+            .bg-opeq {
+                background: #F5A623 !important;
+                color: #fff !important;
+            }
+
+            .event-obmep,
+            .bg-obmep {
+                background: #9B51E0 !important;
+                color: #fff !important;
+            }
+
+            .event-obg,
+            .bg-obg {
+                background: #1ABC9C !important;
+                color: #fff !important;
+            }
+
+            .event-bbb,
+            .bg-bbb {
+                background: #000000 !important;
+                color: #fff !important;
+            }
+
+            .event-obf,
+            .bg-obf {
+                background: #1ABC9C !important;
+                color: #fff !important;
+            }
+        </style>
+        <!-- Calendário agora -->
+
+        <body class="bg-gray-50 min-h-screen">
+            <!-- parte de cima do calendário -->
+            <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg">
+                <div class="container mx-auto px-4 py-8">
+                    <h1 class="text-4xl font-bold text-center mb-2">Calendário de Olimpíadas Científicas 2025</h1>
+                    <p class="text-center text-blue-100 max-w-3xl mx-auto">Acompanhe todas as datas importantes das
+                        principais olimpíadas científicas do Brasil em um único lugar</p>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main id="calendario" class="container mx-auto px-4 py-8 max-w-6xl">
+                <!-- Navegação de mês -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-4 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <button id="prev-year"
+                            class="navigation-btn p-2 rounded-full bg-gray-100 hover:bg-gray-200 mr-2">
+                            <i class="fas fa-chevron-left text-gray-600"></i>
+                        </button>
+                        <h2 id="current-year" class="text-2xl font-bold text-gray-800 mx-2">2025</h2>
+                        <button id="next-year"
+                            class="navigation-btn p-2 rounded-full bg-gray-100 hover:bg-gray-200 ml-2">
+                            <i class="fas fa-chevron-right text-gray-600"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button data-month="0"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Jan</button>
+                        <button data-month="1"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Fev</button>
+                        <button data-month="2"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Mar</button>
+                        <button data-month="3"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Abr</button>
+                        <button data-month="4"
+                            class="month-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-medium">Mai</button>
+                        <button data-month="5"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Jun</button>
+                        <button data-month="6"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Jul</button>
+                        <button data-month="7"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Ago</button>
+                        <button data-month="8"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Set</button>
+                        <button data-month="9"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Out</button>
+                        <button data-month="10"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Nov</button>
+                        <button data-month="11"
+                            class="month-btn px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium">Dez</button>
+                    </div>
+                </div>
+
+                <!-- Calendario Container kk -->
+                <div id="calendar-container" class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- A dinâmica do calendário(conteúdo) está aqui -->
+                </div>
+
+                <!-- Legenda do calendário -->
+
+                <div class="mt-8 bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Legenda das Olimpíadas</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-oba rounded-full mr-2"></div>
+                            <span class="text-sm">OBA - Astronomia</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-obfep rounded-full mr-2"></div>
+                            <span class="text-sm">OBFEP - Física</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-obmep rounded-full mr-2"></div>
+                            <span class="text-sm">OBMEP - Matemática</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-opeq rounded-full mr-2"></div>
+                            <span class="text-sm">OPEQ - Química</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-onc rounded-full mr-2"></div>
+                            <span class="text-sm">ONC - Ciências</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-obf rounded-full mr-2"></div>
+                            <span class="text-sm">OBF - Física</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-onhb rounded-full mr-2"></div>
+                            <span class="text-sm">ONHB - História</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-obg rounded-full mr-2"></div>
+                            <span class="text-sm">OBG - Geografia</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-bbb rounded-full mr-2"></div>
+                            <span class="text-sm">OBB - Biologia</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <script>
+                // Dados das olimpíadas (datas e eventos) baseados na tabela fornecida
+                const olimpiadasData = {
+                    2025: {
+                        0: { // Janeiro
+                            27: [{ name: 'OBB', type: 'Inscrições início', color: 'bg-bbb', tooltip: 'OBB - Inscrições abertas' }],
+                            31: [{ name: 'OBB', type: 'Inscrições fim', color: 'bg-bbb', tooltip: 'OBB - Encerramento das inscrições' }]
+                        },
+                        1: { // Fevereiro
+                            5: [{ name: 'OBMEP', type: 'Inscrições início', color: 'bg-obmep', tooltip: 'OBMEP - Inscrições abertas' }],
+                            17: [{ name: 'OBMEP', type: 'Inscrições fim', color: 'bg-obmep', tooltip: 'OBMEP - Encerramento das inscrições' }],
+                            27: [{ name: 'OBB', type: 'Inscrições fim', color: 'bg-bbb', tooltip: 'OBB - Último dia para inscrições' }]
+                        },
+                        2: { // Março
+                            1: [{ name: 'OBFEP', type: 'Inscrições início', color: 'bg-obfep', tooltip: 'OBFEP - Inscrições abertas' }],
+                            14: [{ name: 'OBB', type: '1ª Fase', color: 'bg-bbb', tooltip: 'OBB - Primeira fase' }],
+                            18: [{ name: 'ONHB', type: 'Inscrições início', color: 'bg-onhb', tooltip: 'ONHB - Inscrições abertas' }],
+                            25: [{ name: 'ONHB', type: 'Inscrições fim', color: 'bg-onhb', tooltip: 'ONHB - Encerramento das inscrições' }],
+                            31: [{ name: 'OBFEP', type: 'Inscrições fim', color: 'bg-obfep', tooltip: 'OBFEP - Último dia para inscrições' }]
+                        },
+                        3: { // Abril
+                            1: [{ name: 'ONC', type: 'Inscrições início', color: 'bg-onc', tooltip: 'ONC - Inscrições abertas' }],
+                            11: [{ name: 'OBB', type: '2ª Fase', color: 'bg-bbb', tooltip: 'OBB - Segunda fase' }],
+                            25: [{ name: 'ONHB', type: 'Inscrições fim', color: 'bg-onhb', tooltip: 'ONHB - Último dia para inscrições' }]
+                        },
+                        4: { // Maio
+                            1: [{ name: 'ONC', type: 'Inscrições abertas', color: 'bg-onc', tooltip: 'ONC - Inscrições em andamento' }],
+                            1: [{ name: 'OBA', type: 'Inscrições fim', color: 'bg-oba', tooltip: 'OBA - Último dia para inscrições' }],
+                            5: [{ name: 'OBB', type: '3ª Fase', color: 'bg-bbb', tooltip: 'OBB - Terceira fase' }],
+                            5: [{ name: 'ONHB', type: 'Fase 1 início', color: 'bg-onhb', tooltip: 'ONHB - Primeira fase (5-10 mai)' }],
+                            10: [{ name: 'ONHB', type: 'Fase 1 fim', color: 'bg-onhb', tooltip: 'ONHB - Término da primeira fase' }],
+                            12: [{ name: 'ONHB', type: 'Fase 2 início', color: 'bg-onhb', tooltip: 'ONHB - Segunda fase (12-17 mai)' }],
+                            12: [{ name: 'OBG', type: 'Inscrições início', color: 'bg-obg', tooltip: 'OBG - Inscrições abertas' }],
+                            16: [{ name: 'OBA', type: 'Prova', color: 'bg-oba', tooltip: 'OBA - Prova única' }],
+                            17: [{ name: 'ONHB', type: 'Fase 2 fim', color: 'bg-onhb', tooltip: 'ONHB - Término da segunda fase' }],
+                            19: [{ name: 'ONHB', type: 'Fase 3 início', color: 'bg-onhb', tooltip: 'ONHB - Terceira fase (19-24 mai)' }],
+                            24: [{ name: 'ONHB', type: 'Fase 3 fim', color: 'bg-onhb', tooltip: 'ONHB - Término da terceira fase' }],
+                            26: [{ name: 'ONHB', type: 'Fase 4 início', color: 'bg-onhb', tooltip: 'ONHB - Quarta fase (26-31 mai)' }],
+                            31: [{ name: 'ONHB', type: 'Fase 4 fim', color: 'bg-onhb', tooltip: 'ONHB - Término da quarta fase' }]
+                        },
+                        5: { // Junho
+                            2: [{ name: 'ONHB', type: 'Fase 5 início', color: 'bg-onhb', tooltip: 'ONHB - Quinta fase (2-7 jun)' }],
+                            3: [{ name: 'OBMEP', type: '1ª Fase', color: 'bg-obmep', tooltip: 'OBMEP - Primeira fase' }],
+                            7: [{ name: 'ONHB', type: 'Fase 5 fim', color: 'bg-onhb', tooltip: 'ONHB - Término da quinta fase' }],
+                            9: [{ name: 'ONHB', type: 'Fase 6 início', color: 'bg-onhb', tooltip: 'ONHB - Sexta fase (9-14 jun)' }],
+                            11: [{ name: 'OBG', type: 'Inscrições fim', color: 'bg-obg', tooltip: 'OBG - Encerramento das inscrições' }],
+                            14: [{ name: 'ONHB', type: 'Fase 6 fim', color: 'bg-onhb', tooltip: 'ONHB - Término da sexta fase' }],
+                            14: [{ name: 'OBB', type: 'Resultados', color: 'bg-bbb', tooltip: 'OBB - Resultados finais' }]
+                        },
+                        6: { // Julho
+                            11: [{ name: 'OBG', type: 'Inscrições fim', color: 'bg-obg', tooltip: 'OBG - Último dia para inscrições' }],
+                            31: [{ name: 'OBFEP', type: 'Inscrições fim', color: 'bg-obfep', tooltip: 'OBFEP - Encerramento das inscrições' }]
+                        },
+                        7: { // Agosto
+                            1: [{ name: 'ONC', type: 'Inscrições fim', color: 'bg-onc', tooltip: 'ONC - Último dia para inscrições' }],
+                            5: [{ name: 'OBG', type: '1ª Fase início', color: 'bg-obg', tooltip: 'OBG - Primeira fase online (5-8 ago)' }],
+                            8: [{ name: 'OBG', type: '1ª Fase fim', color: 'bg-obg', tooltip: 'OBG - Término da primeira fase' }],
+                            12: [{ name: 'OBFEP', type: '1ª Fase', color: 'bg-obfep', tooltip: 'OBFEP - Prova objetiva' }],
+                            12: [{ name: 'OBG', type: '2ª Fase início', color: 'bg-obg', tooltip: 'OBG - Segunda fase online (12-15 ago)' }],
+                            14: [{ name: 'ONC', type: '1ª Fase início', color: 'bg-onc', tooltip: 'ONC - Primeira fase online (14-16 ago)' }],
+                            15: [{ name: 'OBG', type: '2ª Fase fim', color: 'bg-obg', tooltip: 'OBG - Término da segunda fase' }],
+                            16: [{ name: 'ONC', type: '1ª Fase fim', color: 'bg-onc', tooltip: 'ONC - Término da primeira fase' }],
+                            19: [{ name: 'OBG', type: '3ª Fase início', color: 'bg-obg', tooltip: 'OBG - Terceira fase online (19-21 ago)' }],
+                            21: [{ name: 'OBG', type: '3ª Fase fim', color: 'bg-obg', tooltip: 'OBG - Término da terceira fase' }],
+                            28: [{ name: 'OPEQ', type: 'Inscrições fim', color: 'bg-opeq', tooltip: 'OPEQ - Último dia para inscrições' }],
+                            29: [{ name: 'OPEQ', type: 'Prova', color: 'bg-opeq', tooltip: 'OPEQ - Prova única presencial' }],
+                            31: [{ name: 'OBF', type: 'Inscrições fim', color: 'bg-obf', tooltip: 'OBF - Encerramento das inscrições' }],
+                            31: [{ name: 'ONHB', type: 'Final', color: 'bg-onhb', tooltip: 'ONHB - Final presencial na Unicamp' }]
+                        },
+                        8: { // Setembro
+                            1: [{ name: 'OBF', type: 'Prova início', color: 'bg-obf', tooltip: 'OBF - Prova online (1-8 set)' }],
+                            1: [{ name: 'OBG', type: 'Resultados', color: 'bg-obg', tooltip: 'OBG - Resultados estaduais' }],
+                            8: [{ name: 'OBF', type: 'Prova fim', color: 'bg-obf', tooltip: 'obf - Término da prova online' }],
+                            11: [{ name: 'ONC', type: '2ª Fase início', color: 'bg-onc', tooltip: 'ONC - Segunda fase online (11-12 set)' }],
+                            12: [{ name: 'ONC', type: '2ª Fase fim', color: 'bg-onc', tooltip: 'ONC - Término da segunda fase' }],
+                            30: [{ name: 'OPEQ', type: 'Resultados', color: 'bg-opeq', tooltip: 'OPEQ - Divulgação de resultados' }]
+                        },
+                        9: { // Outubro
+                            1: [{ name: 'ONC', type: 'Resultados', color: 'bg-onc', tooltip: 'ONC - Divulgação de resultados' }],
+                            1: [{ name: 'OBF', type: 'Resultados', color: 'bg-obf', tooltip: 'OBF - Divulgação de resultados' }],
+                            25: [{ name: 'OBMEP', type: '2ª Fase', color: 'bg-obmep', tooltip: 'OBMEP - Segunda fase' }]
+                        },
+                        10: { // Novembro
+                            22: [{ name: 'OBFEP', type: '2ª Fase', color: 'bg-obfep', tooltip: 'OBFEP - Prova discursiva' }],
+                            25: [{ name: 'OBG', type: 'Final início', color: 'bg-obg', tooltip: 'OBG - Final nacional presencial (25-28 nov)' }],
+                            28: [{ name: 'OBG', type: 'Final fim', color: 'bg-obg', tooltip: 'OBG - Término da final nacional' }]
+                        },
+                        11: { // Dezembro
+                            22: [{ name: 'OBMEP', type: 'Resultados', color: 'bg-obmep', tooltip: 'OBMEP - Divulgação de resultados' }],
+                            31: [{ name: 'OBFEP', type: 'Resultados', color: 'bg-obfep', tooltip: 'OBFEP - Divulgação de resultados' }]
+                        }
+                    }
+                };
+
+                // Variáveis globais
+                let currentYear = 2025;
+                let currentMonth = 4; // Maio
+
+                // Inicialização
+                document.addEventListener('DOMContentLoaded', function () {
+                    renderCalendar(currentYear, currentMonth);
+                    setupEventListeners();
+                });
+
+                // Configurar event listeners
+                function setupEventListeners() {
+                    // Navegação por ano
+                    document.getElementById('prev-year').addEventListener('click', () => {
+                        currentYear--;
+                        updateYearDisplay();
+                        renderCalendar(currentYear, currentMonth);
+                    });
+
+                    document.getElementById('next-year').addEventListener('click', () => {
+                        currentYear++;
+                        updateYearDisplay();
+                        renderCalendar(currentYear, currentMonth);
+                    });
+
+                    // Botões de mês
+                    document.querySelectorAll('.month-btn').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            currentMonth = parseInt(btn.getAttribute('data-month'));
+                            renderCalendar(currentYear, currentMonth);
+                            updateActiveMonthButton();
+                        });
+                    });
+                }
+
+                // Atualizar o display do ano
+                function updateYearDisplay() {
+                    document.getElementById('current-year').textContent = currentYear;
+                }
+
+                // Atualizar o botão do mês ativo
+                function updateActiveMonthButton() {
+                    document.querySelectorAll('.month-btn').forEach(btn => {
+                        const month = parseInt(btn.getAttribute('data-month'));
+                        if (month === currentMonth) {
+                            btn.classList.remove('bg-gray-100', 'text-gray-800');
+                            btn.classList.add('bg-blue-500', 'text-white');
+                        } else {
+                            btn.classList.remove('bg-blue-500', 'text-white');
+                            btn.classList.add('bg-gray-100', 'text-gray-800');
+                        }
+                    });
+                }
+
+                // Renderizar o calendário
+                function renderCalendar(year, month) {
+                    const calendarContainer = document.getElementById('calendar-container');
+                    const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+                    // Encontrar o primeiro dia do mês e quantos dias tem o mês
+                    const firstDay = new Date(year, month, 1).getDay();
+                    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                    // Gerar o HTML do calendário
+                    let calendarHTML = `
+                <div class="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+                    <h2 class="text-2xl font-bold text-gray-800">${monthNames[month]} ${year}</h2>
+                    <p class="text-gray-600 mt-2">Passe o mouse sobre as datas para ver os detalhes</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-7 gap-2 mb-2">
+                        <div class="text-center font-medium text-gray-500 py-2 text-sm">Dom</div>
+                        <div class="text-center font-medium text-gray-500 py-2 text-sm">Seg</div>
+                        <div class="text-center font-medium text-gray-500 py-2 text-sm">Ter</div>
+                        <div class="text-center font-medium text-gray-500 py-2 text-sm">Qua</div>
+                        <div class="text-center font-medium text-gray-500 py-2 text-sm">Qui</div>
+                        <div class="text-center font-medium text-gray-500 py-2 text-sm">Sex</div>
+                        <div class="text-center font-medium text-gray-500 py-2 text-sm">Sáb</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-7 gap-2">
+            `;
+
+                    // Preencher dias vazios no início do mês
+                    for (let i = 0; i < firstDay; i++) {
+                        calendarHTML += `<div class="calendar-day text-center p-2 rounded-lg bg-gray-100 text-gray-400"></div>`;
+                    }
+
+                    // Preencher os dias do mês
+                    for (let day = 1; day <= daysInMonth; day++) {
+                        const dateKey = `${year}-${month}-${day}`;
+                        const hasEvent = olimpiadasData[year] && olimpiadasData[year][month] && olimpiadasData[year][month][day];
+
+                        // Criar tooltip text se houver eventos
+                        let tooltipText = `${day} de ${monthNames[month]}`;
+                        if (hasEvent) {
+                            tooltipText += " - " + olimpiadasData[year][month][day].map(event =>
+                                `${event.name}: ${event.type}`
+                            ).join(", ");
+                        } else {
+                            tooltipText += " - Nenhum evento";
+                        }
+
+                        calendarHTML += `
+                    <div class="calendar-day text-center p-2 rounded-lg border border-gray-200 ${hasEvent ? 'active-date' : ''}">
+                        <span class="date-tooltip">${tooltipText}</span>
+                        <div class="font-bold">${day}</div>
+                        <div class="flex flex-col mt-1">
+                `;
+
+                        // Adicionar eventos para este dia, se houver
+                        if (hasEvent) {
+                            olimpiadasData[year][month][day].forEach(event => {
+                                calendarHTML += `
+                            <div class="${event.color} text-white text-xs event-pill">
+                                ${event.name}
+                            </div>
+                        `;
+                            });
+                        }
+
+                        calendarHTML += `</div></div>`;
+
+                        // Quebra de linha no final de cada semana
+                        if ((firstDay + day) % 7 === 0 && day !== daysInMonth) {
+                            calendarHTML += `</div><div class="grid grid-cols-7 gap-2">`;
+                        }
+                    }
+
+                    // Preencher dias vazios no final do mês
+                    const lastDay = new Date(year, month, daysInMonth).getDay();
+                    for (let i = lastDay + 1; i < 7; i++) {
+                        calendarHTML += `<div class="calendar-day text-center p-2 rounded-lg bg-gray-100 text-gray-400"></div>`;
+                    }
+
+                    calendarHTML += `
+                    </div>
+                </div>
+            `;
+
+                    calendarContainer.innerHTML = calendarHTML;
+                    updateActiveMonthButton();
+                }
+
+                // modal de boas vindas
+
+                document.addEventListener("DOMContentLoaded", () => {
+
+                    // Exibe o modal somente quando marcado pelo login
+                    setTimeout(() => {
+                        const showModal = localStorage.getItem("showWelcomeModal");
+
+                        if (showModal === "true") {
+                            document.getElementById("welcome-modal").classList.add("open");
+                            localStorage.removeItem("showWelcomeModal"); // evita aparecer de novo
+                        }
+                    }, 500);
+
+
+
+                    // Botão Começar fecha
+                    document.querySelector(".welcome-start-btn").addEventListener("click", () => {
+                        document.getElementById("welcome-modal").classList.remove("open");
+                    });
+                });
+
+                // Logout fake
+                function logout() {
+                    localStorage.removeItem("userLoggedIn");
+                    window.location.href = "index.html";
+                }
+            </script>
+            <!-- =============================== -->
+            <!-- MODAL DE BOAS-VINDAS  -->
+            <!-- =============================== -->
+
+            <div id="welcome-modal" class="welcome-overlay">
+                <div class="welcome-box">
+
+                    <img class="welcome-owl" src="sophiva.png" alt="SophIA" />
+
+
+
+                    <div class="welcome-content">
+                        <img class="welcome-logo"
+                            src="logo.png"
+                            alt="Olympic School" />
+
+                        <h2 class="welcome-title">Bem-vindo(a) ao Olympic School!</h2>
+
+                        <p>É uma alegria ter você conosco nessa jornada rumo à excelência acadêmica.</p>
+                        <p>Agora você faz parte de uma comunidade que valoriza o esforço, o conhecimento e o espírito
+                            olímpico.</p>
+                        <p>Explore a plataforma, acompanhe os resultados e conte conosco em cada etapa do caminho. 🚀
+                        </p>
+
+                        <p class="welcome-highlight">
+                            Vamos juntos transformar desafios em conquistas.
+                        </p>
+
+                        <button class="welcome-start-btn">Começar minha jornada!</button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Ranking Section -->
+            <section id="ranking" class="mb-16">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-6 border-b border-gray-200">
+                        <h2 class="text-2xl font-bold text-gray-800">Ranking Nacional 2025</h2>
+                        <p class="text-gray-600 mt-2">Veja como está seu desempenho em relação a outros estudantes</p>
+                    </div>
+
+                    <div class="p-6">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Posição</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Estudante</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Escola</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            OBA</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            OBFEP</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            OBMEP</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Pontuação</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr class="bg-yellow-50">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Carlos
+                                            Silva</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Colégio Objetivo -
+                                            SP</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Ouro</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Prata</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Ouro</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">985</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Ana
+                                            Oliveira</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Colégio Militar -
+                                            RJ</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Prata</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Ouro</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Ouro</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">972</td>
+                                    </tr>
+                                    <tr class="bg-blue-50">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Você
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sua Escola</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Ouro</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Prata</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Prata</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">945</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">4</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Pedro
+                                            Santos</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Colégio Bernoulli
+                                            - MG</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Ouro</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Prata</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Prata</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">932</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">5</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            Mariana Costa</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Colégio Ari de Sá
+                                            - CE</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Prata</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Prata</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Ouro</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">915</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-6 flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-600">Sua posição atual: <span
+                                        class="font-medium text-gray-800">3º lugar</span></p>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <a href="#"
+                                class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition">Ver
+                                Ranking Completo</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+    </main>
+
+    <!-- AI Assistant -->
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-medal text-2xl mr-3 text-yellow-400"></i>
+                        <h3 class="text-xl font-bold">Olympic School</h3>
+                    </div>
+                    <p class="text-gray-400">Plataforma para preparação em olimpíadas científicas em 2025.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Olimpíadas</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> OBA 2025</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> OBFEP 2025</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> OBMEP 2025</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> ONC 2025</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> OPEQ 2025</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Recursos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> Materiais Gratuitos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> Simulados</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> Calendário 2025</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> Ranking Nacional</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center"><i
+                                    class="fas fa-chevron-right text-xs mr-2"></i> Tutoria Inteligente</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contato</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-gray-400"></i>
+                            <a href="mailto:contato@olympicschool.com"
+                                class="text-gray-400 hover:text-white transition">contato@olympicschool.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-whatsapp mt-1 mr-3 text-gray-400"></i>
+                            <a href="#" class="text-gray-400 hover:text-white transition">(11) 98765-4321</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">Av. Paulista, 1000<br>São Paulo - SP</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Olympic School. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Termos de Uso</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Política de Privacidade</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown to OBA 2025 (May 19, 2025)
+        function updateCountdown() {
+            const now = new Date();
+            const obaDate = new Date('May 19, 2025 00:00:00');
+            const diff = obaDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('countdown').textContent =
+                `${days}d ${hours}h ${minutes}m`;
+        }
+
+        // Update countdown every minute
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+
+        }
+    </script>
+
+</html>

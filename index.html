@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympic School - Preparando Campeões</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="icon" href="logo.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-bar">
+            <a href="#inicio" class="brand" aria-label="Página inicial Olympic School">
+                <img src="logo.png" alt="Logo Olympic School" width="160" height="40">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+                ☰
+            </button>
+            <nav id="menu" class="primary-nav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#avaliacoes">Avaliações</a></li>
+                    <li><a href="#junte">Junte-se a nós</a></li>
+                    <li class="nav-cta push">
+                        <button class="btn btn-outline" id="btnLogin">Entrar</button>
+                    </li>
+                    <li class="nav-cta">
+                        <button class="btn btn-solid" id="btnSignup">Criar conta</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="inicio">
+        <!-- Hero Section -->
+        <section id="hero" class="hero section-pad">
+            <div class="container hero-grid">
+                <article class="hero-title">
+                    <p class="kicker yellow">Junte-se a nós</p>
+                    <h1 class="display brand-title" >
+                        Olympic<br>School
+                    </h1>
+                    <p class="subtitle yellow">Preparando campeões</p>
+                </article>
+
+                <article class="hero-card" aria-labelledby="h-hero">
+                    <h2 id="h-hero">Transforme conhecimento em conquistas.</h2>
+                    <p>
+                        O Olympic School é o lugar ideal para quem busca excelência acadêmica e destaque nas principais
+                        olimpíadas brasileiras. Com aulas, editais e recursos de estudo, ajudamos você a conquistar grandes
+                        resultados.
+                    </p>
+                    <div class="btn-row">
+                        <button class="btn btn-yellow" id="btnHeroLogin">Entrar</button>
+                        <button class="btn btn-outline-white" id="btnHeroSignup">Criar uma Conta</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section id="servicos" class="servicos">
+            <div class="container servicos-top">
+                <div class="servicos-copy">
+                    <h2>O que você encontra aqui</h2>
+                    <p>
+                        Encontre tudo o que você precisa para se preparar com confiança. Do planejamento ao estudo, oferecemos
+                        recursos pensados para facilitar sua rotina e impulsionar seu desempenho nas olimpíadas acadêmicas.
+                    </p>
+                </div>
+                <figure class="servicos-logo" aria-hidden="true">
+                    <div class="logo-circle">
+                        <img src="logomode.png" alt="" width="250" height="250">
+                    </div>
+                </figure>
+            </div>
+
+            <div class="servicos-rail" role="list" aria-label="Principais serviços">
+                <div class="rail-inner container">
+                    <div class="servico" role="listitem">
+                        <div class="bubble" aria-hidden="true"><i class="fa-solid fa-address-book" ></i></div>
+                        <span>Materiais de estudo</span>
+                    </div>
+                    <div class="servico" role="listitem">
+                        <div class="bubble" aria-hidden="true"><i class="fa-solid fa-calendar-alt" ></i></div>
+                        <span>Cronogramas</span>
+                    </div>
+                    <div class="servico" role="listitem">
+                        <div class="bubble" aria-hidden="true"><i class="fa-solid fa-list-check"> </i> </div>
+                        <span>Questionários</span>
+                    </div>
+                    <div class="servico" role="listitem">
+                        <div class="bubble" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"> </i> </div>
+                        <span>Dicas de profissionais</span>
+                    </div>
+                    
+                    <div class="servico" role="listitem">
+                        <div class="bubble" aria-hidden="true"><i class="fa-solid fa-brain"> </i> </div>
+                        <span>Assistente com IA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+<section class="entresection">
+            <div class="containerentre"> 
+            </div>
+        </section>
+        <!-- Olympic Words -->
+        <section class="words-hero sec-stripes">
+            <div class="stripe-top" aria-hidden="true"></div>
+            <div class="container words-hero-grid">
+                <figure class="words-hero-fig" aria-hidden="true">
+                    <img src="word.png" alt="" width="300" height="300">
+                </figure>
+                <div class="words-hero-copy">
+                    <h2>Olympic Words</h2>
+                    <p class="subtitle-words">O espaço onde as palavras ganham poder.</p>
+                    <p>
+                        Aqui, você se prepara para brilhar nas olimpíadas de linguagens e arrasar na redação do ENEM com o apoio
+                        de uma IA especializada em leitura, escrita e interpretação. A SophIA monta seu cronograma, gera
+                        questões e corrige suas redações com comentários que ajudam você a evoluir de verdade.
+                    </p>
+                </div>
+            </div>
+            <div class="stripe-bottom" aria-hidden="true"></div>
+        </section>
+<section class="entresection">
+            <div class="containerentre"> 
+            </div>
+        </section>
+        <!-- Conheça a SophIA -->
+        <section class="ia-hero">
+            
+            <div class="container ia-hero-grid">
+                <div class="ia-hero-copy">
+                    <h2>Conheça a SophIA, nossa IA exclusiva!</h2>
+                    <p class="ia-subtitle">Uma inteligência artificial feita para quem quer vencer nas olimpíadas.</p>
+                    <p>
+                        A SophIA entende sua rotina, seus objetivos e a prova que você vai fazer. Com isso, ela cria cronogramas
+                        personalizados, questionários sob medida e ainda responde suas dúvidas em tempo real.
+                    </p>
+                    <p>
+                        <strong >Estude com foco, estratégia e tecnologia a seu favor.</strong>
+                    </p>
+                </div>
+                <figure class="ia-hero-fig" aria-hidden="true">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sophia-9GUSE0imtDe3aB1mo40dkjWwwWD1dr.png" alt="SophIA - Mascote IA" width="360" height="360">
+                </figure>
+            </div>
+        </section>
+
+        <!-- Avaliações -->
+        <section id="avaliacoes" class="avaliacoes section-pad">
+            <div class="container aval-grid">
+                <div class="aval-left">
+                    <h2 class="aval-title">
+                        Avaliações dos<br>usuários
+                    </h2>
+                    <div class="aval-controls" aria-label="Navegação de depoimentos">
+                        <button class="aval-btn aval-prev" id="btnPrev" aria-label="Anterior">
+                            <span aria-hidden="true">◀</span>
+                        </button>
+                        <button class="aval-btn aval-next" id="btnNext" aria-label="Próximo">
+                            <span aria-hidden="true">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="testimonial-viewport">
+                    <div class="testimonial-track" id="testimonialTrack">
+                        <article class="testimonial-card" aria-labelledby="t1-title">
+                            <img class="avatar" src="Mulherestudante.jpg" alt="Foto de perfil de Larissa Figueira" width="110" height="110">
+                            <header class="t-header">
+                                <div>
+                                    <h3 class="t-name" id="t1-title">Larissa Figueira</h3>
+                                    <div class="stars" aria-label="Avaliação 5 de 5">★★★★★</div>
+                                </div>
+                            </header>
+                            <p class="t-quote">
+                                "A plataforma é super completa! Tem tudo o que eu preciso pra me preparar: cronogramas, materiais,
+                                simulados e até uma IA que ajuda de verdade. Estou muito mais focada nos meus estudos."
+                            </p>
+                            <footer class="t-meta">
+                                <strong>3º ano</strong> — 14 de outubro de 2025
+                            </footer>
+                        </article>
+
+                        <article class="testimonial-card" aria-labelledby="t2-title">
+                            <img class="avatar" src="mulherestudante2.png" alt="Foto de perfil de Eduarda Bárbara" width="110" height="110">
+                            <header class="t-header">
+                                <div>
+                                    <h3 class="t-name" id="t2-title">Eduarda Bárbara</h3>
+                                    <div class="stars" aria-label="Avaliação 5 de 5">★★★★★</div>
+                                </div>
+                            </header>
+                            <p class="t-quote">
+                                "A plataforma é incrível! Tem tudo o que eu preciso pra me preparar: cronogramas, materiais,
+                                simulados e até uma IA que ajuda de verdade. Estou muito mais focada nos meus estudos."
+                            </p>
+                            <footer class="t-meta">
+                                <strong>3º ano</strong> — 28 de novembro de 2025
+                            </footer>
+                        </article>
+
+                        <article class="testimonial-card" aria-labelledby="t3-title">
+                            <img class="avatar" src="estudante.png" alt="Foto de perfil de Carlos Silva" width="110" height="110">
+                            <header class="t-header">
+                                <div>
+                                    <h3 class="t-name" id="t3-title">Carlos Silva</h3>
+                                    <div class="stars" aria-label="Avaliação 5 de 5">★★★★★</div>
+                                </div>
+                            </header>
+                            <p class="t-quote">
+                                "Consegui melhorar muito meu desempenho depois que comecei a usar a plataforma. Os materiais são
+                                excelentes e a IA realmente ajuda a tirar dúvidas rapidamente."
+                            </p>
+                            <footer class="t-meta">
+                                <strong>2º ano</strong> — 5 de dezembro de 2025
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Junte-se a nós -->
+        <section id="junte" class="schools-cta">
+            <div class="stripes stripes-top" aria-hidden="true"></div>
+            <div class="container schools-cta-grid">
+                <figure class="schools-cta-figure" aria-hidden="true">
+                    <img  src="junte.png" alt="" width="300" height="300" >
+                </figure>
+                <div class="schools-cta-copy">
+                    <h2>
+                        Leve o Olympic School<br>para sua escola
+                    </h2>
+                    <p>
+                        Além de beneficiar os estudantes individualmente, o sistema também oferece recursos exclusivos para
+                        instituições de ensino que queiram acompanhar e apoiar seus grupos olímpicos. Com o painel
+                        institucional, sua escola poderá visualizar o desempenho dos alunos, número de medalhas, áreas de maior
+                        destaque e o ranking entre escolas de todo o país.
+                    </p>
+                    <button class="btn btn-yellow btn-pill">Faça parte da nossa equipe</button>
+                </div>
+            </div>
+            <div class="stripes stripes-bottom" aria-hidden="true"></div>
+        </section>
+    </main>
+<section class="entresection">
+            <div class="containerentre"> 
+            </div>
+        </section>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <section class="contact-band" aria-label="Canais de contato">
+            <div class="container contact-grid">
+                <div class="social-icons" aria-label="Redes sociais e e-mail">
+                    <a class="icon" href="https://instagram.com/olympic.school" target="_blank" rel="noreferrer noopener" aria-label="Instagram">
+                        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none">
+                            <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="2" />
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+                        </svg>
+                    </a>
+                    <a class="icon" href="https://facebook.com" target="_blank" rel="noreferrer noopener" aria-label="Facebook">
+                        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.5 9.5V7.8c0-.8.5-1.3 1.6-1.3h1.2V4H15c-2.6 0-3.9 1.2-3.9 3.6v1.9H9v2.7h2.1V20h2.4v-7.8h2.1l.4-2.7h-2.5z" />
+                        </svg>
+                    </a>
+                    <a class="icon" href="mailto:olympicschool69@gmail.com" aria-label="E-mail">
+                        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" />
+                            <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <address class="contact-card" aria-label="Telefone de contato">
+                    <h3>Contato</h3>
+                    <a href="tel:+558198910-6384" class="highlight">(81) 98910-6384</a>
+                </address>
+
+                <div class="contact-card" aria-label="E-mail">
+                    <h3>Email</h3>
+                    <a href="mailto:olympicschool69@gmail.com" class="highlight">olympicschool69@gmail.com</a>
+                </div>
+
+                <div class="contact-card" aria-label="Instagram">
+                    <h3>Instagram</h3>
+                    <a href="https://instagram.com/olympic.school" target="_blank" rel="noreferrer noopener" class="highlight">@olympic.school</a>
+                </div>
+            </div>
+            <hr class="band-divider">
+        </section>
+
+        <section class="footer-logo-strip" aria-label="Logomarca">
+            <div class="container logo-strip-inner">
+                <img src="rodape.png"  alt="Olympic School" >
+               
+            </div>
+        </section>
+
+        <section class="copyright-section" aria-label="Direitos autorais">
+            <div class="container">
+                <hr class="copyright-divider">
+                <p class="copyright-note">© 2025 Olympic School – Todos os direitos reservados.</p>
+            </div>
+        </section>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <button class="modal-close" id="closeLogin">×</button>
+            <div class="modal-header">
+                <img src="logo.png" alt="Olympic School" width="80" height="80" class="">
+      
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" id="email" class="form-input" placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" id="password" class="form-input" placeholder="Senha">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Login</button>
+                    <div class="form-links">
+                        <a href="#accountTypeModal" id="linkToSignup">Cadastre-se</a>
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Tipo de Conta -->
+    <div class="modal-overlay" id="accountTypeModal">
+        <div class="modal">
+            <button class="modal-close" id="closeAccountType">×</button>
+            <div class="modal-header">
+                <img src="logo.png" alt="Olympic School" width="80" height="80" class="">
+
+                <p class="modal-subtitle">Que tipo de conta você quer cadastrar?</p>
+            </div>
+            <div class="account-type-grid">
+                <button class="account-type-btn" data-type="aluno">Aluno</button>
+                <button class="account-type-btn" data-type="categoria">Professor</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+   <div class="modal-overlay" id="signupModal">
+        <div class="modal">
+            <button class="modal-close" id="closeSignup">×</button>
+            <div class="modal-header" style="padding-bottom: 10px;">
+                <img src="logo.png" alt="Olympic School" width="50" height="50" class="">
+                <h2 class="modal-title" style="margin-top: 5px;">Criar Conta</h2>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="signup-name" class="form-label">Nome Completo</label>
+                    <input type="text" id="signup-name" class="form-input" placeholder="Seu nome completo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signup-email" class="form-label">E-mail</label>
+                    <input type="email" id="signup-email" class="form-input" placeholder="seu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-estado" class="form-label">Estado</label>
+                    <input type="text" id="signup-estado" class="form-input" placeholder="Seu Estado">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signup-telefone" class="form-label">Telefone</label>
+                    <input type="text" id="signup-telefone" class="form-input" placeholder="Seu telefone">
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-password" class="form-label">Senha</label>
+                    <input type="password" id="signup-password" class="form-input" placeholder="Crie uma senha">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signup-confirmpassword" class="form-label">Confirmar Senha</label>
+                    <input type="password" id="signup-confirmpassword" class="form-input" placeholder="Confirme a senha">
+                </div>
+
+                <div class="form-actions" style="margin-top: 15px;">
+                    <button type="submit" class="btn-primary">Criar Conta</button>
+                    <div class="form-links">
+                        <a href="#loginModal" id="linkToLogin">Já tem conta? Faça login</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+     <!-- Modal de pagamento -->
+    <div class="modal-overlay" id="planModal">
+    <div class="modal modal-lg">
+        <button class="modal-close" id="closePlan">×</button>
+        <div class="modal-header">
+            <img src="rodape.png" alt="Olympic School" class="modal-logo-img">
+            <h2 class="modal-title-yellow">Escolha seu plano</h2>
+        </div>
+        
+        <div class="plans-container">
+            <label class="plan-card">
+                <input type="radio" name="plan" value="trimestral" checked>
+                <div class="plan-content">
+                    <h3 class="plan-title">Plano Trimestral - R$ 199,00 a cada 3 meses</h3>
+                    <p class="plan-desc">A melhor opção para começar agora e conhecer a plataforma.</p>
+                    <p class="plan-details">
+                        Tenha acesso a todos os recursos: controle dos alunos participantes das olimpíadas, 
+                        visualização das competições da escola, agendamento de reuniões com o grupo, 
+                        status de inscrições, ranking escolar e muito mais.
+                    </p>
+                </div>
+            </label>
+
+            <label class="plan-card">
+                <input type="radio" name="plan" value="anual">
+                <div class="plan-content">
+                    <h3 class="plan-title">Plano Anual - R$ 649,00 por ano <br><span class="highlight-green">(Economize R$ 147)</span></h3>
+                    <p class="plan-desc">Mesmos recursos, mais economia e continuidade.</p>
+                    <p class="plan-details">
+                        Ideal para escolas que já sabem o valor da jornada olímpica. 
+                        Com o plano anual, você economiza e garante acesso contínuo a todas as 
+                        funcionalidades da plataforma durante todo o ano letivo.
+                    </p>
+                </div>
+            </label>
+        </div>
+
+        <div class="form-actions center">
+            <button type="button" class="btn-primary btn-blue-dark" id="btnPlanNext">Próximo</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="paymentMethodModal">
+    <div class="modal">
+        <button class="modal-close" id="closePaymentMethod">×</button>
+        <div class="modal-header">
+            <img src="rodape.png" alt="Olympic School" class="modal-logo-img">
+            <h2 class="modal-title-yellow">Escolha a forma de pagamento</h2>
+        </div>
+
+        <div class="payment-methods-grid">
+            <button class="payment-btn" id="btnPayCard">Cartão de Crédito/Débito</button>
+            <button class="payment-btn" id="btnPayPix">Pix</button>
+            <button class="payment-btn" id="btnPayBoleto">Boleto</button>
+        </div>
+
+        <p class="payment-security-text">
+            Pagamento 100% seguro. Seus dados estão protegidos com criptografia e sua escola terá acesso imediato após a confirmação.
+        </p>
+    </div>
+</div>
+ 
+<div class="modal-overlay" id="cardDetailsModal">
+    <div class="modal modal-lg">
+        <button class="modal-close" id="closeCardDetails">×</button>
+        <div class="modal-header">
+            <img src="rodape.png" alt="Olympic School" class="modal-logo-img">
+            <h2 class="modal-title-yellow">Pagamento - Cartão</h2>
+        </div>
+
+        <form class="card-form">
+            <div class="input-row">
+                <input type="text" class="card-input" placeholder="Nome no cartão">
+                <input type="text" class="card-input" placeholder="CPF do titular">
+            </div>
+            <div class="input-row">
+                <input type="text" class="card-input" placeholder="Número do cartão">
+                <input type="text" class="card-input" placeholder="Validade (MM/AA)">
+            </div>
+            <div class="input-row">
+                <input type="text" class="card-input" placeholder="Código de Segurança (CVV)">
+                <div class="input-with-icon">
+                    <input type="password" class="card-input" placeholder="Insira senha novamente">
+                    <span class="icon-eye"></span>
+                </div>
+            </div>
+
+            <h3 class="modal-title-yellow mt-4">Selecione as parcelas</h3>
+            
+            <div class="installments-options">
+                <label class="checkbox-container">
+                    <input type="radio" name="parcelas" class="botao" checked>
+                    <span class="checkmark"></span>
+                    1x R$199,00
+                </label>
+                <label class="checkbox-container">
+                    <input type="radio" name="parcelas" class="botao">
+                    <span class="checkmark"></span>
+                    2x R$99,50
+                </label>
+                <label class="checkbox-container">
+                    <input type="radio" name="parcelas" class="botao">
+                    <span class="checkmark"></span>
+                    3x R$66,33
+                </label>
+            </div>
+
+            <div class="form-actions center mt-4">
+                <button type="submit" class="btn-primary btn-blue-dark">Confirmar pagamento</button>
+            </div>
+        </form>
+    </div>
+</div>
+       
+
+    <script src="script.js"></script>
+</body>
+</html>

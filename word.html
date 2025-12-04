@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympic Words — Olympic School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <style>
+        /* --- ADIÇÕES PARA OLYMPIC WORDS (word.html) --- */
+
+/* Cores das Olimpíadas (Se já não tiver adicionado em :root, adicione agora) */
+:root {
+    --color-obl-primary: #8a2be2;
+    --color-obl-dark: #6e1ac9;
+    --color-obli-primary: #007bff;
+    --color-obli-dark: #0056b3;
+    --color-oec-primary: #ffc107;
+    --color-oec-dark: #e0a800;
+}
+
+/* Header com efeito Glass */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Animação Flutuante para Sophia */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Animação suave para o balão de fala */
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+.animate-bounce-slow {
+    animation: bounce-slow 3s infinite ease-in-out;
+}
+
+/* Reveal Animation Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50 selection:bg-blue-100 selection:text-blue-900">
+
+    <header class="site-header dashboard-header glass-effect">
+        <div class="container header-bar">
+            <a href="inicio.html" class="flex items-center gap-3 hover:opacity-80 transition">
+                <img src="logo.png" alt="Olympic School" class="h-10 w-auto rounded-full bg-white p-0">
+            </a>
+
+            <nav class="hidden sm:block">
+                <ul class="flex space-x-8 text-sm font-semibold">
+                    <li><a href="inicio.html" class="text-gray-600 hover:text-blue-700 transition relative group">
+                        Início
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-700 transition-all group-hover:w-full"></span>
+                    </a></li>
+                    <li><a href="word.html" class="text-blue-700 relative">
+                        Olympic Words
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-700"></span>
+                    </a></li>
+               
+                    </a></li>
+                </ul>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                 <button id="mobile-menu-button" class="text-gray-700 sm:hidden text-2xl hover:text-blue-600 transition" aria-label="Abrir menu mobile">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+   <div id="mobile-menu" class="hidden bg-white shadow-lg absolute w-full top-full left-0 z-40">
+        <nav class="py-4">
+            <a href="inicio.html" class="block py-3 px-6 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Início</a>
+            <a href="word.html" class="block py-3 px-6 text-blue-700 bg-blue-50 font-bold border-l-4 border-blue-700">Olympic Words</a>
+           
+        </nav>
+    </div>
+
+    <main>
+        <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <div class="absolute top-10 left-10 text-9xl transform -rotate-12">A</div>
+                <div class="absolute bottom-20 right-1/3 text-8xl font-serif italic">?</div>
+                <div class="absolute top-1/4 right-10 text-8xl font-mono">Word</div>
+            </div>
+
+            <div class="container relative z-10 pt-16 pb-0 md:pt-24 md:pb-0">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    
+                    <div class="w-full md:w-1/2 mb-10 md:mb-16 text-center md:text-left reveal active">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-700/50 border border-blue-500/30 mb-6 backdrop-blur-sm">
+                            <img src="word.png" class="h-5 w-5" alt="Ícone">
+                            <span class="text-sm font-medium text-blue-100">Olympic Words</span>
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                            Olympic <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">Words</span>
+                        </h1>
+                        
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                            Domine a arte da escrita, decifre códigos linguísticos e alcance a fluência global. Sua jornada rumo ao ouro começa aqui.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                            <a href="https://chatgpt.com/g/g-67fd21a275b881918a71f9a494c242e7-olympicschool-ai" class="btn-sophia-chat flex items-center justify-center gap-3 px-8 py-4 bg-white text-blue-900 rounded-full font-bold shadow-lg hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+                                <i class="fas fa-robot text-xl text-purple-600"></i>
+                                <span>Treinar com a Sophia</span>
+                            </a>
+                            
+                            <a href="#competicoes" class="flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white/30 text-white rounded-full font-semibold hover:bg-white/10 transition">
+                                Ver Olimpiadas
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-5/12 flex justify-center md:justify-end relative mt-8 md:mt-0 reveal active delay-200">
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 bg-blue-500 rounded-full filter blur-3xl opacity-30"></div>
+                        
+                        <img src="sophiva.png" alt="Sophia - Assistente IA" class="relative z-10 h-[400px] md:h-[500px] object-contain drop-shadow-2xl animate-float">
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+                <svg class="relative block w-[calc(100%+1.3px)] h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
+                </svg>
+            </div>
+        </section>
+
+        <section id="competicoes" class="container py-16 md:py-24">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Escolha sua olimpiada</h2>
+                <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="group reveal bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-t-4 border-[color:var(--color-obl-primary)] hover:-translate-y-2">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-purple-50 flex items-center justify-center text-2xl text-[color:var(--color-obl-primary)]">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <img src="https://i0.wp.com/noic.com.br/wp-content/uploads/2018/04/obl_logo.png" alt="Logo OBL" class="h-12 w-auto object-contain">
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">OBL</h3>
+                        <p class="text-sm font-semibold text-purple-600 mb-4 uppercase tracking-wider">Linguística</p>
+                        
+                        <p class="text-gray-600 mb-8 line-clamp-3">
+                            Desvende a lógica por trás das línguas do mundo. Resolva problemas que exigem raciocínio analítico e intuição, sem precisar falar o idioma.
+                        </p>
+                        
+                        <a href="obl.html" class="block w-full py-3 px-4 rounded-lg bg-gray-50 text-gray-700 font-bold text-center group-hover:bg-[color:var(--color-obl-primary)] group-hover:text-white transition-colors duration-300">
+                            Acessar Conteúdo <i class="fas fa-arrow-right ml-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group reveal bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-t-4 border-[color:var(--color-obli-primary)] hover:-translate-y-2" style="transition-delay: 100ms;">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-2xl text-[color:var(--color-obli-primary)]">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJWLgvKU6LZMA30PZpJeFLKfB1PrUYsteHEQ&s" alt="Logo OBLI" class="h-12 w-auto object-contain">
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">OBLI</h3>
+                        <p class="text-sm font-semibold text-blue-600 mb-4 uppercase tracking-wider">Língua Inglesa</p>
+                        
+                        <p class="text-gray-600 mb-8 line-clamp-3">
+                            Demonstre sua proficiência global. Teste suas habilidades de leitura, escrita e compreensão em inglês em nível competitivo.
+                        </p>
+                        
+                        <a href="obli.html" class="block w-full py-3 px-4 rounded-lg bg-gray-50 text-gray-700 font-bold text-center group-hover:bg-[color:var(--color-obli-primary)] group-hover:text-white transition-colors duration-300">
+                            Acessar Conteúdo <i class="fas fa-arrow-right ml-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group reveal bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-t-4 border-[color:var(--color-oec-primary)] hover:-translate-y-2" style="transition-delay: 200ms;">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-yellow-50 flex items-center justify-center text-2xl text-[color:var(--color-oec-dark)]">
+                                <i class="fas fa-feather-alt"></i>
+                            </div>
+                            <img src="https://oec.education/wp-content/uploads/2021/03/3-scaled.jpg" alt="Logo OEC" class="h-12 w-auto rounded-full object-contain">
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">OEC</h3>
+                        <p class="text-sm font-semibold text-yellow-600 mb-4 uppercase tracking-wider">Escrita Criativa</p>
+                        
+                        <p class="text-gray-600 mb-8 line-clamp-3">
+                            Sua imaginação é o limite. Crie narrativas envolventes, poemas e contos originais para competir com escritores de todo o país.
+                        </p>
+                        
+                        <a href="oec.html" class="block w-full py-3 px-4 rounded-lg bg-gray-50 text-gray-700 font-bold text-center group-hover:bg-[color:var(--color-oec-primary)] group-hover:text-gray-900 transition-colors duration-300">
+                            Acessar Conteúdo <i class="fas fa-arrow-right ml-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-10 border-t border-gray-800">
+        <div class="container">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-4 md:mb-0">
+                    <img src="logo.png" alt="Olympic School" class="h-8 w-auto mb-3 mx-auto md:mx-0 bg-white rounded-full">
+                    <p class="text-sm text-gray-400">&copy; 2025 Olympic School. Todos os direitos reservados.</p>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Termos</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacidade</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Ajuda</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Menu Mobile (Simples)
+        const btnMobile = document.getElementById('mobile-menu-button');
+        const menuMobile = document.getElementById('mobile-menu');
+        if(btnMobile && menuMobile){
+            btnMobile.addEventListener('click', () => {
+                menuMobile.classList.toggle('hidden');
+            });
+        }
+
+        // Animação Reveal ao rolar
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

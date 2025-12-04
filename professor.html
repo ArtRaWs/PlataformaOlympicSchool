@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel do Professor - Olympic School</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="style.css"> <!-- SEU CSS SERÁ SUBSTITUÍDO NO BLOCO 4 -->
+
+</head>
+<body class="bg-[#f4f7fe] font-sans">
+
+<header class="w-full fixed top-0 left-0 bg-[#0f2b7a] text-white shadow-lg h-[72px] z-50">
+    <div class="w-[95%] max-w-[1400px] mx-auto flex items-center justify-between h-full">
+
+        <a href="inicio.html" class="flex items-center gap-3">
+            <img src="logo.png" class="h-10 rounded bg-white p-1 shadow-md">
+            <h1 class="font-extrabold tracking-wide text-lg">Olympic School</h1>
+        </a>
+
+        <nav class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="inicio.html" class="hover:text-yellow-400">Início</a>
+            <a href="onc.html" class="hover:text-yellow-400">Olimpíadas</a>
+            <a href="#" class="hover:text-yellow-400">Materiais</a>
+            <a href="#" class="hover:text-yellow-400">Ranking</a>
+        </nav>
+
+        <div class="relative flex items-center gap-3">
+            <div class="text-right hidden sm:block leading-tight">
+                <p class="text-sm font-bold">Olá, <span id="user-name-prof">Prof.</span></p>
+                <p class="text-[12px] text-yellow-300">Painel do Professor</p>
+            </div>
+
+            <button id="user-menu-btn-prof" class="w-10 h-10 grid place-items-center bg-white rounded-full border-2 border-yellow-400 text-[#0f2b7a]">
+                <i class="fa-regular fa-user"></i>
+            </button>
+
+            <div id="user-menu-prof" class="absolute right-0 top-12 bg-white border shadow-xl rounded-xl w-44 py-2 hidden">
+                <a href="perfil.html" class="px-4 py-2 flex items-center gap-2 text-gray-700 hover:bg-gray-50"><i class="fa-solid fa-id-badge"></i> Perfil</a>
+                <a href="professor.html" class="px-4 py-2 flex items-center gap-2 text-gray-700 hover:bg-gray-50"><i class="fa-solid fa-chalkboard-user"></i> Painel</a>
+                <a href="index.html" class="px-4 py-2 flex items-center gap-2 text-red-600 hover:bg-red-50"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+            </div>
+        </div>
+    </div>
+</header>
+<style>
+
+
+/* ====== Paleta & Variáveis Globais ====== */
+:root{
+    --blue-900:#071b4a;
+    --blue-700:#0b2a91;
+    --blue-500:#304ff7;
+    --blue-300:#6d8bff;
+    --yellow:#f2c217;
+
+    --gray-100:#f7f9ff;
+    --gray-200:#eef2ff;
+    --gray-300:#d9e3ff;
+    --gray-600:#5b647e;
+    --gray-900:#1a1c25;
+
+    --card-radius:22px;
+    --card-shadow:0 18px 45px rgba(0,0,0,.07);
+    --hover-smooth: cubic-bezier(.35,.16,.23,1);
+}
+
+/* ====== Estrutura Global ====== */
+*{
+    margin:0; padding:0; box-sizing:border-box;
+    font-family:"Inter","Poppins",sans-serif;
+}
+
+body{
+    background:var(--gray-100);
+    color:var(--gray-900);
+    line-height:1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x:hidden;
+}
+
+img{ max-width:100%; border-radius:10px; }
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+
+/* ================================================================
+   🔷 HEADER SUPER PROFISSIONAL — FIXO E FLUTUANTE
+================================================================ */
+
+.dashboard-header{
+    position:fixed;
+    top:0;left:0;right:0;
+    height:72px;
+    background:var(--blue-900);
+    display:flex; align-items:center;
+    z-index:60;
+    box-shadow:0 8px 22px rgba(0,0,0,.2);
+}
+
+.dashboard-header .container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.dashboard-logo{
+    height:42px;
+    background:#fff;
+    padding:4px 8px;
+    border-radius:10px;
+    box-shadow:0 3px 12px rgba(255,255,255,.2);
+}
+
+.header-user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+}
+
+/* Avatar */
+.user-btn{
+    width:44px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    background:white;
+    color:var(--blue-700);
+    border-radius:50%;
+    border:2px solid var(--yellow);
+    cursor:pointer;
+    transition:.3s;
+}
+.user-btn:hover{ transform:scale(1.06); }
+
+/* Dropdown */
+.user-menu{
+    position:absolute;
+    top:74px; right:14px;
+    width:180px;
+    background:white;
+    border-radius:16px;
+    border:1px solid var(--gray-300);
+    box-shadow:var(--card-shadow);
+    padding:8px;
+    display:none;
+}
+.user-menu a{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 14px;
+    color:var(--blue-900);
+    border-radius:10px;
+}
+.user-menu a:hover{
+    background:var(--gray-200);
+}
+
+
+/* ================================================================
+    🔥 CARDS SUPER ELEGANTES (DESTAQUES)
+================================================================ */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:110px;
+}
+
+.stat-card{
+    background:white;
+    padding:22px;
+    border-radius:var(--card-radius);
+    border:1px solid #e3e9ff;
+    box-shadow:var(--card-shadow);
+    transition:.35s var(--hover-smooth);
+}
+.stat-card:hover{
+    transform:translateY(-6px) scale(1.02);
+    box-shadow:0 22px 60px rgba(0,0,0,.12);
+}
+
+.stat-title{
+    font-size:1.05rem;
+    font-weight:800;
+    color:var(--blue-900);
+}
+.stat-value{
+    font-size:2rem;
+    font-weight:900;
+    margin-top:4px;
+    color:var(--blue-700);
+}
+.stat-meta{
+    font-size:.9rem;
+    color:var(--gray-600);
+}
+
+
+/* ====== Responsividade Cards ====== */
+@media(max-width:1020px){ .stats{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:620px){ .stats{grid-template-columns:1fr;} }
+
+/* ============================================================
+   🔷 BLOCO 2 — TABS + GRID + ANALYTICS DASHBOARD PRO EDITION
+   UI moderna, suave, animada e totalmente responsiva
+============================================================ */
+
+/* ------------------- TABS SUPER PREMIUM ------------------- */
+.tabs{
+    display:flex;
+    gap:10px;
+    padding:8px;
+    background:#eaf0ff;
+    border-radius:50px;
+    margin:25px auto 15px;
+    width:max-content;
+    box-shadow:0 4px 18px rgba(0,0,0,.05);
+}
+
+.tab-btn{
+    padding:11px 28px;
+    border-radius:50px;
+    border:none;
+    font-weight:700;
+    background:#dce6ff;
+    color:#0c1f5a;
+    cursor:pointer;
+    transition:.35s cubic-bezier(.3,.02,.2,1.4);
+    font-size:.95rem;
+}
+
+.tab-btn:hover{
+    transform:translateY(-3px) scale(1.06);
+    background:#cbd9ff;
+}
+
+.tab-btn.active{
+    background:var(--blue-700);
+    color:white;
+    box-shadow:0 5px 22px rgba(20,60,255,.35);
+    transform:translateY(-1px);
+}
+
+/* RESPONSIVIDADE TABS */
+@media(max-width:850px){
+    .tabs{flex-wrap:wrap;width:100%;justify-content:center;padding:12px;}
+    .tab-btn{flex:1;min-width:45%;}
+}
+@media(max-width:500px){
+    .tab-btn{min-width:100%;}
+}
+
+/* ------------------- SECTIONS ORGANIZAÇÃO ------------------- */
+.tab-pane{
+    animation:fadeTab .45s ease;
+}
+@keyframes fadeTab{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;}
+}
+
+
+/* ============================================================
+   📊 ANALYTICS — DASHBOARD PROFISSIONAL
+============================================================ */
+
+.analysis-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+    margin-top:10px;
+}
+
+.analysis-card{
+    background:white;
+    padding:24px;
+    border-radius:var(--card-radius);
+    box-shadow:var(--card-shadow);
+    border:1px solid #e1e7ff;
+}
+
+/* Títulos */
+.analysis-card h3{
+    font-size:1.25rem;
+    font-weight:900;
+    color:var(--blue-900);
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+/* -------- BARRAS DE PROGRESSO REFINADAS -------- */
+.progress-row{
+    margin-top:14px;
+}
+.progress-label{
+    font-weight:700;
+    color:var(--blue-900);
+    margin-bottom:6px;
+}
+
+.progress-line{
+    height:12px;
+    border-radius:50px;
+    background:#dce3ff;
+    overflow:hidden;
+}
+.progress-fill{
+    height:100%;
+    background:var(--blue-500);
+    border-radius:inherit;
+    box-shadow:0 4px 14px rgba(50,90,255,.35) inset;
+    animation:grow 1.4s ease;
+}
+@keyframes grow{
+    from{width:0;} to{width:var(--value);}
+}
+
+/* -------- DESTAQUES / SUMMARY BOXES -------- */
+.analytics-summary{
+    margin-top:24px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.analytics-box{
+    text-align:center;
+    padding:26px;
+    background:white;
+    border-radius:18px;
+    border:1px solid #e1e7ff;
+    box-shadow:var(--card-shadow);
+}
+.analytics-box i{
+    font-size:2.2rem;
+    margin-bottom:6px;
+}
+.analytics-number{
+    font-size:1.8rem;
+    font-weight:900;
+    color:var(--blue-900);
+}
+.analytics-desc{
+    color:var(--gray-600);
+    font-size:.9rem;
+}
+
+/* RESPONSIVIDADE ANALYTICS */
+@media(max-width:1020px){
+    .analysis-grid{grid-template-columns:1fr;}
+    .analytics-summary{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+    .analytics-summary{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   🔷 BLOCO 3 — ALUNOS LIST + VIDEO CARDS (PRO)
+   Estilo refinado, foco em legibilidade, interação e mobile-first
+============================================================ */
+
+/* --- Variáveis (garanta que existam no topo do seu CSS) --- */
+/* --blue / --blue-600 / --yellow / --white / --shadow / --radius assumed */
+
+/* =========================
+   LISTA DE ALUNOS (ALUNO-CARD)
+   ========================= */
+
+.alunos-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* Card individual do aluno — compacto e informativo */
+.aluno-card, .student {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px;
+  background:var(--white);
+  border-radius:14px;
+  border:1px solid rgba(30,64,175,.06);
+  box-shadow:0 8px 20px rgba(12,28,84,.04);
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+
+/* Hover / foco */
+.aluno-card:hover, .student:hover, .aluno-card:focus-within {
+  transform:translateY(-4px);
+  box-shadow:0 14px 34px rgba(12,28,84,.08);
+  border-color: rgba(30,64,175,.14);
+}
+
+/* Avatar circular com cor de fundo suave */
+.aluno-card .avatar, .student .avatar {
+  width:54px;
+  height:54px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  color:var(--white);
+  background:linear-gradient(180deg,var(--blue-600), var(--blue));
+  flex-shrink:0;
+  font-size:0.95rem;
+  box-shadow:0 6px 18px rgba(12,28,84,.06);
+}
+
+/* Informação principal */
+.aluno-meta {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-width:0;
+}
+.aluno-meta .name, .student-name{
+  font-weight:900;
+  color:var(--blue-600);
+  font-size:1rem;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.aluno-meta .sub {
+  color: #6b7280;
+  font-size:.88rem;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Barra de progresso com etiqueta */
+.progress {
+  width:100%;
+  height:12px;
+  background:linear-gradient(90deg,#eef4ff,#f8fbff);
+  border-radius:999px;
+  border:1px solid rgba(30,64,175,.04);
+  overflow:hidden;
+  margin-top:8px;
+}
+.progress .bar{
+  height:100%;
+  background:linear-gradient(90deg,var(--blue-600), var(--blue));
+  box-shadow:0 6px 18px rgba(30,64,175,.12) inset;
+  transition:width 1.1s cubic-bezier(.2,.9,.2,1);
+}
+
+/* Right actions area (ver, editar, etc) */
+.aluno-actions{
+  margin-left:auto;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.aluno-actions .btn{
+  padding:.5rem .8rem;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid rgba(30,64,175,.06);
+  color:var(--blue-600);
+  font-weight:800;
+  display:inline-flex;
+  gap:.5rem;
+  align-items:center;
+  cursor:pointer;
+  transition:all .18s ease;
+}
+.aluno-actions .btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(30,64,175,.06);
+}
+
+/* Small badge for statuses */
+.aluno-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.2rem .5rem;
+  border-radius:999px;
+  font-weight:800;
+  font-size:.8rem;
+  color:#08306C;
+  background:linear-gradient(180deg,#e8f0ff,#fff);
+  border:1px solid rgba(30,64,175,.06);
+}
+
+/* =========================
+   VIDEO CARDS — GRID + CARD
+   ========================= */
+
+/* Grid container (override in primary css as needed) */
+.videos-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  align-items:start;
+}
+
+/* Card base */
+.video-card{
+  background:var(--white);
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(30,64,175,.06);
+  box-shadow:0 10px 30px rgba(12,28,84,.05);
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  display:flex;
+  flex-direction:column;
+  min-height:280px;
+}
+
+/* Hover lift */
+.video-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(12,28,84,.10);
+  border-color: rgba(30,64,175,.12);
+}
+
+/* Thumbnail area — aspect ratio maintain */
+.thumb{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  background:linear-gradient(135deg,#eef4ff,#e6ecff);
+  display:grid;
+  place-items:center;
+  border-bottom:1px solid rgba(30,64,175,.04);
+}
+
+/* Play button circle */
+.thumb .playbtn{
+  width:64px;
+  height:64px;
+  border-radius:999px;
+  background:linear-gradient(180deg,var(--white), #f6f8ff);
+  display:grid;place-items:center;
+  box-shadow:0 8px 26px rgba(12,28,84,.10);
+  transition:transform .18s ease, box-shadow .18s ease;
+  font-size:1.4rem;
+  color:var(--blue-600);
+}
+.thumb .playbtn:hover{ transform:scale(1.06); box-shadow:0 14px 34px rgba(12,28,84,.14); }
+
+/* Video meta area */
+.video-meta{
+  padding:14px 16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex:1;
+}
+
+/* Title with truncated ellipsis */
+.video-meta .title{
+  font-weight:900;
+  color:var(--blue-600);
+  font-size:1rem;
+  line-height:1.2;
+  display:block;
+  max-height:2.4em;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Chips row */
+.chips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  background:linear-gradient(180deg,#f8fafc,#ffffff);
+  border:1px solid rgba(30,64,175,.05);
+  font-weight:700;
+  color:#0f2b7a;
+  font-size:.85rem;
+}
+
+/* Actions row aligned bottom */
+.video-actions{
+  display:flex;
+  gap:8px;
+  margin-top:auto;
+  align-items:center;
+}
+
+/* Primary and danger buttons for card actions */
+.video-actions .btn{
+  padding:.45rem .85rem;
+  border-radius:999px;
+  border:1px solid rgba(30,64,175,.06);
+  background:#fff;
+  color:var(--blue-600);
+  font-weight:800;
+  cursor:pointer;
+  transition:all .18s;
+}
+.video-actions .btn.danger{
+  color:#b91c1c;
+  border-color:rgba(185,28,28,.08);
+}
+.video-actions .btn.primary{
+  background:linear-gradient(180deg,var(--blue-600), var(--blue));
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 8px 30px rgba(30,64,175,.16);
+}
+
+/* tiny icon style in buttons */
+.btn i{ font-size:0.95rem; }
+
+/* =========================
+   RESPONSIVIDADE (mobile-first tweaks)
+   ========================= */
+
+@media (max-width:1100px){
+  .videos-grid{ grid-template-columns:repeat(2,1fr); }
+  .aluno-card .avatar, .student .avatar{ width:48px; height:48px; }
+}
+
+@media (max-width:700px){
+  .videos-grid{ grid-template-columns:1fr; }
+  .aluno-card{ flex-direction:column; align-items:flex-start; gap:10px; padding:14px; }
+  .aluno-actions{ width:100%; justify-content:space-between; margin-left:0; }
+  .aluno-meta{ width:100%; }
+}
+
+/* Accessibility: focus-visible outlines */
+.aluno-card:focus-within, .video-card:focus-within, .tab-btn:focus{
+  outline:3px solid rgba(30,64,175,.12);
+  outline-offset:4px;
+}
+
+/* Small micro-animation for new progress updates */
+@keyframes pulseProgress {
+  0%{ box-shadow:0 0 0 0 rgba(30,64,175,.08); }
+  70%{ box-shadow:0 0 0 8px rgba(30,64,175,0); }
+  100%{ box-shadow:0 0 0 0 rgba(30,64,175,0); }
+}
+.progress .bar.updated{
+  animation:pulseProgress 1.2s ease;
+}
+
+
+
+/* ==========================================================
+🔥 MODAL DE UPLOAD — AGORA OFICIALMENTE PREMIUM
+========================================================== */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    transition:.4s;
+}
+.modal-overlay.active{
+    display:flex;
+}
+
+/* Caixa */
+.upload-box{
+    width:min(520px,92vw);
+    background:white;
+    border-radius:26px;
+    padding:32px;
+    box-shadow:0 40px 80px rgba(0,0,0,.28);
+    animation:modalShow .45s cubic-bezier(.16,.7,.34,1.25);
+    position:relative;
+    border:1px solid #e0e6ff;
+}
+
+/* Animação */
+@keyframes modalShow{
+    from{ transform:translateY(40px) scale(.92); opacity:0; }
+    to{ transform:translateY(0) scale(1); opacity:1; }
+}
+
+/* Botão fechar */
+.modal-close{
+    position:absolute;
+    right:18px;
+    top:16px;
+    width:38px;
+    height:38px;
+    background:white;
+    border-radius:50%;
+    border:none;
+    box-shadow:0 4px 14px rgba(0,0,0,.22);
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    color:#1e3a8a;
+    transition:.35s;
+}
+.modal-close:hover{
+    transform:rotate(90deg) scale(1.15);
+    background:#e9efff;
+}
+
+/* Inputs */
+#profUploadForm input,
+#profUploadForm textarea{
+    width:100%;
+    padding:14px;
+    border-radius:14px;
+    border:2px solid #dce6ff;
+    background:#f9fbff;
+    font-size:.95rem;
+    font-weight:600;
+    outline:none;
+    transition:.25s;
+}
+#profUploadForm input:focus,
+#profUploadForm textarea:focus{
+    border-color:#2955ff;
+    background:white;
+    box-shadow:0 0 12px rgba(41,85,255,.28);
+}
+
+/* Área de upload */
+.drop{
+    border:2px dashed #2955ff;
+    color:#1e40af;
+    font-weight:800;
+    padding:24px;
+    text-align:center;
+    border-radius:14px;
+    background:#f4f8ff;
+    transition:.3s;
+}
+.drop:hover{
+    background:#e6eeff;
+    transform:scale(1.03);
+}
+
+/* Botão principal */
+.upload-btn{
+    width:100%;
+    padding:14px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#1e40af,#0b2a91);
+    color:white;
+    font-size:1.05rem;
+    font-weight:900;
+    transition:.35s;
+    box-shadow:0 12px 30px rgba(14,39,105,.25);
+}
+.upload-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 45px rgba(14,39,105,.40);
+}
+
+/* Mobile refinado */
+@media(max-width:480px){
+    .upload-box{padding:22px;}
+    .modal-close{top:10px;right:12px;}
+    .upload-btn{font-size:.95rem;}
+}
+
+
+/* Animação */
+@keyframes modalPop{
+    from{ transform:scale(.85) translateY(40px); opacity:0; }
+    to{ transform:scale(1) translateY(0); opacity:1; }
+}
+
+
+
+
+/* ============================================================
+ 🔱 SEÇÃO: OLIMPÍADAS
+============================================================ */
+
+#olimpiadasSection {
+    padding: 60px 6%;
+}
+
+.sec-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0a2b65;
+    margin-bottom: 25px;
+    display:flex;align-items:center;gap:10px;
+}
+
+.olymp-wrapper {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:35px;
+}
+
+.glass {
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(12px);
+    border-radius:18px;
+    padding:25px;
+    border:1px solid rgba(35,92,255,0.2);
+    box-shadow:0 8px 25px rgba(0,0,0,0.05);
+    animation:fadeUP .6s ease forwards;
+}
+@keyframes fadeUP {from{opacity:0; transform:translateY(20px);} to{opacity:1;}}
+
+.olymp-card h3{
+    font-size:20px;font-weight:700;margin-bottom:15px;color:#003276;
+}
+
+/* LISTA DE COMPETIÇÕES */
+.olymp-item{
+    display:flex;justify-content:space-between;
+    background:#eef6ff;
+    border-radius:12px;padding:16px;
+    margin-bottom:12px;transition:.3s;
+}
+.olymp-item:hover{transform:scale(1.02);background:#dfeeff;}
+
+.olymp-item .sub{font-size:13px;color:#5d6e98;}
+
+.badge{background:#1a57ff;color:#fff;padding:4px 10px;border-radius:50px;font-size:12px;font-weight:600;}
+.date-badge{background:#003f91;color:white;padding:4px 12px;border-radius:50px;font-size:12px;margin-left:8px;}
+
+/* PODIUM */
+.podium{
+    display:flex;justify-content:center;gap:15px;margin:20px 0;
+}
+.rank{
+    width:110px;height:110px;border-radius:15px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-weight:bold;font-size:18px;
+    color:white;box-shadow:0 6px 20px rgba(0,0,0,0.15);
+}
+.rank span{font-size:28px;margin-top:4px;}
+
+.gold{background:linear-gradient(145deg,#FFD700,#F4C400);}
+.silver{background:linear-gradient(145deg,#C0C0C0,#9E9E9E);}
+.bronze{background:linear-gradient(145deg,#CD7F32,#B66A27);}
+
+/* GANHADORES */
+.winner{
+    display:flex;justify-content:space-between;
+    padding:10px 15px;border-radius:10px;
+    background:#fff;border:1px solid #ececec;margin-bottom:8px;
+}
+.m-medal{padding:4px 10px;border-radius:50px;font-size:12px;font-weight:700;color:white;}
+.gold-bg{background:#E9C800;} .silver-bg{background:#A7A7A7;} .bronze-bg{background:#C8792D;}
+
+.total-medals{
+    margin-top:15px;padding:10px;border-radius:10px;font-size:15px;
+    background:#e8f0ff;border-left:5px solid #0047d3;font-weight:600;
+}
+
+/* 🔥 MOBILE RESPONSIVO */
+@media(max-width:900px){
+    .olymp-wrapper{grid-template-columns:1fr;}
+}
+
+/* =============== MOBILE FIXES =============== */
+
+@media(max-width:900px){
+    .olimpiada-grid{grid-template-columns:1fr;}
+}
+
+@media(max-width:600px){
+    .modal{padding:20px;}
+    .modal-header img{width:60px;}
+    .modal-title{font-size:1.15rem;}
+}
+
+</style>
+<main class="w-[95%] max-w-[1400px] mx-auto pt-[90px]">
+    
+    <!-- CARDS DE MÉTRICAS -->
+    <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-4">
+
+        <div class="bg-white p-5 rounded-2xl shadow border-l-4 border-blue-800 hover:-translate-y-1 transition">
+            <p class="font-bold text-[#0f2b7a] flex items-center gap-2"><i class="fa-solid fa-users"></i> Total de Alunos</p>
+            <h2 class="text-[26px] font-extrabold mt-1 text-[#0f2b7a]">42</h2>
+            <p class="text-gray-500 text-sm mt-1">5 novos este mês</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl shadow border-l-4 border-green-600 hover:-translate-y-1 transition">
+            <p class="font-bold text-[#0f2b7a] flex items-center gap-2"><i class="fa-solid fa-video"></i> Videoaulas</p>
+            <h2 class="text-[26px] font-extrabold mt-1 text-[#0f2b7a]">17</h2>
+            <p class="text-gray-500 text-sm mt-1">934 visualizações totais</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl shadow border-l-4 border-yellow-500 hover:-translate-y-1 transition">
+            <p class="font-bold text-[#0f2b7a] flex items-center gap-2"><i class="fa-solid fa-medal"></i> Olimpíadas Ativas</p>
+            <h2 class="text-[26px] font-extrabold mt-1 text-[#0f2b7a]">6</h2>
+            <p class="text-gray-500 text-sm mt-1">34 inscrições realizadas</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl shadow border-l-4 border-purple-600 hover:-translate-y-1 transition">
+            <p class="font-bold text-[#0f2b7a] flex items-center gap-2"><i class="fa-solid fa-chart-line"></i> Taxa de Sucesso</p>
+            <h2 class="text-[26px] font-extrabold mt-1 text-green-600">84%</h2>
+            <p class="text-gray-500 text-sm mt-1">+14% vs mês anterior</p>
+        </div>
+
+    </div>
+
+    <!-- 🔵 TABS DE NAVEGAÇÃO -->
+    <div class="flex flex-wrap justify-center gap-3 mt-6">
+        <button class="tab-btn active" data-tab="analises">📊 Análises</button>
+        <button class="tab-btn" data-tab="alunos">🧑‍🎓  Alunos</button>
+        <button class="tab-btn" data-tab="videos">📹 Videoaulas</button>
+        <button class="tab-btn" data-tab="olimpiadas">🏅 Olimpíadas</button>
+    </div>
+<!-- ============================================================= -->
+<!-- 📊 SEÇÃO — ANÁLISES (padrão inicial selecionado) -->
+<!-- ============================================================= -->
+
+<section id="analises" class="tab-pane block">
+
+    <div class="grid md:grid-cols-2 gap-6 mt-6">
+
+        <!-- CARD 01 - Desempenho por Matéria -->
+        <div class="bg-white shadow-md p-6 rounded-2xl border border-blue-100">
+            <h2 class="text-xl font-bold text-[#0f2b7a] flex items-center gap-2 mb-4">
+                <i class="fa-solid fa-chart-simple text-yellow-500"></i> Desempenho por Matéria
+            </h2>
+
+            <!-- Barras de Progresso -->
+            <div class="space-y-4">
+
+                <div>
+                    <p class="font-semibold text-[#0f2b7a]">Física</p>
+                    <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-blue-700 h-3 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-[#0f2b7a]">Química</p>
+                    <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-blue-700 h-3 rounded-full" style="width: 76%"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-[#0f2b7a]">Biologia</p>
+                    <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-blue-700 h-3 rounded-full" style="width: 91%"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-[#0f2b7a]">Astronomia</p>
+                    <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                        <div class="bg-blue-700 h-3 rounded-full" style="width: 69%"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- CARD 02 - Progresso Mensal -->
+        <div class="bg-white shadow-md p-6 rounded-2xl border border-blue-100">
+            <h2 class="text-xl font-bold text-[#0f2b7a] flex items-center gap-2 mb-4">
+                <i class="fa-solid fa-arrow-trend-up text-yellow-500"></i> Progresso Mensal
+            </h2>
+
+            <!-- Meses -->
+            <div class="space-y-3">
+
+                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl border">
+                    <span class="font-semibold">Janeiro</span>
+                    <span class="px-3 py-1 rounded-full bg-green-100 text-green-600 font-bold">+12%</span>
+                </div>
+
+                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl border">
+                    <span class="font-semibold">Fevereiro</span>
+                    <span class="px-3 py-1 rounded-full bg-green-100 text-green-600 font-bold">+16%</span>
+                </div>
+
+                <div class="flex justify-between items-center bg-blue-600 p-3 rounded-xl text-white border">
+                    <span class="font-bold">📌 Março (Atual)</span>
+                    <span class="px-3 py-1 rounded-full bg-white text-blue-700 font-bold">+22%</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD EXTRA - ANÁLISE RESUMIDA -->
+    <div class="bg-white shadow-md p-6 mt-6 rounded-2xl border border-blue-100">
+        <h2 class="text-lg font-bold text-[#0f2b7a] flex items-center gap-2 mb-4">
+            <i class="fa-solid fa-circle-info text-yellow-500"></i> Análise Geral
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-4 text-center">
+
+            <div class="bg-gray-50 rounded-2xl p-5 shadow-sm">
+                <p class="text-3xl font-extrabold text-green-600 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-check"></i> 172
+                </p>
+                <p class="text-gray-600 font-medium mt-1">Módulos concluídos</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-5 shadow-sm">
+                <p class="text-3xl font-extrabold text-blue-700 flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-clock"></i> 348h
+                </p>
+                <p class="text-gray-600 font-medium mt-1">Horas de estudo</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-5 shadow-sm">
+                <p class="text-3xl font-extrabold text-yellow-600 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-medal"></i> 21
+                </p>
+                <p class="text-gray-600 font-medium mt-1">Medalhas obtidas</p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<!-- ============================================================= -->
+<!-- 👥 ABA — ALUNOS -->
+<!-- ============================================================= -->
+
+<section id="alunos" class="tab-pane hidden">
+    <div class="bg-white shadow-md p-6 rounded-2xl border border-blue-100">
+
+        <h2 class="text-xl font-bold text-[#0f2b7a] flex items-center gap-2">
+            <i class="fa-solid fa-users text-yellow-500"></i> Meus Alunos
+        </h2>
+        <p class="text-gray-500 text-sm mb-4">Acompanhe o desempenho individual de cada estudante 🔍</p>
+
+        <!-- LISTA -->
+        <div class="space-y-4">
+
+            <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border aluno-card">
+                <div class="avatar">AS</div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-[#0f2b7a]">Arthur Silva</h3>
+                    <p class="student-meta">ONC • OBF • OBI</p>
+                    <div class="progress mt-2"><div class="bar" style="width:76%"></div></div>
+                </div>
+                <button class="btn"><i class="fa-solid fa-eye"></i> Ver</button>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border aluno-card">
+                <div class="avatar">BC</div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-[#0f2b7a]">Bruno Costa</h3>
+                    <p class="student-meta">ONC • OBF</p>
+                    <div class="progress mt-2"><div class="bar" style="width:82%"></div></div>
+                </div>
+                <button class="btn"><i class="fa-solid fa-eye"></i> Ver</button>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border aluno-card">
+                <div class="avatar">CM</div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-[#0f2b7a]">Carla Mendes</h3>
+                    <p class="student-meta">OBF</p>
+                    <div class="progress mt-2"><div class="bar" style="width:60%"></div></div>
+                </div>
+                <button class="btn"><i class="fa-solid fa-eye"></i> Ver</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ============================================================= -->
+<!-- 🎥 ABA — VIDEOAULAS -->
+<!-- ============================================================= -->
+
+<section id="videos" class="tab-pane hidden">
+
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-xl font-bold text-[#0f2b7a] flex items-center gap-2">
+            <i class="fa-regular fa-circle-play text-yellow-500"></i> Videoaulas Enviadas
+        </h2>
+
+        <button id="newVideoBtn"
+            class="px-4 py-2 font-bold rounded-full text-white bg-blue-700 hover:bg-blue-800 shadow">
+            <i class="fa-solid fa-upload"></i> Nova Vídeo
+        </button>
+    </div>
+
+    <div class="video-grid">
+
+        <!-- CARD Vídeo -->
+        <div class="video-card">
+            <div class="thumb"><i class="fa-solid fa-play"></i></div>
+            <div class="video-meta">
+                <p class="student-name">Introdução à Física Moderna</p>
+                <div class="chips">
+                    <span class="chip">Física</span>
+                    <span class="chip"><i class="fa-regular fa-eye"></i> 240</span>
+                    <span class="chip"><i class="fa-regular fa-calendar"></i> 20/03/2025</span>
+                </div>
+
+                <div class="video-actions">
+                    <button class="btn"><i class="fa-regular fa-pen-to-square"></i> Editar</button>
+                    <button class="btn text-red-600" data-delete="1"><i class="fa-regular fa-trash-can"></i> Excluir</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- clone + você pode adicionar mais -->
+        <div class="video-card">
+            <div class="thumb"><i class="fa-solid fa-play"></i></div>
+            <div class="video-meta">
+                <p class="student-name">Química — Ligações Covalentes</p>
+                <div class="chips">
+                    <span class="chip">Química</span>
+                    <span class="chip"><i class="fa-regular fa-eye"></i> 198</span>
+                    <span class="chip"><i class="fa-regular fa-calendar"></i> 18/03/2025</span>
+                </div>
+
+                <div class="video-actions">
+                    <button class="btn"><i class="fa-regular fa-pen-to-square"></i> Editar</button>
+                    <button class="btn text-red-600" data-delete="2"><i class="fa-regular fa-trash-can"></i> Excluir</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ============================================================= -->
+<!-- 📤 MODAL — UPLOAD DE VIDEO -->
+<!-- ============================================================= -->
+
+
+<div class="modal-overlay" id="profUploadModal">
+    <div class="upload-box">
+
+        <button id="closeProfUpload" class="modal-close">✖</button>
+
+        <h2 class="modal-title">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            Upload de Videoaula
+        </h2>
+        <p class="modal-desc">Preencha os dados e envie sua videoaula para a plataforma </p>
+
+        <form id="profUploadForm" class="upload-form">
+
+            <input type="text" id="tTitle" placeholder="Título da Aula" required>
+            <input type="text" id="tSubject" placeholder="Matéria (Ex: Física, Química...)" required>
+            <input type="text" id="tOlymp" placeholder="Olimpíada relacionada (opcional)">
+            <textarea id="tDesc" rows="3" placeholder="Descrição da aula..."></textarea>
+
+            <label class="dropzone" id="dropArea">
+                <i class="fa-solid fa-video"></i>
+                <p>Clique para enviar ou arraste o vídeo aqui</p>
+                <input type="file" id="vFile" accept="video/*" hidden>
+            </label>
+
+            <div id="filePreview" class="file-preview hidden"></div>
+
+            <div class="progress hidden">
+                <div class="progress-bar"></div>
+                <span class="progress-text">0%</span>
+            </div>
+
+            <button type="submit" class="upload-btn">
+                <i class="fa-solid fa-upload"></i> Enviar Vídeo
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- 🏆 ABA — OLIMPÍADAS + CONQUISTAS -->
+<!-- ============================================================= -->
+
+<section id="olimpiadas" class="tab-pane hidden">
+
+    <h2 class="sec-title"><i class="fa-solid fa-trophy"></i> Olimpíadas & Ranking Geral</h2>
+
+    <div class="olymp-wrapper">
+
+        <!-- PROXIMAS -->
+        <div class="olymp-card glass">
+            <h3><i class="fa-solid fa-calendar-days"></i> Próximas Competições</h3>
+
+            <div class="olymp-list">
+                <div class="olymp-item">
+                    <div>
+                        <h4>ONC 2025</h4> <span class="sub">Fase 1</span>
+                    </div>
+                    <div class="badge-area">
+                        <span class="badge"><i class="fa-solid fa-users"></i> 20</span>
+                        <span class="date-badge">19/05/2025</span>
+                    </div>
+                </div>
+
+                <div class="olymp-item">
+                    <div>
+                        <h4>OBF 2025</h4> <span class="sub">Regional</span>
+                    </div>
+                    <div class="badge-area">
+                        <span class="badge"><i class="fa-solid fa-users"></i> 14</span>
+                        <span class="date-badge">09/06/2025</span>
+                    </div>
+                </div>
+
+                <div class="olymp-item">
+                    <div>
+                        <h4>OBI 2025</h4> <span class="sub">Prova Teórica</span>
+                    </div>
+                    <div class="badge-area">
+                        <span class="badge"><i class="fa-solid fa-users"></i> 9</span>
+                        <span class="date-badge">24/06/2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEDALHAS -->
+        <div class="olymp-card glass">
+            <h3><i class="fa-solid fa-medal"></i> Ranking de Medalhas</h3>
+
+            <div class="podium">
+                <div class="rank gold"><p>🥇 Ouro</p><span>12</span></div>
+                <div class="rank silver"><p>🥈 Prata</p><span>5</span></div>
+                <div class="rank bronze"><p>🥉 Bronze</p><span>4</span></div>
+            </div>
+
+            <h4 class="sub-ttl">🏅 Medalhistas</h4>
+
+            <div class="winner"><p>Arthur Ricardo</p><span class="m-medal gold-bg">Ouro</span></div>
+            <div class="winner"><p>Ana Silva</p><span class="m-medal silver-bg">Prata</span></div>
+            <div class="winner"><p>Kelly Gomes</p><span class="m-medal bronze-bg">Bronze</span></div>
+
+            <div class="total-medals">⭐ Total acumulado: <b>21 medalhas</b></div>
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+        document.getElementById(btn.dataset.tab).classList.remove('hidden');
+    });
+});
+
+// Nome do professor
+const fullName = localStorage.getItem('userName') || "Professor";
+document.getElementById("user-name-prof").textContent = "Prof. " + fullName.split(" ")[0];
+
+// Menu usuário
+document.getElementById('user-menu-btn-prof').addEventListener('click', () => {
+    document.getElementById('user-menu-prof').classList.toggle('hidden');
+});
+
+// Modal upload
+const modal = document.getElementById('profUploadModal');
+document.getElementById('newVideoBtn').onclick = () => modal.classList.add('active');
+document.getElementById('closeProfUpload').onclick = () => modal.classList.remove('active');
+
+// Enviar vídeo
+document.getElementById('profUploadForm').addEventListener('submit', e => {
+    e.preventDefault();
+    modal.classList.remove('active');
+    alert("📤 Vídeo enviado com sucesso!");
+});
+
+// Lista de olimpíadas (dinâmica)
+const dados = [
+    { name: "ONC 2025", date: "2025-05-20", inscritos: 20, stage: "Fase 1" },
+    { name: "OBF 2025", date: "2025-06-10", inscritos: 14, stage: "Regional" },
+    { name: "OBI 2025", date: "2025-06-25", inscritos: 9,  stage: "Prova Teórica" }
+];
+
+document.querySelector(".ol-list").innerHTML = dados.map(o => `
+    <div class="ol-card flex items-center justify-between border p-3 rounded-xl">
+        <div>
+            <h3 class="font-bold text-[#0f2b7a]">${o.name}</h3>
+            <p class="student-meta">${o.stage}</p>
+        </div>
+        <div class="flex gap-2">
+            <span class="chip"><i class="fa-solid fa-user-group"></i> ${o.inscritos}</span>
+            <span class="chip"><i class="fa-regular fa-calendar"></i> ${new Date(o.date).toLocaleDateString('pt-BR')}</span>
+        </div>
+    </div>
+`).join('');
+
+let drop = document.getElementById("dropArea");
+let fileInput = document.getElementById("vFile");
+let preview = document.getElementById("filePreview");
+let form = document.getElementById("profUploadForm");
+let progress = document.querySelector(".progress");
+let bar = document.querySelector(".progress-bar");
+let pText = document.querySelector(".progress-text");
+
+/* CLICK = abre seletor */
+drop.onclick = ()=> fileInput.click();
+
+/* PREVIEW DO ARQUIVO */
+fileInput.onchange = ()=>{
+    let file = fileInput.files[0];
+    if(!file) return;
+
+    preview.classList.remove("hidden");
+    preview.innerHTML = "<b>📄 Arquivo selecionado:</b> " + file.name;
+};
+
+/* ARRASTAR */
+drop.addEventListener("dragover",e=>{
+    e.preventDefault();
+    drop.classList.add("dragover");
+});
+
+drop.addEventListener("dragleave",()=> drop.classList.remove("dragover"));
+
+drop.addEventListener("drop",e=>{
+    e.preventDefault();
+    drop.classList.remove("dragover");
+    fileInput.files = e.dataTransfer.files;
+    preview.classList.remove("hidden");
+    preview.innerHTML = "📄 " + fileInput.files[0].name;
+});
+
+/* ENVIO COM PROGRESSO */
+form.onsubmit = (e)=>{
+    e.preventDefault();
+
+    progress.classList.remove("hidden");
+    let percent = 0;
+    let timer = setInterval(()=>{
+        percent += 3;
+        bar.style.width = percent+"%";
+        pText.textContent = percent+"%";
+        if(percent>=100){
+            clearInterval(timer);
+            pText.textContent = "Finalizado ✔";
+            bar.style.background="#09c055";
+
+            setTimeout(()=> alert("Upload concluído com sucesso!"),800);
+        }
+    },80);
+};
+// Anima o ranking ao carregar
+document.querySelectorAll(".rank").forEach((el,i)=>{
+    setTimeout(()=>{ el.style.transform="scale(1.1)"; },200*i);
+    setTimeout(()=>{ el.style.transform="scale(1)"; },200*i+300);
+});
+
+// piscar medalha total a cada 4s
+setInterval(()=>{
+    const box=document.querySelector(".total-medals");
+    box.style.background="#d6e5ff";
+    setTimeout(()=> box.style.background="#e8f0ff",400);
+},4000);
+const tabs = document.querySelectorAll(".tab-button");
+const panes = document.querySelectorAll(".tab-pane");
+
+tabs.forEach(button =>{
+    button.addEventListener("click", ()=>{
+        const target = button.getAttribute("data-tab");
+        
+        // esconde tudo
+        panes.forEach(p => p.classList.add("hidden"));
+        tabs.forEach(b => b.classList.remove("active-tab")); 
+
+        // mostra só o correto
+        document.getElementById(target).classList.remove("hidden");
+        button.classList.add("active-tab");
+    });
+});
+</script>
+
+</body>
+</html>

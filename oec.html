@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OEC - Olimpíada de Escrita Criativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === VARIÁVEIS DE CORES OEC (Vinho, Dourado e Creme) === */
+        :root {
+            --oec-primary: #721c24;      /* Vinho Principal */
+            --oec-dark: #491217;         /* Vinho Profundo */
+            --oec-light: #fff3f3;        /* Creme Claro */
+            --oec-accent: #d6a800;       /* Dourado (Destaque) */
+            --oec-bg: #fdfaf5;           /* Fundo Creme Suave */
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--oec-bg);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            padding-top: 80px; 
+        }
+
+        /* === HERO SECTION APRIMORADA === */
+        .oec-hero {
+            background: linear-gradient(135deg, var(--oec-dark) 0%, var(--oec-primary) 100%);
+            color: var(--white);
+            padding: 4rem 0 3rem; 
+            margin-bottom: 2.5rem;
+            border-radius: 0 0 35px 35px; 
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(73, 18, 23, 0.4); 
+        }
+        .oec-hero::after { 
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 100% 100%, rgba(255,255,255,.05) 5%, transparent 5%), radial-gradient(circle at 0% 0%, rgba(255,255,255,.05) 5%, transparent 5%);
+            background-size: 80px 80px;
+            opacity: 0.8;
+        }
+
+        .badge-accent {
+            background: var(--oec-accent);
+            color: var(--oec-dark);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .oec-hero h1 { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+
+        .stat { 
+            background: rgba(255,255,255,0.15); 
+            backdrop-filter: blur(3px);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .stat i { font-size: 1.8rem; color: var(--oec-accent); }
+        /* AJUSTE: Removendo background e padding da imagem para a nova logo */
+        .hero-img-wrapper img {
+            border-radius: 20px;
+            border: 4px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        /* === CARTÕES E LAYOUT === */
+        .card-white {
+            background: var(--white);
+            border-radius: 20px; 
+            padding: 2.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+            border: 1px solid #e5e7eb;
+            margin-bottom: 1.8rem;
+        }
+
+        .card-title {
+            color: var(--oec-dark);
+            font-size: 1.6rem;
+            font-weight: 800; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-title::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 24px;
+            background: var(--oec-accent); 
+            border-radius: 3px;
+        }
+
+        /* === ABAS APRIMORADAS === */
+        .content-tabs {
+            background: var(--oec-light); 
+            padding: 8px;
+            border-radius: 16px;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: fit-content;
+            overflow-x: auto;
+        }
+        .c-tab {
+            padding: 12px 22px;
+            transition: transform 0.2s;
+            white-space: nowrap;
+            color: var(--oec-dark);
+        }
+        .c-tab.active {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            color: var(--oec-dark);
+            font-weight: 700;
+            background: var(--white);
+            border-radius: 12px;
+        }
+        .tab-pane { display: none; animation: fadeIn 0.3s ease; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* === PREMIAÇÃO ESPECÍFICA === */
+        .award-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid;
+            transition: transform 0.3s;
+            background: #fffdf9;
+        }
+        .award-card-winner { border-color: var(--oec-accent); background: #fffcf0; }
+        .award-card-mention { border-color: #d1d5db; background: #f9f9f9; }
+        .award-card:hover { transform: translateY(-3px); }
+
+        .award-title { font-weight: 700; display: flex; align-items: center; gap: 8px; color: var(--oec-dark); }
+        .award-title i { font-size: 1.2rem; }
+        
+        /* === DARK MODE CONSISTENTE (AJUSTES DE CONTRASTE) === */
+        body.dark { background: #1a150f; color: #fdf6e9; }
+        body.dark .oec-hero { background: linear-gradient(135deg, #2b0a0d 0%, #491217 100%); }
+        body.dark .card-white { background: #26201a; border-color: #3e322b; color: #fdf6e9; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+        
+        body.dark .text-gray-500, body.dark .text-gray-600 { color: #d6ccbe !important; }
+        body.dark .text-gray-700, body.dark .text-gray-800 { color: #fdf6e9 !important; }
+        body.dark .text-gray-900 { color: #ffffff !important; } 
+        /* CORRIGIDO: Tom mais claro para títulos e textos que usam o vinho */
+        body.dark .text-red-900 { color: #f7b7b7 !important; } 
+        body.dark strong.text-red-900 { color: #f7b7b7 !important; } /* Garante o strong */
+
+
+        body.dark .c-tab { background: transparent; color: #d6ccbe; }
+        body.dark .content-tabs { background: #3e322b; }
+        body.dark .c-tab.active { background: #2b0a0d; color: #fdf6e9; }
+        
+        body.dark .bg-red-50 { background: #3e1b1e; border-color: #721c24; } 
+        body.dark .text-red-800 { color: #fdf6e9; }
+        body.dark .award-card-winner { background: #3c2a05; border-color: var(--oec-accent); }
+        body.dark .award-card-mention { background: #26201a; border-color: #555; }
+        body.dark .award-title { color: var(--oec-accent) !important; }
+        
+        /* CORRIGIDO: Botão Sidebar para Dourado (Alto Contraste) no Dark Mode */
+        body.dark .bg-oec-primary { 
+            background-color: var(--oec-accent) !important; 
+            color: var(--oec-dark) !important; 
+        }
+        body.dark .hover\:bg-oec-dark:hover { 
+            background-color: #b78e00 !important;
+        }
+
+        /* HEADER e SIDEBAR */
+        .dashboard-header {
+            background: #0b245f;
+            height: 72px;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        body.dark .dashboard-header { background: #0f172a; border-bottom: 1px solid #1e293b; }
+
+        .sidebar-sticky { position: sticky; top: 100px; }
+        .info-list li {
+            display: flex; justify-content: space-between;
+            padding: 12px 0; border-bottom: 1px solid #eee; font-size: 0.9rem;
+        }
+        body.dark .info-list li { border-bottom-color: #3e322b; }
+        body.dark  .card-title {
+            color: var(--oec-light);
+         
+        }
+
+        @media (max-width: 768px) { .oec-stats { justify-content: center; } .hero-img-wrapper { display: none; } .content-tabs { width: 100%; } .page-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+  
+    <header class="dashboard-header">
+        <div class="container mx-auto px-4 h-full flex items-center justify-between">
+            <a href="inicio.html" class="flex items-center gap-3">
+                <img src="logo.png" alt="Olympic School" class="h-10 w-auto rounded-full bg-white p-0" onerror="this.src='https://placehold.co/100x40?text=Logo'">
+            </a>
+
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="inicio.html" class="text-gray-300 hover:text-white font-medium transition">Início</a>
+                <a href="word.html" class="text-gray-300 hover:text-white font-medium transition">Olympic Words</a>
+            
+            </nav>
+
+            <div class="relative flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <p class="font-bold text-sm text-white">Olá, <span id="user-name-oec">Aluno</span>!</p>
+                    <p class="text-xs text-yellow-400">Nível: Ouro</p>
+                </div>
+                <button class="rounded-full border-2 border-yellow-400 bg-white w-10 h-10 grid place-items-center text-blue-900">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+                <button id="toggleDark" class="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center transition ml-2">
+                    <i id="darkIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="oec-hero">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+             
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Olimpíada de Escrita Criativa</h1>
+                    <p class="text-lg text-red-100 mb-6 leading-relaxed">
+                        Competição de produção textual que visa <strong>estimular a leitura, a escrita, a criação literária</strong> e identificar talentos no campo da Língua Portuguesa e Literatura.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 oec-stats">
+                        <div class="stat">
+                            <i class="fa-solid fa-pen-fancy"></i>
+                            <div>
+                                <strong class="text-xl block">5 Gêneros</strong>
+                                <span class="text-xs uppercase opacity-80">Narrativa, Poema, Tirinha, etc.</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fa-solid fa-school"></i>
+                            <div>
+                                <strong class="text-xl block">Escolas Parceiras</strong>
+                                <span class="text-xs uppercase opacity-80">Adesão Feita pela Instituição</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-img-wrapper hidden md:block">
+                    <img src="https://oec.education/wp-content/uploads/2021/03/3-scaled.jpg" 
+                         alt="Logo OEC" class="w-full max-w-sm mx-auto object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 pb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 page-grid">
+            
+            <div class="lg:col-span-2">
+                
+                <div class="content-tabs">
+                    <button class="c-tab active" onclick="switchTab('sobre')">
+                        <i class="fa-solid fa-circle-info"></i> Descrição Geral
+                    </button>
+                    <button class="c-tab" onclick="switchTab('niveis')">
+                        <i class="fa-solid fa-scroll"></i> Modalidades e Requisitos
+                    </button>
+                    <button class="c-tab" onclick="switchTab('premiacao')">
+                        <i class="fa-solid fa-star"></i> Premiação e Avaliação
+                    </button>
+                </div>
+
+                <div id="sobre" class="tab-pane active">
+                    <div class="card-white">
+                        <h2 class="card-title"><i class="fa-solid fa-book-reader"></i> Sobre a OEC</h2>
+                        <p class="text-gray-600 mb-6">
+                            A Olimpíada de Escrita Criativa (OEC) foi criada em 2020 pelo Colégio João Paulo I (JPSul). Seu foco principal é <strong>valorizar a escrita autoral, a criatividade e a expressão pessoal</strong>. Além disso, a OEC promove a integração entre estudantes e incentiva a autonomia e a reflexão.
+                        </p>
+                        
+                        <h3 class="font-bold text-lg mb-3 text-red-900 border-b pb-2">Aplicação e Fases</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                                <i class="fa-solid fa-feather text-3xl text-oec-accent mb-2"></i>
+                                <h4 class="font-bold text-red-800">Fase 1: Redação</h4>
+                                <p class="text-sm text-gray-700">Os participantes redigem seus textos conforme o tema e o gênero textual escolhido.</p>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                                <i class="fa-solid fa-gavel text-3xl text-oec-accent mb-2"></i>
+                                <h4 class="font-bold text-red-800">Fase 2: Avaliação</h4>
+                                <p class="text-sm text-gray-700">Os textos são submetidos a uma banca avaliadora, que pode incluir professores internos e externos à comunidade JPSul.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="font-bold text-lg mt-6 mb-3 text-red-900 border-b pb-2">Objetivos Principais</h3>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>Estimular o gosto pela escrita e pela literatura na educação básica.</li>
+                            <li>Identificar jovens talentos na área da escrita criativa e incentivar a produção autoral.</li>
+                            <li>Promover a troca de experiências entre diferentes instituições de ensino.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="niveis" class="tab-pane">
+                    <div class="card-white">
+                        <h2 class="card-title"><i class="fa-solid fa-list-check"></i> Modalidades e Gêneros Aceitos</h2>
+                        <p class="text-gray-600 mb-4">
+                            A OEC aceita alunos desde os anos mais iniciais do <strong>Ensino Fundamental até o Ensino Médio</strong>, incluindo estudantes de "escolas parceiras" além do JPSul.
+                        </p>
+
+                        <h3 class="font-bold text-lg mb-3 text-red-900 border-b pb-2">Gêneros Textuais (Variáveis por Edição)</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <div class="p-3 rounded-lg bg-oec-light border border-red-200 text-sm text-oec-dark text-center">
+                                <i class="fa-solid fa-book-open-reader"></i> Narrativa (prosa)
+                            </div>
+                            <div class="p-3 rounded-lg bg-oec-light border border-red-200 text-sm text-oec-dark text-center">
+                                <i class="fa-solid fa-message"></i> Crônica reflexiva
+                            </div>
+                            <div class="p-3 rounded-lg bg-oec-light border border-red-200 text-sm text-oec-dark text-center">
+                                <i class="fa-solid fa-feather-pointed"></i> Poema
+                            </div>
+                            <div class="p-3 rounded-lg bg-oec-light border border-red-200 text-sm text-oec-dark text-center">
+                                <i class="fa-solid fa-envelope"></i> Carta
+                            </div>
+                            <div class="p-3 rounded-lg bg-oec-light border border-red-200 text-sm text-oec-dark text-center">
+                                <i class="fa-solid fa-scroll"></i> Tirinha (HQ / quadrinhos)
+                            </div>
+                        </div>
+
+                        <h2 class="card-title mt-8"><i class="fa-solid fa-user-check"></i> Requisitos para Participar</h2>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li><strong class="text-red-900">Vínculo Escolar:</strong> Ser estudante de uma escola credenciada à OEC (JPSul ou parceira).</li>
+                            <li><strong class="text-red-900">Submissão:</strong> Escolher um gênero textual e submeter um texto de acordo com o tema da edição.</li>
+                            <li><strong class="text-red-900">Formatação:</strong> Respeitar as regras de formatação, como número de linhas/quadros, fonte indicada e **evitar plágio**.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="premiacao" class="tab-pane">
+                    <div class="card-white">
+                        <h2 class="card-title"><i class="fa-solid fa-trophy"></i> Reconhecimento e Premiação</h2>
+                        <p class="text-gray-600 mb-6">
+                            A OEC valoriza o ato de escrever e a expressão artística. Os resultados são divulgados publicamente no site ou redes sociais.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="award-card award-card-winner">
+                                <h4 class="award-title"><i class="fa-solid fa-medal text-xl"></i> Textos Vencedores</h4>
+                                <p class="text-sm text-gray-700 mt-1">Divulgação do <strong>1º colocado geral, por série/ano</strong>.</p>
+                            </div>
+                            <div class="award-card award-card-mention">
+                                <h4 class="award-title"><i class="fa-solid fa-award text-xl"></i> Menção Honrosa</h4>
+                                <p class="text-sm text-gray-700 mt-1">Para participantes cujos textos se destacaram pela qualidade.</p>
+                            </div>
+                        </div>
+
+                        <h2 class="card-title mt-8"><i class="fa-solid fa-clipboard-question"></i> Critérios de Avaliação</h2>
+                        <p class="text-gray-600 mb-4">
+                            A banca avaliadora recebe apoio de alunos da pós-graduação em Escrita Criativa da UFRGS. A avaliação foca em aspectos literários:
+                        </p>
+                        
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li><strong>Originalidade e Criatividade</strong>.</li>
+                            <li>Coerência, sensibilidade e adequação ao tema.</li>
+                            <li>Respeito ao gênero escolhido e às regras de formatação.</li>
+                            <li>A intenção é valorizar a expressão artística e literária, e não apenas a "correção técnica".</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="card-white sidebar-sticky">
+                    <h3 class="text-xl font-bold text-red-900 mb-4 border-b pb-2">
+                        Informações Chave <span class="bg-oec-accent text-white text-xs px-2 py-1 rounded ml-2">OEC</span>
+                    </h3>
+                    <ul class="info-list">
+                        <li>
+                            <span class="text-gray-500">Organização</span>
+                            <span class="font-bold text-oec-dark">Colégio JPSul</span>
+                        </li>
+                        <li>
+                            <span class="text-gray-500">Credenciamento</span>
+                            <span class="font-bold text-oec-dark">Pela Instituição Escolar</span>
+                        </li>
+                        <li>
+                            <span class="text-gray-500">Não há</span>
+                            <span class="font-bold text-oec-dark">Mínimo de Participantes</span>
+                        </li>
+                        <li>
+                            <span class="text-gray-500">Apoio na Banca</span>
+                            <span class="font-bold text-oec-dark">Pós-Graduação UFRGS</span>
+                        </li>
+                        <li>
+                            <span class="text-gray-500">Página Oficial</span>
+                            <span class="font-bold text-oec-primary">Colégio JPSul</span>
+                        </li>
+                        <li>
+                            <span class="text-gray-500">Última Edição</span>
+                            <span class="font-bold text-oec-dark">Informação não fornecida</span>
+                        </li>
+                    </ul>
+                    <a href="https://oec.education" target="_blank" class="block w-full text-center bg-oec-primary hover:bg-oec-dark text-red font-bold py-3 rounded-lg mt-4 transition shadow-lg hover:shadow-xl">
+                        Buscar Regulamento Online <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-10 mt-12 border-t border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-4 md:mb-0">
+                    <img src="logo.png" alt="Olympic School" class="h-8 w-auto mb-3 mx-auto md:mx-0 bg-white rounded-full p-1" onerror="this.src='https://placehold.co/100x40?text=Logo'">
+                    <p class="text-sm text-gray-400">&copy; 2025 Olympic School. Todos os direitos reservados.</p>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Termos</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacidade</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Ajuda</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função de troca de Abas
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            document.querySelectorAll('.c-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            const btns = document.querySelectorAll('.c-tab');
+            btns.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
+            });
+        }
+        switchTab('sobre');
+
+        // Nome do Usuário
+        (function(){
+            const nameEl = document.getElementById('user-name-oec');
+            const fullName = localStorage.getItem('userName') || 'Aluno';
+            if(nameEl) nameEl.textContent = fullName.split(' ')[0];
+        })();
+
+        // Dark Mode
+        const toggleBtn = document.getElementById("toggleDark");
+        const darkIcon = document.getElementById("darkIcon");
+        
+        function setTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add("dark");
+                darkIcon.className = 'fa-solid fa-sun';
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.classList.remove("dark");
+                darkIcon.className = 'fa-solid fa-moon';
+                localStorage.setItem("theme", "light");
+            }
+        }
+
+        if(localStorage.getItem("theme") === "dark") {
+            setTheme(true);
+        }
+
+        if(toggleBtn){
+            toggleBtn.onclick = () => {
+                setTheme(!document.body.classList.contains("dark"));
+            };
+        }
+    </script>
+</body>
+</html>

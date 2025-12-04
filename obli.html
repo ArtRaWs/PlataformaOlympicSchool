@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBLI 2025 - Olympic School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === VARIÁVEIS DE CORES OBLI (Azul Profundo e Ciano) === */
+        :root {
+            --obli-primary: #0077b6;      /* Azul OBLI Principal */
+            --obli-dark: #004b72;         /* Azul Marinho */
+            --obli-light: #e6f6ff;        /* Azul Claro */
+            --obli-accent: #00b4d8;       /* Ciano/Água (Destaque) */
+            --obli-bg: #f8fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--obli-bg);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            padding-top: 80px; 
+        }
+
+        /* === HERO SECTION APRIMORADA === */
+        .obli-hero {
+            background: linear-gradient(135deg, var(--obli-dark) 0%, var(--obli-primary) 100%);
+            color: var(--white);
+            padding: 4rem 0 3rem; 
+            margin-bottom: 2.5rem;
+            border-radius: 0 0 35px 35px; 
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 75, 114, 0.4);
+        }
+        .obli-hero::after { 
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 100% 100%, rgba(255,255,255,.05) 5%, transparent 5%), radial-gradient(circle at 0% 0%, rgba(255,255,255,.05) 5%, transparent 5%);
+            background-size: 80px 80px;
+            opacity: 0.8;
+        }
+
+        .badge-accent {
+            background: var(--obli-accent);
+            color: var(--obli-dark);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .obli-hero h1 { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+
+        .stat { 
+            background: rgba(255,255,255,0.15); 
+            backdrop-filter: blur(3px); /* Efeito mais suave */
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .stat i { font-size: 1.8rem; color: var(--obli-accent); }
+        .hero-img-wrapper img {
+            border-radius: 20px;
+            border: 4px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            background: white;
+            padding: 10px;
+        }
+
+        /* === CARTÕES E LAYOUT === */
+        .card-white {
+            background: var(--white);
+            border-radius: 20px; 
+            padding: 2.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+            border: 1px solid #e5e7eb;
+            margin-bottom: 1.8rem;
+        }
+
+        .card-title {
+            color: var(--obli-dark);
+            font-size: 1.6rem;
+            font-weight: 800; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-title::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 24px;
+            background: var(--obli-accent); 
+            border-radius: 3px;
+        }
+
+        /* === ABAS APRIMORADAS === */
+        .content-tabs {
+            background: var(--obli-light); 
+            padding: 8px;
+            border-radius: 16px;
+            display: flex; /* Garante que as abas não quebrem o layout */
+            gap: 10px;
+            margin-bottom: 20px;
+            width: fit-content;
+            overflow-x: auto;
+        }
+        .c-tab {
+            padding: 12px 22px;
+            transition: transform 0.2s;
+            white-space: nowrap; /* Impede a quebra de linha das abas */
+        }
+        .c-tab.active {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            color: var(--obli-dark);
+            font-weight: 700;
+        }
+        .tab-pane { display: none; animation: fadeIn 0.3s ease; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* === PREMIAÇÃO COM CORES VIVAS === */
+        .award-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid;
+            transition: transform 0.3s;
+        }
+        .award-card:hover { transform: translateY(-3px); }
+
+        .award-gold { background: #fffbe6; border-color: #fce38a; }
+        .award-silver { background: #f0f0f0; border-color: #c0c0c0; }
+        .award-bronze { background: #fdf6e9; border-color: #daa520; }
+        .award-merit { background: #e0f2f1; border-color: #4db6ac; }
+
+        .award-title { font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .award-title i { font-size: 1.2rem; }
+        .award-gold .award-title { color: #d4af37; }
+        .award-silver .award-title { color: #555; }
+        .award-bronze .award-title { color: #a0522d; }
+        .award-merit .award-title { color: #008080; }
+
+        /* === DARK MODE CONSISTENTE === */
+        body.dark { background: #0b0f15; color: #dce7ff; }
+        body.dark .obli-hero { background: linear-gradient(135deg, #024e64 0%, #026480 100%); }
+        body.dark .card-white { background: #12161d; border-color: #1e2738; color: #dce7ff; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+        
+        /* Correção da Legibilidade no Dark Mode */
+        body.dark .text-gray-500, body.dark .text-gray-600 { color: #aebfd6 !important; }
+        body.dark .text-gray-700, body.dark .text-gray-800 { color: #dce7ff !important; }
+        body.dark .text-gray-900 { color: #ffffff !important; } 
+        body.dark .text-blue-900 { color: #90c7ff !important; } 
+
+        body.dark .c-tab { background: transparent; color: #8fa3c7; }
+        body.dark .content-tabs { background: #1e2738; }
+        body.dark .c-tab.active { background: #024e64; color: #e6f6ff; }
+        
+        body.dark .bg-blue-50 { background: #123d5f; border-color: #1a567c; } 
+        body.dark .text-blue-800 { color: #e6f6ff; }
+        
+        /* Dark Mode: Premiação */
+        body.dark .award-gold { background: #3c3010; border-color: #6a530f; color: #fce38a; }
+        body.dark .award-silver { background: #282828; border-color: #555; color: #f0f0f0; }
+        body.dark .award-bronze { background: #40260b; border-color: #7b4b1a; color: #fdf6e9; }
+        body.dark .award-merit { background: #104e4c; border-color: #008080; color: #e0f2f1; }
+        body.dark .award-title { color: inherit !important; }
+        body.dark .info-list-item-fee .small-print { color: #aebfd6; }
+        
+        /* HEADER e SIDEBAR */
+        .dashboard-header {
+            background: #0b245f;
+            height: 72px;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        body.dark .dashboard-header { background: #0f172a; border-bottom: 1px solid #1e293b; }
+
+        .info-list-item-fee { display: flex; flex-direction: column; align-items: flex-end; text-align: right; line-height: 1.3; }
+        .info-list-item-fee .price { font-size: 1rem; font-weight: bold; }
+        .info-list-item-fee .small-print { font-size: 0.7rem; color: #6b7280; }
+        .sidebar-sticky { position: sticky; top: 100px; }
+        .info-list li {
+            display: flex; justify-content: space-between;
+            padding: 12px 0; border-bottom: 1px solid #eee; font-size: 0.9rem;
+        }
+
+        
+        @media (max-width: 768px) { .obli-stats { justify-content: center; } .hero-img-wrapper { display: none; } .content-tabs { width: 100%; } .page-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+  
+    <header class="dashboard-header">
+        <div class="container mx-auto px-4 h-full flex items-center justify-between">
+            <a href="inicio.html" class="flex items-center gap-3">
+                <img src="logo.png" alt="Olympic School" class="h-10 w-auto rounded-full bg-white p-0" onerror="this.src='https://placehold.co/100x40?text=Logo'">
+            </a>
+
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="inicio.html" class="text-gray-300 hover:text-white font-medium transition">Início</a>
+                <a href="word.html" class="text-white font-bold border-b-2 border-yellow-400">Olympic Words</a>
+                <a href="oba.html" class="text-gray-300 hover:text-white font-medium transition">OBA</a>
+                <a href="onc.html" class="text-gray-300 hover:text-white font-medium transition">ONC</a>
+            </nav>
+
+            <div class="relative flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <p class="font-bold text-sm text-white">Olá, <span id="user-name-obli">Aluno</span>!</p>
+                    <p class="text-xs text-yellow-400">Nível: Ouro</p>
+                </div>
+                <button class="rounded-full border-2 border-yellow-400 bg-white w-10 h-10 grid place-items-center text-blue-900">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+                <button id="toggleDark" class="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center transition ml-2">
+                    <i id="darkIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="obli-hero">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <span class="badge-accent">OBLI 2025</span>
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Olimpíada Brasileira de Língua Inglesa</h1>
+                    <p class="text-lg text-blue-100 mb-6 leading-relaxed">
+                        Competição nacional online que avalia e aprimora suas habilidades essenciais: <strong>Reading, Listening e Grammar</strong>.
+                    </p>
+                    
+                    <div class="obli-stats">
+                        <div class="stat">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <div>
+                                <strong class="text-xl block">4 Níveis</strong>
+                                <span class="text-xs uppercase opacity-80">Do Fund. I ao Adulto</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fa-solid fa-globe"></i>
+                            <div>
+                                <strong class="text-xl block">Online</strong>
+                                <span class="text-xs uppercase opacity-80">Fase Única Nacional</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fa-solid fa-scroll"></i>
+                            <div>
+                                <strong class="text-xl block">Medalhas</strong>
+                                <span class="text-xs uppercase opacity-80">Até o Top 30%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-img-wrapper hidden md:block">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJWLgvKU6LZMA30PZpJeFLKfB1PrUYsteHEQ&s" 
+                         alt="Ilustração OBLI" class="w-full max-w-sm mx-auto object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 pb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 page-grid">
+            
+            <div class="lg:col-span-2">
+                
+                <div class="content-tabs">
+                    <button class="c-tab active" onclick="switchTab('sobre')">
+                        <i class="fa-solid fa-circle-info"></i> Descrição Geral
+                    </button>
+                    <button class="c-tab" onclick="switchTab('niveis')">
+                        <i class="fa-solid fa-user-graduate"></i> Público e Níveis
+                    </button>
+                    <button class="c-tab" onclick="switchTab('premiacao')">
+                        <i class="fa-solid fa-trophy"></i> Premiação
+                    </button>
+                </div>
+
+                <div id="sobre" class="tab-pane active">
+                    <div class="card-white">
+                        <h2 class="card-title"><i class="fa-solid fa-book-open"></i> Sobre a Competição</h2>
+                        <p class="text-gray-600 mb-6">
+                            A OBLI, organizada pela Seleta Educação, é uma competição nacional que visa <strong>incentivar o estudo e aprimoramento do idioma inglês</strong> em estudantes de todas as regiões do Brasil. A prova é acessível e focada em habilidades práticas.
+                        </p>
+                        
+                        <h3 class="font-bold text-lg mb-3 text-blue-900 border-b pb-2">Formato da Avaliação</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
+                                <i class="fa-solid fa-server text-3xl text-obli-accent mb-2"></i>
+                                <h4 class="font-bold text-blue-800">Fase Única</h4>
+                                <p class="text-sm text-gray-700">Aplicação 100% online.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
+                                <i class="fa-solid fa-headphones text-3xl text-obli-accent mb-2"></i>
+                                <h4 class="font-bold text-blue-800">30 Questões</h4>
+                                <p class="text-sm text-gray-700">Objetivas, testando habilidades variadas.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
+                                <i class="fa-solid fa-list-check text-3xl text-obli-accent mb-2"></i>
+                                <h4 class="font-bold text-blue-800">Conteúdos</h4>
+                                <p class="text-sm text-gray-700">Reading, Grammar e Listening (quando aplicável).</p>
+                            </div>
+                        </div>
+
+                        <h3 class="font-bold text-lg mt-6 mb-3 text-blue-900 border-b pb-2">Etapas</h3>
+                        <ol class="list-decimal pl-5 text-gray-600 space-y-1">
+                            <li>Inscrição</li>
+                            <li>Realização da prova online</li>
+                            <li>Divulgação dos resultados</li>
+                            <li>Premiação (Medalhas e Certificados)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="niveis" class="tab-pane">
+                    <div class="card-white">
+                        <h2 class="card-title"><i class="fa-solid fa-users-viewfinder"></i> Categorias por Escolaridade</h2>
+                        <p class="text-gray-600 mb-6">
+                            A OBLI divide os participantes em categorias para garantir que a prova seja adequada ao nível de conhecimento esperado de cada faixa etária.
+                        </p>
+
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl bg-obli-light border-l-4 border-obli-primary shadow-sm">
+                                <h4 class="font-bold text-obli-dark">Fundamental I (Anos Iniciais)</h4>
+                                <p class="text-sm text-gray-700">Estudantes do <strong>4º e 5º anos</strong>.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-obli-light border-l-4 border-obli-primary shadow-sm">
+                                <h4 class="font-bold text-obli-dark">Fundamental II (Anos Finais)</h4>
+                                <p class="text-sm text-gray-700">Alunos do <strong>6º ao 9º ano</strong>, com possíveis subdivisões.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-obli-light border-l-4 border-obli-primary shadow-sm">
+                                <h4 class="font-bold text-obli-dark">Ensino Médio</h4>
+                                <p class="text-sm text-gray-700">Alunos da <strong>1ª, 2ª e 3ª séries</strong>.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-obli-light border-l-4 border-obli-primary shadow-sm">
+                                <h4 class="font-bold text-obli-dark">Categoria Livre / Adulto</h4>
+                                <p class="text-sm text-gray-700">Para maiores de idade, incluindo universitários, professores e público geral.</p>
+                            </div>
+                        </div>
+
+                        <h2 class="card-title mt-8"><i class="fa-solid fa-clipboard-check"></i> Requisitos Chave</h2>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li><strong class="text-blue-900">Vínculo Escolar ou Livre:</strong> Estar matriculado (4º EF ao 3º EM) OU participar pela Categoria Livre/Adulto.</li>
+                            <li><strong class="text-blue-900">Inscrição Válida:</strong> Formalizada pela escola ou individualmente pelo site oficial.</li>
+                            <li><strong class="text-blue-900">Acesso à Internet Estável:</strong> Necessário para a realização da prova na plataforma online.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="premiacao" class="tab-pane">
+                    <div class="card-white">
+                        <h2 class="card-title"><i class="fa-solid fa-ranking-star"></i> Distribuição das Medalhas</h2>
+                        <p class="text-gray-600 mb-6">
+                            As premiações são baseadas na classificação percentual dos participantes de cada nível, com destaque para a regra de empate: <strong>todos os alunos empatados recebem a mesma premiação.</strong>
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="award-card award-gold">
+                                <h4 class="award-title"><i class="fa-solid fa-medal text-xl"></i> Medalha de Ouro</h4>
+                                <p class="text-sm text-gray-700 mt-1">Para o <strong>Top 2%</strong> dos participantes.</p>
+                            </div>
+                            <div class="award-card award-silver">
+                                <h4 class="award-title"><i class="fa-solid fa-medal text-xl"></i> Medalha de Prata</h4>
+                                <p class="text-sm text-gray-700 mt-1">Para os <strong>4% seguintes</strong> (Top 6% cumulativo).</p>
+                            </div>
+                            <div class="award-card award-bronze">
+                                <h4 class="award-title"><i class="fa-solid fa-medal text-xl"></i> Medalha de Bronze</h4>
+                                <p class="text-sm text-gray-700 mt-1">Para os <strong>8% seguintes</strong> (Top 14% cumulativo).</p>
+                            </div>
+                            <div class="award-card award-merit">
+                                <h4 class="award-title"><i class="fa-solid fa-award text-xl"></i> Honra ao Mérito</h4>
+                                <p class="text-sm text-gray-700 mt-1">Para os <strong>16% seguintes</strong> (Top 30% cumulativo).</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h3 class="font-bold text-lg mb-3 text-blue-900 border-b pb-2">Certificados e Reconhecimento</h3>
+                            <div class="bg-obli-light border-l-4 border-obli-accent p-4 rounded-lg">
+                                <p class="text-gray-700 text-sm">
+                                    Todos os alunos e escolas participantes recebem <strong>Certificados de Participação</strong> como reconhecimento pelo esforço e engajamento.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="card-white sidebar-sticky">
+                    <h3 class="text-xl font-bold text-blue-900 mb-4 border-b pb-2">
+                        Taxas e Isenção <span class="bg-obli-accent text-white text-xs px-2 py-1 rounded ml-2">OBLI</span>
+                    </h3>
+                    <ul class="info-list">
+                        <li>
+                            <span class="text-gray-500">Escolas Públicas</span>
+                            <span class="font-bold text-green-600">Isenção Total</span>
+                        </li>
+                        <li class="flex flex-col items-end">
+                            <span class="text-gray-500 w-full mb-1">Escolas Privadas (por aluno)</span>
+                            <div class="info-list-item-fee">
+                                <span class="price text-gray-800">Aproximadamente R$ 20,00</span>
+                                <span class="small-print">(Inscrição Coletiva)</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col items-end">
+                            <span class="text-gray-500 w-full mb-1">Inscrição Individual</span>
+                            <div class="info-list-item-fee">
+                                <span class="price text-gray-800">R$ 29,00 - R$ 39,00</span>
+                                <span class="small-print">(Varia conforme o período)</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="text-gray-500">Regulamento</span>
+                            <a href="https://www.seletaeducacao.com.br/obli" target="_blank" class="font-bold text-obli-primary hover:underline">Acessar Site</a>
+                        </li>
+                    </ul>
+                    <a href="https://www.seletaeducacao.com.br/obli" target="_blank" class="block w-full text-center bg-obli-primary hover:bg-obli-dark text-blue font-bold py-3 rounded-lg mt-4 transition shadow-lg hover:shadow-xl">
+                        Acesse o Site Oficial </i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-10 mt-12 border-t border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-4 md:mb-0">
+                    <img src="logo.png" alt="Olympic School" class="h-8 w-auto mb-3 mx-auto md:mx-0 bg-white rounded-full p-1" onerror="this.src='https://placehold.co/100x40?text=Logo'">
+                    <p class="text-sm text-gray-400">&copy; 2025 Olympic School. Todos os direitos reservados.</p>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Termos</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacidade</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Ajuda</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função de troca de Abas
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            document.querySelectorAll('.c-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            const btns = document.querySelectorAll('.c-tab');
+            btns.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
+            });
+        }
+        switchTab('sobre');
+
+        // Nome do Usuário
+        (function(){
+            const nameEl = document.getElementById('user-name-obli');
+            const fullName = localStorage.getItem('userName') || 'Aluno';
+            if(nameEl) nameEl.textContent = fullName.split(' ')[0];
+        })();
+
+        // Dark Mode
+        const toggleBtn = document.getElementById("toggleDark");
+        const darkIcon = document.getElementById("darkIcon");
+        
+        function setTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add("dark");
+                darkIcon.className = 'fa-solid fa-sun';
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.classList.remove("dark");
+                darkIcon.className = 'fa-solid fa-moon';
+                localStorage.setItem("theme", "light");
+            }
+        }
+
+        if(localStorage.getItem("theme") === "dark") {
+            setTheme(true);
+        }
+
+        if(toggleBtn){
+            toggleBtn.onclick = () => {
+                setTheme(!document.body.classList.contains("dark"));
+            };
+        }
+    </script>
+</body>
+</html>

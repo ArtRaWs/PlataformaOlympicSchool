@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBQ - Olympic School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purple: {
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            900: '#581c87',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* === VARIÁVEIS E BASE === */
+        :root {
+            --obq-purple: #7c3aed;
+            --obq-purple-light: #8b5cf6;
+            --onc-yellow: #f2c217;
+            --bg-light: #f3f4f6;
+            --card-light: #ffffff;
+            --text-main-light: #1f2937;
+            --text-sec-light: #4b5563;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding-top: 80px;
+            color: var(--text-main-light);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+     header {
+    background-color:#1e1b4b;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+
+        /* === ANIMAÇÃO DE GRADIENTE ROXO (SOLICITADO) === */
+        .purple-gradient-text {
+            background: linear-gradient(270deg, #7c3aed, #d946ef, #4f46e5, #7c3aed);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-anim 6s ease infinite;
+            font-weight: 800;
+        }
+
+        @keyframes gradient-anim {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* === HERO SECTION === */
+        .onc-hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #581c87 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 30px 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge-purple {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* === CARTÕES (Adaptação Dark/Light) === */
+        .card-white {
+            background: var(--card-light);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 1.5rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* === ABAS === */
+        .content-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: #e0e7ff;
+            padding: 5px;
+            border-radius: 12px;
+            width: fit-content;
+            /* Scroll horizontal em mobile */
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .c-tab {
+            padding: 10px 20px;
+            font-weight: 600;
+            color: #4b5563;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .c-tab:hover {
+            color: var(--obq-purple);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .c-tab.active {
+            color: var(--obq-purple);
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === ACORDEÃO === */
+        .accordion-btn {
+            width: 100%;
+            text-align: left;
+            padding: 18px 0;
+            font-weight: 700;
+            color: var(--text-main-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            transition: color 0.3s;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-sec-light);
+        }
+
+        .accordion-content.open {
+            max-height: 1000px;
+            padding-bottom: 15px;
+        }
+
+        /* === BOTÕES DE FILTRO === */
+        .subject-btn {
+            padding: 10px 18px;
+            border: 1px solid #e5e7eb;
+            border-radius: 50px;
+            background: transparent;
+            font-weight: 600;
+            color: #6b7280;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .subject-btn:hover {
+            border-color: var(--obq-purple);
+            color: var(--obq-purple);
+        }
+
+        .subject-btn.active {
+            background: var(--obq-purple);
+            color: white;
+            border-color: var(--obq-purple);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        }
+
+        /* === LISTAS === */
+        .topic-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #4b5563;
+            /* Cor base light */
+        }
+
+        .topic-list i {
+            color: var(--obq-purple);
+            margin-top: 4px;
+        }
+
+        .topic-highlight {
+            color: var(--obq-purple);
+            font-weight: bold;
+        }
+
+        /* === TIMELINE === */
+        .timeline-vertical {
+            border-left: 3px solid #e5e7eb;
+            margin-left: 8px;
+            padding-left: 25px;
+        }
+
+        .t-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .t-dot {
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 4px solid var(--obq-purple);
+            border-radius: 50%;
+            position: absolute;
+            left: -34.5px;
+            top: 4px;
+            z-index: 10;
+        }
+
+        /* ============================= */
+        /* 🌑 DARK MODE STYLES (Robusto) */
+        /* ============================= */
+        body.dark {
+            background-color: #0f172a;
+            /* Slate 900 */
+            color: #f1f5f9;
+        }
+
+        /* Header Dark */
+        body.dark header {
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Cards Dark */
+        body.dark .card-white,
+        body.dark .sidebar-sticky {
+            background-color: #1e293b;
+            /* Slate 800 */
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #e2e8f0;
+        }
+
+        /* Texto dentro dos cards */
+        body.dark p,
+        body.dark .text-gray-600,
+        body.dark .text-gray-500 {
+            color: #cbd5e1 !important;
+            /* Slate 300 - Alto Contraste */
+        }
+
+        /* Títulos */
+        body.dark h1,
+        body.dark h2,
+        body.dark h3,
+        body.dark h4 {
+            color: #f8fafc !important;
+        }
+
+        body.dark .card-title {
+            color: #f8fafc;
+            /* Garantindo branco para o título base */
+        }
+
+        /* Abas Dark */
+        body.dark .content-tabs {
+            background-color: #0f172a;
+            /* Mais escuro que o card */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .c-tab {
+            color: #94a3b8;
+            /* Slate 400 */
+        }
+
+        body.dark .c-tab:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #d8b4fe;
+        }
+
+        body.dark .c-tab.active {
+            background: linear-gradient(135deg, #6d28d9, #7c3aed);
+            color: white !important;
+            border: none;
+        }
+
+        /* Acordeão Dark */
+        body.dark .accordion-btn {
+            color: #f1f5f9;
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .accordion-content {
+            color: #cbd5e1;
+        }
+
+        /* Botões de Filtro Dark */
+        body.dark .subject-btn {
+            background-color: #0f172a;
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #cbd5e1;
+        }
+
+        body.dark .subject-btn:hover {
+            border-color: #a855f7;
+            color: #a855f7;
+        }
+
+        body.dark .subject-btn.active {
+            background-color: #7c3aed;
+            color: white;
+            border-color: #7c3aed;
+        }
+
+        /* Listas Dark */
+        body.dark .topic-list li {
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+        }
+
+        /* Timeline Dark */
+        body.dark .timeline-vertical {
+            border-left-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .t-dot {
+            background-color: #1e293b;
+            border-color: #a855f7;
+        }
+
+        /* Blocos de destaque (ex: Junior, Diferença) */
+        body.dark .bg-purple-50,
+        body.dark .bg-gray-50 {
+            background-color: #283046 !important;
+            /* Cor de destaque escura */
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        body.dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+
+        /* Dark Toggle Button */
+        .dark-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .dark-toggle:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        body.dark .dark-toggle {
+            background: #facc15;
+            /* Amarelo sol */
+            border-color: #facc15;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="fixed top-0 w-full z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4 h-full flex items-center justify-between">
+            <a href="inicio.html" class="flex items-center gap-3">
+                <div>
+                      <img src="logo.png"  class=" w-12 rounded-lg   shadow-lg" alt="OBq"></a></div>
+               
+            </a>
+
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="inicio.html" class="text-gray-300 hover:text-white font-medium transition-colors">Início</a>
+                <div class="relative group">
+                    <a href="onc.html" class="text-white font-bold border-b-2 border-purple-400 pb-1">Olimpíadas</a>
+                </div>
+                <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Ranking</a>
+            </nav>
+
+            <div class="relative flex items-center gap-4">
+                <div class="text-right hidden sm:block">
+                    <p class="font-bold text-sm text-white">Olá, Aluno!</p>
+                </div>
+                <button id="toggleDark" class="dark-toggle" title="Alternar tema">
+                    <i id="darkIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="onc-hero">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="z-10">
+                    <span class="badge-purple">Química</span>
+                    <h1
+                        class="text-4xl md:text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-white animate-pulse">
+                        Olimpíada Brasileira de Química
+                    </h1>
+                    <p class="text-lg text-purple-100 mb-6 leading-relaxed max-w-lg">
+                        Do laboratório escolar para o mundo. A competição que transforma curiosidade em descobertas
+                        científicas.
+                    </p>
+
+                    <div class="onc-stats">
+                        <div class="stat">
+                            <i class="fa-solid fa-flask text-purple-300"></i>
+                            <div>
+                                <strong class="text-xl block">Nacional</strong>
+                                <span class="text-xs uppercase opacity-80">Abrangência</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fa-solid fa-globe text-yellow-400"></i>
+                            <div>
+
+                                <span class="text-xs uppercase opacity-80">Internacional</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-center items-center relative opacity-80">
+                    <div class="absolute w-64 h-64 bg-purple-500 rounded-full blur-[100px] opacity-40"></div>
+                    <i class="fa-solid fa-atom text-[12rem] text-white/20 animate-[spin_20s_linear_infinite]"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 pb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 page-grid">
+
+            <div class="lg:col-span-2">
+
+                <div class="content-tabs">
+                    <button class="c-tab active" onclick="switchTab('sobre')">
+                        <i class="fa-solid fa-circle-info"></i> Sobre a OBQ
+                    </button>
+                    <button class="c-tab" onclick="switchTab('conteudo')">
+                        <i class="fa-solid fa-book-open"></i> Conteúdos
+                    </button>
+                    <button class="c-tab" onclick="switchTab('premios')">
+                        <i class="fa-solid fa-medal"></i> Premiações
+                    </button>
+                </div>
+
+                <div id="sobre" class="tab-pane active">
+                    <div class="card-white">
+                        <h2 class="card-title purple-gradient-text">O que é a OBQ? </h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                            A Olimpíada Brasileira de Química (OBQ) é uma competição nacional que visa estimular o
+                            interesse pela química em alunos dos ensinos fundamental e médio, identificar talentos e
+                            selecionar representantes para competições internacionais.
+                        </p>
+                        <div class="mt-6 space-y-2">
+                            <div class="border-b border-gray-200 dark:border-gray-700">
+                                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                                    <span class="flex items-center gap-2"><i
+                                            class="fa-solid fa-users text-purple-500"></i> Quem pode participar?</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="py-4 space-y-3">
+                                        <p><strong>OBQ Júnior:</strong> Estudantes do 6º ao 9º ano do Ensino
+                                            Fundamental. </p>
+                                        <p><strong>OBQ Nacional:</strong> Estudantes do Ensino Médio. </p>
+                                        <p><em>Requisito:</em> Estar regularmente matriculado em uma escola brasileira
+                                            (pública ou privada). </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-b border-gray-200 dark:border-gray-700">
+                                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                                    <span class="flex items-center gap-2"><i
+                                            class="fa-solid fa-pen-to-square text-purple-500"></i> Como se
+                                        inscrever?</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="py-4">As inscrições são realizadas exclusivamente pelo professor
+                                        responsável ou coordenador da escola, por meio do site oficial da OBQ. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="conteudo" class="tab-pane">
+
+                    <div class="card-white mb-6 border-l-4 border-l-purple-400 dark:border-l-yellow-400">
+                        <h3 class="font-bold text-gray-800 dark:text-white text-lg flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-fire text-orange-500"></i> Destaques OBQ
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Conteúdos historicamente mais cobrados:
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-bold border border-yellow-200 dark:border-yellow-700">Estequiometria</span>
+                            <span
+                                class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-bold border border-yellow-200 dark:border-yellow-700">Soluções</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm font-bold border border-purple-200 dark:border-purple-700">Equilíbrio
+                                Químico</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm font-bold border border-purple-200 dark:border-purple-700">Eletroquímica</span>
+                        </div>
+                    </div>
+
+                    <div class="card-white mb-6">
+                        <h2 class="card-title purple-gradient-text">OBQ Júnior (6º ao 9º ano) </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div
+                                class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+                                <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-3 flex items-center gap-2">
+                                    <i class="fa-solid fa-flask"></i> Fundamentos
+                                </h4>
+                                <ul class="topic-list text-sm">
+                                    <li><i class="fa-solid fa-check"></i> Propriedades da matéria e estados físicos
+                                    </li>
+                                    <li><i class="fa-solid fa-check"></i> Átomos, moléculas e íons</li>
+                                    <li><i class="fa-solid fa-check"></i> Separação de misturas</li>
+                                </ul>
+                            </div>
+                            <div
+                                class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+                                <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-3 flex items-center gap-2">
+                                    <i class="fa-solid fa-calculator"></i> Cálculos & Cotidiano
+                                </h4>
+                                <ul class="topic-list text-sm">
+                                    <li><i class="fa-solid fa-check"></i> Leitura de fórmulas e balanceamento simples
+                                    </li>
+                                    <li><i class="fa-solid fa-check"></i> Ácidos e bases do dia a dia</li>
+                                    <li><i class="fa-solid fa-check"></i> Poluição do ar, água e solo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-white">
+                        <h2 class="card-title purple-gradient-text">Ensino Médio (Etapa Nacional) </h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Conteúdo cumulativo das fases
+                            estaduais. Clique para filtrar:</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <button class="subject-btn active" onclick="filterSubject('geral')">Geral</button>
+                            <button class="subject-btn" onclick="filterSubject('fisico')">Físico-Química</button>
+                            <button class="subject-btn" onclick="filterSubject('inorg')">Inorgânica</button>
+                            <button class="subject-btn" onclick="filterSubject('org')">Orgânica</button>
+                        </div>
+
+                        <div id="geral-content" class="subject-content">
+                            <h3
+                                class="text-purple-600 dark:text-purple-400 font-bold border-b dark:border-gray-700 pb-2 mb-3">
+                                Química Geral</h3>
+                            <ul class="topic-list">
+                                <li><i class="fa-solid fa-atom"></i> <span
+                                        class="topic-highlight">Estequiometria:</span> Balanceamento, pureza,
+                                    rendimento, reagente limitante.</li>
+                                <li><i class="fa-solid fa-atom"></i> <span class="topic-highlight">Soluções:</span>
+                                    Concentrações, diluição, mistura de soluções.</li>
+                                <li><i class="fa-solid fa-atom"></i> <span class="topic-highlight">Estrutura da
+                                        Matéria:</span> Modelos atômicos, Tabela Periódica, Ligações Químicas. </li>
+                                <li><i class="fa-solid fa-atom"></i> <span class="topic-highlight">Termoquímica:</span>
+                                    Entalpia, Lei de Hess, Energia de ligação.</li>
+                            </ul>
+                        </div>
+
+                        <div id="fisico-content" class="subject-content hidden">
+                            <h3
+                                class="text-purple-600 dark:text-purple-400 font-bold border-b dark:border-gray-700 pb-2 mb-3">
+                                Físico-Química </h3>
+                            <ul class="topic-list">
+                                <li><i class="fa-solid fa-bolt"></i> <span class="topic-highlight">Cinética
+                                        Química:</span> Velocidade, fatores de influência, gráficos e Lei da velocidade.
+                                </li>
+                                <li><i class="fa-solid fa-bolt"></i> <span class="topic-highlight">Equilíbrio
+                                        Químico:</span> Kc, Kp, deslocamento (Le Chatelier).</li>
+                                <li><i class="fa-solid fa-bolt"></i><span class="topic-highlight">Equilíbrio
+                                        Iônico:</span> pH, pOH, hidrólise salina, solução tampão.</li>
+                                <li><i class="fa-solid fa-bolt"></i> <span class="topic-highlight">Eletroquímica:</span>
+                                    Pilhas, eletrólise, Lei de Faraday.</li>
+                            </ul>
+                        </div>
+
+                        <div id="inorg-content" class="subject-content hidden">
+                            <h3
+                                class="text-purple-600 dark:text-purple-400 font-bold border-b dark:border-gray-700 pb-2 mb-3">
+                                Química Inorgânica </h3>
+                            <ul class="topic-list">
+                                <li><i class="fa-solid fa-vial"></i> <span class="topic-highlight">Funções
+                                        Inorgânicas:</span> Ácidos, Bases, Sais, Óxidos.</li>
+                                <li><i class="fa-solid fa-vial"></i> <span class="topic-highlight">Reações:</span>
+                                    Síntese, decomposição, simples troca, dupla troca.</li>
+                                <li><i class="fa-solid fa-vial"></i> <span class="topic-highlight">Balanceamento por
+                                        oxirredução (Redox).</span></li>
+                            </ul>
+                        </div>
+
+                        <div id="org-content" class="subject-content hidden">
+                            <h3
+                                class="text-purple-600 dark:text-purple-400 font-bold border-b dark:border-gray-700 pb-2 mb-3">
+                                Química Orgânica </h3>
+                            <ul class="topic-list">
+                                <li><i class="fa-solid fa-dna"></i> <span class="topic-highlight">Funções
+                                        Orgânicas:</span> Reconhecimento e nomenclatura (IUPAC).</li>
+                                <li><i class="fa-solid fa-dna"></i> <span class="topic-highlight">Isomeria:</span>
+                                    Plana, Geométrica (Cis-Trans) e Óptica.</li>
+                                <li><i class="fa-solid fa-dna"></i> <span class="topic-highlight"> Reações
+                                        Orgânicas:</span> Substituição, adição, eliminação, oxidação.</li>
+                                <li><i class="fa-solid fa-dna"></i> <span class="topic-highlight"> Polímeros e
+                                        Bioquímica básica.</span></li>
+                            </ul>
+                        </div>
+
+                        <div
+                            class="mt-8 bg-purple-50 dark:bg-gray-800 p-5 rounded-xl border border-purple-100 dark:border-gray-700">
+                            <h4 class="font-bold text-gray-800 dark:text-white mb-2"><i
+                                    class="fa-solid fa-layer-group text-purple-500"></i> Profundidade por Etapa</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mt-3">
+                                <div
+                                    class="p-3 bg-white dark:bg-gray-900 rounded shadow-sm border dark:border-gray-700">
+                                    <strong class="text-purple-600 dark:text-purple-400 block mb-1">Etapa I</strong>
+                                    Conteúdo básico, foco teórico e triagem inicial.
+                                </div>
+                                <div
+                                    class="p-3 bg-white dark:bg-gray-900 rounded shadow-sm border dark:border-gray-700">
+                                    <strong class="text-purple-600 dark:text-purple-400 block mb-1">Etapa II</strong>
+                                    Cálculos mais elaborados, questões classificatórias.
+                                </div>
+                                <div
+                                    class="p-3 bg-white dark:bg-gray-900 rounded shadow-sm border dark:border-gray-700">
+                                    <strong class="text-purple-600 dark:text-purple-400 block mb-1">Etapa III</strong>
+                                    Nível elevado, seleção de medalhistas e equipes internacionais.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="premios" class="tab-pane">
+                    <div class="card-white">
+                        <h2 class="card-title purple-gradient-text">Sistema de Medalhas </h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            As notas de corte para ouro, prata e bronze são variáveis, definidas após a correção com
+                            base na distribuição das notas do ano.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div
+                                class="rounded-xl p-5 bg-gradient-to-br from-yellow-300 to-yellow-500 text-white shadow-lg transform hover:-translate-y-1 transition-transform">
+                                <i class="fa-solid fa-medal text-4xl mb-3 drop-shadow-md"></i>
+                                <h3 class="text-xl font-extrabold">Ouro</h3>
+                                <p class="text-sm text-yellow-50 mt-2 font-medium">Os 4 estudantes mais bem
+                                    classificados na Etapa III. </p>
+                            </div>
+                            <div
+                                class="rounded-xl p-5 bg-gradient-to-br from-gray-300 to-gray-500 text-white shadow-lg transform hover:-translate-y-1 transition-transform">
+                                <i class="fa-solid fa-medal text-4xl mb-3 drop-shadow-md"></i>
+                                <h3 class="text-xl font-extrabold">Prata</h3>
+                                <p class="text-sm text-gray-100 mt-2 font-medium">Os próximos 8 estudantes
+                                    classificados. </p>
+                            </div>
+                            <div
+                                class="rounded-xl p-5 bg-gradient-to-br from-amber-600 to-amber-800 text-white shadow-lg transform hover:-translate-y-1 transition-transform">
+                                <i class="fa-solid fa-award text-4xl mb-3 drop-shadow-md"></i>
+                                <h3 class="text-xl font-extrabold">Bronze</h3>
+                                <p class="text-sm text-amber-100 mt-2 font-medium">Os próximos 12 estudantes
+                                    classificados.</p>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-center text-gray-500 dark:text-gray-400 mt-4 italic">
+                            *As quantidades podem ser ligeiramente aumentadas se houver empate técnico (ajuste por
+                            proximidade de escore).
+                        </p>
+
+                        <div class="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
+                            <h3 class="font-bold text-purple-800 dark:text-purple-300 mb-4 text-lg">Oportunidades
+                                Exclusivas</h3>
+                            <ul class="space-y-4">
+                                <li class="flex gap-4 items-start">
+                                    <div
+                                        class="bg-purple-100 dark:bg-purple-900/50 p-2 rounded-lg text-purple-600 dark:text-purple-300">
+                                        <i class="fa-solid fa-building-columns"></i>
+                                    </div>
+                                    <div>
+                                        <strong class="block text-gray-800 dark:text-gray-200">Universidades sem
+                                            Vestibular</strong>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Medalhistas podem ingressar
+                                            diretamente em universidades de ponta (ex: Unicamp, USP) via Vagas
+                                            Olímpicas. </p>
+                                    </div>
+                                </li>
+                                <li class="flex gap-4 items-start">
+                                    <div
+                                        class="bg-blue-100 dark:bg-blue-900/50 p-2 rounded-lg text-blue-600 dark:text-blue-300">
+                                        <i class="fa-solid fa-earth-americas"></i>
+                                    </div>
+                                    <div>
+                                        <strong class="block text-gray-800 dark:text-gray-200">Competições
+                                            Internacionais</strong>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Convocação para treinamentos
+                                            visando a IChO (Internacional) e a OIAQ (Ibero-americana). </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="card-white sidebar-sticky">
+                    <h3
+                        class="text-xl font-bold text-gray-800 dark:text-white mb-4 border-b dark:border-gray-700 pb-2 flex items-center gap-2">
+                        Info Rápida <span
+                            class="bg-purple-600 text-white text-xs px-2 py-1 rounded shadow-md">OBQ</span>
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li
+                            class="flex justify-between items-center pb-2 border-b border-gray-100 dark:border-gray-700">
+                            <span class="text-gray-500 dark:text-gray-400">Base da Premiação</span>
+                            <span class="font-bold text-gray-800 dark:text-gray-200">Ranking Nacional </span>
+                        </li>
+                        <li
+                            class="flex justify-between items-center pb-2 border-b border-gray-100 dark:border-gray-700">
+                            <span class="text-gray-500 dark:text-gray-400">Classificação</span>
+                            <span class="font-bold text-gray-800 dark:text-gray-200">Via Estaduais </span>
+                        </li>
+                        <li
+                            class="flex justify-between items-center pb-2 border-b border-gray-100 dark:border-gray-700">
+                            <span class="text-gray-500 dark:text-gray-400">Aplicação</span>
+                            <span class="font-bold text-gray-800 dark:text-gray-200">Escolas</span>
+                        </li>
+                    </ul>
+                    <a href="https://obquimica.org" target="_blank"
+                        class="block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg mt-6 transition shadow-lg shadow-purple-200 dark:shadow-none">
+                        Site Oficial <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                    </a>
+
+                    <div
+                        class="mt-6 bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border border-yellow-200 dark:border-yellow-700">
+                        <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Importante
+                        </h4>
+                        <p class="text-xs text-yellow-800 dark:text-yellow-100 leading-relaxed">
+                            Embora o comprovante de matrícula nem sempre seja pedido na inscrição online, a escola deve
+                            tê-lo disponível caso a organização solicite conferência.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // === Lógica das Abas ===
+        function switchTab(tabId) {
+            // Esconde todos os painéis
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            // Remove classe ativa dos botões
+            document.querySelectorAll('.c-tab').forEach(t => t.classList.remove('active'));
+
+            // Mostra painel alvo
+            document.getElementById(tabId).classList.add('active');
+            // Ativa botão alvo
+            const activeBtn = Array.from(document.querySelectorAll('.c-tab')).find(b => b.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        // === Lógica dos Filtros de Matéria ===
+        function filterSubject(type) {
+            // Remove active dos botões
+            document.querySelectorAll('.subject-btn').forEach(btn => btn.classList.remove('active'));
+            // Esconde conteúdos
+            document.querySelectorAll('.subject-content').forEach(content => content.classList.add('hidden'));
+
+            // Ativa botão clicado
+            const clickedBtn = Array.from(document.querySelectorAll('.subject-btn')).find(b => b.getAttribute('onclick').includes(type));
+            if (clickedBtn) clickedBtn.classList.add('active');
+
+            // Mostra conteúdo alvo
+            const target = document.getElementById(type + '-content');
+            if (target) target.classList.remove('hidden');
+        }
+
+        // === Lógica do Acordeão ===
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.fa-chevron-down');
+
+            // Se já estiver aberto, fecha
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                content.style.maxHeight = '0';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Fecha outros acordeões do mesmo grupo (opcional, mas bom para UX)
+                document.querySelectorAll('.accordion-content.open').forEach(opened => {
+                    opened.classList.remove('open');
+                    opened.style.maxHeight = '0';
+                    const openedIcon = opened.previousElementSibling.querySelector('.fa-chevron-down');
+                    if (openedIcon) openedIcon.style.transform = 'rotate(0deg)';
+                });
+
+                // Abre o atual
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // === Dark Mode Toggle ===
+        const toggleBtn = document.getElementById("toggleDark");
+        const icon = document.getElementById("darkIcon");
+        const html = document.documentElement; // Tailwind usa classe no html ou body
+
+        // Verifica preferência salva
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark");
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+
+            if (document.body.classList.contains("dark")) {
+                localStorage.setItem("theme", "dark");
+                icon.classList.remove("fa-moon");
+                icon.classList.add("fa-sun");
+            } else {
+                localStorage.setItem("theme", "light");
+                icon.classList.remove("fa-sun");
+                icon.classList.add("fa-moon");
+            }
+        });
+    </script>
+</body>
+
+</html>

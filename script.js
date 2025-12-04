@@ -42,11 +42,7 @@ if (navToggle && menu) {
     })
 }
 
-// Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function () {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
+
 
 // ==========================================
 // CONTROLE DE ABERTURA E FECHAMENTO DE MODAIS (Geral)
